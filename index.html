@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="rgb(0 102 204)">
+    <title>Vetter Serial PWA</title>
+    <link rel="stylesheet" href="src/master.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/logo129.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <p>Arduino to PWA Serial Connection</p>
+
+    <div>
+        <label>
+            Server Status:
+            <span id="server_status">-</span><br><br>
+        </label>
+    </div>
+
+    <fieldset>
+        <div>
+            <label>
+                USB Device:
+                <button id="butConnect" type="button">Connect</button>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Status USB Device:
+                <span id="status">No Connection</span>
+            </label>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div>
+            <label>
+                Read Serial Port:
+                <button id="butReadserial" type="button">Start</button>
+            </label>
+        </div>
+
+        <label>
+            Serial Value Received:
+            <span id="sample">no data</span>
+        </label>
+        <div>
+            <label>
+                Sendmessage:
+                <input id="send_msg_input" type="text" value="">
+                <button id="butSendmsg" type="button">Start</button>
+            </label>
+        </div>
+        <div>
+            <label>
+                Receivedmsg:
+                <span id="rec_msg">no data</span>
+            </label>
+        </div>
+    </fieldset>
+
+    <script src="src/index.js"></script>
+</body>
+</html>
