@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // service worker setup
-// disabled for web sw
+/* disabled for web sw
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").then(registration => {
     console.log("SW Registered!");
@@ -25,7 +25,7 @@ if ("serviceWorker" in navigator) {
 } else {
   console.log("Service Worker not supported");
 }
-
+*/
 
 //check serial support
 if ("serial" in navigator) {
