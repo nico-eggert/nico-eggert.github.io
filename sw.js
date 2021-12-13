@@ -63,7 +63,7 @@ var URLS = [                            // Add URL you want to cache in this lis
   'https://nico-eggert.github.io/src/index.js',
   'https://nico-eggert.github.io/src/master.css',
   'https://nico-eggert.github.io/manifest.json',
-  'https://nico-eggert.github.io/sw.json'
+  'https://nico-eggert.github.io/sw.js'
 ]
 
 // Respond with cached resources
