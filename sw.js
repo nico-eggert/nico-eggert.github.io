@@ -58,14 +58,14 @@ var APP_PREFIX = 'ApplicationName_'     // Identifier for this app (this needs t
 var VERSION = 'version_01'              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
-  '/nico-eggert.github.io/',                     // If you have separate JS/CSS files,
-  '/nico-eggert.github.io/index.html',            // add path to those files here
-  '/nico-eggert.github.io/src/index.js',
-  '/nico-eggert.github.io/src/master.css',
-  '/nico-eggert.github.io/manifest.json',
-  '/nico-eggert.github.io/images',
-  '/nico-eggert.github.io/images/vetter_solutions_129.png',
-  '/nico-eggert.github.io/images/vetter_solutions_512.png'
+  'https://nico-eggert.github.io/',                     // If you have separate JS/CSS files,
+  'https://nico-eggert.github.io/index.html',            // add path to those files here
+  'https://nico-eggert.github.io/src/index.js',
+  'https://nico-eggert.github.io/src/master.css',
+  'https://nico-eggert.github.io/manifest.json',
+  'https://nico-eggert.github.io/images',
+  'https://nico-eggert.github.io/images/vetter_solutions_129.png',
+  'https://nico-eggert.github.io/images/vetter_solutions_512.png'
 
 ]
 
