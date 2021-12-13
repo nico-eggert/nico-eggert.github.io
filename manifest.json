@@ -7,13 +7,13 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "images/vetter_solutions_129.png/",
+            "src": "images/vetter_solutions_129.png",
             "sizes": "129x129",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "images/vetter_solutions_512.png/",
+            "src": "images/vetter_solutions_512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
