@@ -63,7 +63,9 @@ var URLS = [                            // Add URL you want to cache in this lis
   '/nico-eggert.github.io/src/index.js',
   '/nico-eggert.github.io/src/master.css',
   '/nico-eggert.github.io/manifest.json',
-  '/nico-eggert.github.io/images'
+  '/nico-eggert.github.io/images',
+  '/nico-eggert.github.io/images/vetter_solutions_129.png',
+  '/nico-eggert.github.io/images/vetter_solutions_512.png'
 
 ]
 
