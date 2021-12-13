@@ -70,6 +70,8 @@ var URLS = [                            // Add URL you want to cache in this lis
 ]
 
 // Respond with cached resources
+console.log("cached resources");
+
 self.addEventListener('fetch', function (e) {
   console.log('fetch request : ' + e.request.url)
   e.respondWith(
@@ -89,6 +91,7 @@ self.addEventListener('fetch', function (e) {
 })
 
 // Cache resources
+console.log("install resources");
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
@@ -99,6 +102,7 @@ self.addEventListener('install', function (e) {
 })
 
 // Delete outdated caches
+console.log("delete resources");
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keyList) {
