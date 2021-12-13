@@ -192,7 +192,7 @@ function webserverstate() {
 }
 
 
-   setInterval(function() {webserverstate()},5000);
+   //setInterval(function() {webserverstate()},5000);
 
 
 
