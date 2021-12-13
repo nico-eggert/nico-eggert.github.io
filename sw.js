@@ -58,11 +58,12 @@ var APP_PREFIX = 'ApplicationName_'     // Identifier for this app (this needs t
 var VERSION = 'version_01'              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
-  '/{repository}/',                     // If you have separate JS/CSS files,
-  '/{repository}/index.html',            // add path to those files here
-  '/{repository}/src/index.js',
-  '/{repository}/src/master.css',
-  '/{repository}/manifest.json'
+  '/nico-eggert.github.io/',                     // If you have separate JS/CSS files,
+  '/nico-eggert.github.io/index.html',            // add path to those files here
+  '/nico-eggert.github.io/src/index.js',
+  '/nico-eggert.github.io/src/master.css',
+  '/nico-eggert.github.io/manifest.json',
+  '/nico-eggert.github.io/images'
 
 ]
 
