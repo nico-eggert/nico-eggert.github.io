@@ -1,5 +1,5 @@
 {
-    "name":"Vetter PWA",
+    "name": "Vetter PWA",
     "short_name": "Vetter PWA",
     "start_url": ".",
     "background_color": "rgb(220 220 220)",
@@ -18,5 +18,5 @@
             "type": "image/png",
             "purpose": "any maskable"
         }
-    ] 
+    ]
 }

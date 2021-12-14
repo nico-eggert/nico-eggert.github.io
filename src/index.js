@@ -86,17 +86,16 @@ async function readSerial() {
           break;
         }
         //console.log("pre selection: ",value);
-        if (value[0] > 47 & value[0]<65) { //ASCII 47 = "/", ab ASCII 48 "0" , ...
+        if (value[0] > 47 & value[0] < 65) { //ASCII 47 = "/", ab ASCII 48 "0" , ...
 
           //console.log(value[0]);
           document.getElementById("sample").innerHTML = String.fromCharCode(value[0]); // ASCII to char conversion to html element
         }
-        if (value[0]> 64)
-        {
+        if (value[0] > 64) {
           // remove return character (ASCII 13, or '\r') and a newline character (ASCII 10, or '\n')
           //rsp_msg=remove2ItemAll(value,"13"); 
 
-          let str = new TextDecoder().decode(value); 
+          let str = new TextDecoder().decode(value);
           document.getElementById("rec_msg").innerHTML = str;
         }
       }
@@ -109,7 +108,7 @@ async function readSerial() {
 /**
  * Remove all entries in Array
  */
- function remove2ItemAll(arr, value) {
+function remove2ItemAll(arr, value) {
   var i = 0;
   while (i < arr.length) {
     if (arr[i] === value) {
@@ -125,7 +124,7 @@ async function writeSerial() {
   const writer = port.writable.getWriter();
   var data = document.getElementById('send_msg_input').value;
 
-  var enc =  new TextEncoder();
+  var enc = new TextEncoder();
   data = enc.encode(data);
 
   await writer.write(data);
