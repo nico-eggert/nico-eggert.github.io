@@ -1,3 +1,4 @@
+/*
 // Service worker 
 self.addEventListener("install", e => {
     e.waitUntil(
@@ -62,7 +63,7 @@ self.addEventListener("install", e => {
         })
     );
 });
-
+*/
 /*
 // Runs whenever there is a fetch request
 // If there is an event listener for the fetch request, it means, that the application can be installed
