@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="rgb(0 102 204)">
+    <title>Vetter Serial PWA</title>
+
+
+
+    <link rel="stylesheet" href="master.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/logo129.png">
+    <link rel="icon" type="img/png" href="images/Logo/vetter_solutions_129.png">
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- font awesome for icons-->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/css/brands.min.css">
+
+
+    <!-- scripts -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+    <!-- Header with Navbar-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown">
+                            <img src="images/Btn/menu.png" width="30" height="30">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" role="menu">
+                            <li><a class="dropdown-item" href="index.html">Home</a></li>
+                            <li><a class="dropdown-item" href="config.html">Flash Config</a></li>
+                            <li><a class="dropdown-item" href="serial.html">Serial</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="navbar-brand navbar-brand-center" href="#">
+                    <img src="images/Logo/vetter_solutions_129.png" width="30" height="30" alt="logo">
+                    Vetter Flash Config
+                </a>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown">
+                        <img src="images/Flaggen/gb.png" width="36" height="30">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" role="menu">
+                        <li><a class="dropdown-item" href=""><img src="images/Flaggen/de.png" width="30" height="25"></a></li>
+                        <li><a class="dropdown-item" href=""><img src="images/Flaggen/gb.png" width="30" height="25"></a></li>
+                        <li><a class="dropdown-item" href=""><img src="images/Flaggen/us.png" width="30" height="25"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="main">
+        <fieldset>
+            <div>
+                <label>
+                    Server Status:
+                    <span id="server_status">-</span><br><br>
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div>
+                <label>
+                    USB Device:
+                    <button id="butConnect" type="button">Connect</button>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Status USB Device:
+                    <span id="status">No Connection</span>
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div>
+                <label>
+                    Read Serial Port:
+                    <button id="butReadserial" type="button">Start</button>
+                </label>
+            </div>
+
+            <label>
+                Serial Value Received:
+                <span id="sample">no data</span>
+            </label>
+            <div>
+                <label>
+                    Sendmessage:
+                    <input id="send_msg_input" type="text" value="">
+                    <button id="butSendmsg" type="button">Start</button>
+                </label>
+            </div>
+            <div>
+                <label>
+                    Receivedmsg:
+                    <span id="rec_msg">no data</span>
+                </label>
+            </div>
+        </fieldset>
+
+    </main>
+
+    <footer class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-12-sm col-md-12 col-lg-3 footer-logo ">
+                    <img class="img-fluid" alt="VETTER Solutions" src="images/Logo/vetter_solutions_logo.png"
+                        width="200" height="70">
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                    <p>
+                        VETTER Industrie GmbH
+                        <br>
+                        Carl-Benz-Straße 45
+                        <br>
+                        57299 Burbach
+                    </p>
+                    <p>
+                        <span class="fas fa-phone">
+                        </span>
+                        +49 2736 4961-0
+                        <br>
+
+                        <span class="fas fa-print">
+                        </span>
+                        +49 2736 4961-12
+                        <br>
+
+                        <span class="fas fa-envelope">
+                        </span>
+                        <a href="mailto:info@gabelzinken.de">info@gabelzinken.de</a>
+                    </p>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                    <p>
+                        Folgen Sie uns
+                    </p>
+                    <div class="row " >
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://de.linkedin.com/showcase/vetter-industrie-gmbh-deutschland">
+                                <i class="fab fa-linkedin fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://www.xing.com/companies/vetterindustriegmbh">
+                                <i class="fab fa-xing fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://www.facebook.com/Vetter-Industrie-GmbH-14829988711989388/">
+                                <i class="fab fa-facebook fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://www.instagram.com/vetterforks/">
+                                <i class="fab fa-instagram fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://vimeo.com/user85925194">
+                                <i class="fab fa-vimeo-v fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-2">
+                        <a href="https://www.smartfork.com/de/impressum/">Impressum</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/datenschutz/">Datenschutz</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/cookies/">Cookies</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/sitemap/">Sitemap</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/agb/">AGB</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/software-lizenzbedingungen/">Solutions Software</a>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+<script src="src/index.js"></script>
+
+</html>

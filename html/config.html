@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="rgb(0 102 204)">
+    <title>Vetter Serial PWA</title>
+
+
+
+    <link rel="stylesheet" href="master.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/logo129.png">
+    <link rel="icon" type="img/png" href="images/Logo/vetter_solutions_129.png">
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- font awesome for icons-->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/css/brands.min.css">
+
+
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+
+
+
+</head>
+
+<body class="backgroundcolor">
+    <!-- Header with Navbar-->
+    <header>
+        <div class="container header ">
+            <div class="row">
+                <!-- menu dropdown-->
+                <div class="col-md-2 col-6">
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle dropdown-menu-dark" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="images/Btn/menu.png" id="btn_menu" width="36" height="30">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item " href="index.html">Home</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="config.html">Flash Config</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="serial.html">Serial</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- brand-->
+                <div class="col-md-8 col-12 ">
+                    <a class="navbar-brand navbar-brand-center" href="#">
+                        <img src="images/Logo/vetter_solutions_129.png" width="30" height="30" alt="logo">
+                        Vetter Flash Config
+                    </a>
+                </div>
+                <!-- language-->
+                <div class="col-md-2 col-6 ">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-dark " type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="images/Flaggen/gb.png" id="languageimgview" width="36" height="30">
+                        </button>
+                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                            <li class="backgroundcolor"><a class="dropdown-item" href="#"
+                                    onclick="changeLanguageImage(this)" src="images/Flaggen/de.png">
+                                    <img src="images/Flaggen/de.png" width="30" height="25">
+                                </a></li>
+                            <li class="backgroundcolor"><a class="dropdown-item" href="#"
+                                    onclick="changeLanguageImage(this)" src="images/Flaggen/gb.png">
+                                    <img src="images/Flaggen/gb.png" width="30" height="25">
+                                </a></li>
+                            <li class="backgroundcolor"><a class="dropdown-item" href="#"
+                                    onclick="changeLanguageImage(this)" src="images/Flaggen/us.png">
+                                    <img src="images/Flaggen/us.png" width="30" height="25">
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main">
+
+        <div class="container">
+            <!-- row 1-->
+            <div class="row text-center">
+                <h1>
+                    <br><br>
+                    Flash Configuration Menu
+                    <br><br>
+                </h1>
+            </div>
+
+            <!-- row 2-->
+            <!--  335 mm, 635 mm, 935 mm or 1870 mm-->
+            <div class="row">
+                <div class="col text-right header_font">
+                    <label>
+                        LED stripe length:
+                    </label>
+                </div>
+                <div class="col text-left">
+                    <form>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="335">
+                            <label class="form-check-label" for="inlineRadio_none">335 mm</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="635">
+                            <label class="form-check-label" for="inlineRadio_green">635 mm</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="935">
+                            <label class="form-check-label" for="inlineRadio_red">935 mm</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="1870">
+                            <label class="form-check-label" for="inlineRadio_run_red_white">1870 mm</label>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="tipoffset" placeholder="Tip Length xxx (mm)">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button id="read_btn" type="button" class="btn btn-outline-primary" title="read values">
+                                    <i class="far fa-eye fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="upload_btn_forklength" type="button" class="btn btn-outline-primary"
+                                    onclick=send_config(this) title="flash/save the selection">
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                    title="Download successful.">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="error_btn" type="button" class="btn btn-outline-danger"
+                                    title="Something went wrong...">
+                                    <i class="fas fa-exclamation"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <!-- row 3-->
+            <div class="row">
+                <div class="col header_font">
+                    <label>
+                        Operation Mode:
+                    </label>
+                </div>
+                <div class="col text-left">
+                    <form>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio_none"
+                                value="none" checked onclick="changeImage(this)" image="">
+                            <label class="form-check-label" for="inlineRadio_none">none</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                id="inlineRadio_green" value="allgreen" onclick="changeImage(this)"
+                                image="images/Colors/green.png">
+                            <label class="form-check-label" for="inlineRadio_green">green</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio_red"
+                                value="allred" onclick="changeImage(this)" image="images/Colors/red.png">
+                            <label class="form-check-label" for="inlineRadio_red">red</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                id="inlineRadio_run_red_white" value="red_white" onclick="changeImage(this)"
+                                image="images/Colors/run_red_white.png">
+                            <label class="form-check-label" for="inlineRadio_run_red_white">running light</label>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col text-right ">
+                    <label>
+                        <img id="imgview" width="30" height="30">
+                    </label>
+                </div>
+                <div class="col text-right align-middle">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button id="read_btn" type="button" class="btn btn-outline-primary" title="read values">
+                                    <i class="far fa-eye fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="upload_btn_op_mode" type="button" class="btn btn-outline-primary"
+                                    title="flash/save the selection" onclick=send_config(this)>
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col hidden" id="loading_op_mode_div">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="col hidden" id="check_btn_op_mode_div">
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                    title="Download successful.">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="col hidden" id="error_btn_op_mode_div">
+                                <button id="error_btn_op_mode" type="button" class="btn btn-outline-danger"
+                                    title="Something went wrong...">
+                                    <i class="fas fa-exclamation "></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br><br>
+            <!-- row 4-->
+            <div class="row">
+                <div class="col">
+                    <div class="input-group header_font">
+                        <label for="exampleColorInput" class="form-label">Color picker:</label>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c"
+                        title="Choose your color">
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button id="read_btn" type="button" class="btn btn-outline-primary" title="read values">
+                                    <i class="far fa-eye fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="upload_btn" type="button" class="btn btn-outline-primary"
+                                    title="flash/save the selection">
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                    title="Download successful.">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="error_btn" type="button" class="btn btn-outline-danger"
+                                    title="Something went wrong...">
+                                    <i class="fas fa-exclamation"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <!-- row 5-->
+            <div class="row">
+                <div class="col text-right header_font">
+                    <label>
+                        Brigthness:
+                    </label>
+                </div>
+                <div class="col text-left">
+                    <form>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio_eco"
+                                value="option1">
+                            <label class="form-check-label" for="inlineRadio_eco">eco</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                id="inlineRadio_medium" value="option2">
+                            <label class="form-check-label" for="inlineRadio_medium">medium</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio_max"
+                                value="option3">
+                            <label class="form-check-label" for="inlineRadio_max">max</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                id="inlineRadio_custom" value="option4" disabled>
+                            <label class="form-check-label" for="inlineRadio_custom">custom </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button id="read_btn" type="button" class="btn btn-outline-primary" title="read values">
+                                    <i class="far fa-eye fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="upload_btn" type="button" class="btn btn-outline-primary"
+                                    title="flash/save the selection">
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                    title="Download successful.">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="error_btn" type="button" class="btn btn-outline-danger"
+                                    title="Something went wrong...">
+                                    <i class="fas fa-exclamation"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <!-- row 6-->
+            <div class="row">
+                <div class="col-3 text-right header_font">
+                    <label>
+                        Marker:
+                    </label>
+                </div>
+                <div class="col-6 ">
+                    <div>
+                        <!-- class="container"-->
+                        <!-- 1. row-->
+                        <div class="row">
+                            <div class="col-4 ">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="marker1">
+                                    <label class="form-check-label" for="flexCheckMarker1">Marker 1</label>
+                                </div>
+                            </div>
+                            <div class="col-4 ">
+                                <input type="text" class="form-control" id="tipoffset" placeholder="xxx (mm)">
+                            </div>
+                            <div class="col-2">
+                                <button id="marker1_left_btn" type="button" class="btn btn-outline-primary"
+                                    style="float: right;" title="move marker towards fork back">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+
+                            </div>
+                            <div class="col-2">
+                                <button id="marker1_right_btn" type="button" class="btn btn-outline-primary"
+                                    style="float: left;" title="move marker towards tip">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- 2. row-->
+                        <div class="row">
+                            <div class="col-4 ">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="marker2">
+                                    <label class="form-check-label" for="flexCheckMarker2">Marker 2</label>
+                                </div>
+                            </div>
+                            <div class="col-4 ">
+                                <input type="text" class="form-control" id="tipoffset" placeholder="xxx (mm)">
+                            </div>
+                            <div class="col-2">
+                                <button id="marker2_left_btn" type="button" class="btn btn-outline-primary "
+                                    style="float: right;" title="move marker towards fork back">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                            </div>
+                            <div class="col-2">
+                                <button id="marker2_right_btn" type="button" class="btn btn-outline-primary"
+                                    style="float: left;" title="move marker towards tip">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- 3. row-->
+                        <div class="row">
+                            <div class="col-4 ">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="marker3">
+                                    <label class="form-check-label" for="flexCheckMarker3">Marker 3</label>
+                                </div>
+                            </div>
+                            <div class="col-4 ">
+                                <input type="text" class="form-control" id="tipoffset" placeholder="xxx (mm)">
+                            </div>
+                            <div class="col-2">
+                                <button id="marker3_left_btn" type="button" class="btn btn-outline-primary"
+                                    style="float: right;" title="move marker towards fork back">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                            </div>
+                            <div class="col-2">
+                                <button id="marker3_right_btn" type="button" class="btn btn-outline-primary"
+                                    style="float: left;" title="move marker towards tip">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button id="read_btn" type="button" class="btn btn-outline-primary" title="read values">
+                                    <i class="far fa-eye fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="upload_btn" type="button" class="btn btn-outline-primary"
+                                    title="flash/save the selection">
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                    title="Download successful.">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="error_btn" type="button" class="btn btn-outline-danger"
+                                    title="Something went wrong...">
+                                    <i class="fas fa-exclamation"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <!-- row 7-->
+
+            <div class="row">
+                <div class="col text-right header_font">
+                    <label>
+                        Entrie depth:
+                    </label>
+                </div>
+                <div class="col ">
+                    <input class="form-check-input" type="checkbox" value="" id="activateMarker">
+                    <label class="form-check-label" for="flexCheckMarker">
+                        Activate Marker
+                    </label>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="tipoffset" placeholder="xxx (mm)">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button id="read_btn" type="button" class="btn btn-outline-primary" title="read values">
+                                    <i class="far fa-eye fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="upload_btn" type="button" class="btn btn-outline-primary"
+                                    title="flash/save the selection">
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                    title="Download successful.">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="error_btn" type="button" class="btn btn-outline-danger"
+                                    title="Something went wrong...">
+                                    <i class="fas fa-exclamation"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 
+                Carousel Menu
+            -->
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="carousellengthselect" class="carousel slide " data-bs-ride="carousel"
+                        data-bs-interval="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carousellengthselect" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carousellengthselect" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carousellengthselect" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img id="length_s" src="images/S.png" class="d-block w-100" alt="..." id="335"
+                                    onclick=send_config(this)>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Length</h5>
+                                    <p>335 mm</p>
+                                    <!-- 
+                                <button id="check_btn" type="button" class="btn btn-outline-success"
+                                title="Download successful.">
+                                <i class="fas fa-check"></i>
+                              </button>
+                              -->
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="carousel-item">
+                                <img id="length_m" src="images/M.png" class="d-block w-100" alt="..." id="635"
+                                    onclick=send_config(this)>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Length</h5>
+                                    <p>635 mm</p>
+                                    <!--
+                              <button id="upload_btn_op_mode" type="button" class="btn btn-outline-primary"
+                                    title="flash/save the selection" onclick=send_config(this)>
+                                    <i class="fas fa-download fa-sm"></i>
+                                </button>
+                                -->
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img id="length-l" src="images/L.png" class="d-block w-100" alt="..." id="935"
+                                    onclick=send_config(this)>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Length</h5>
+                                    <p>935 mm</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img id="length_xl" src="images/XL.png" class="d-block w-100" alt="..." id="1870"
+                                    onclick=send_config(this)>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Length</h5>
+                                    <p>1870 mm</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="lengthselect_prev" class="carousel-control-prev" type="button"
+                            data-bs-target="#carousellengthselect" data-bs-slide="prev" onclick=send_config(this)>
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button id="lengthselect_next" class="carousel-control-next" type="button"
+                            data-bs-target="#carousellengthselect" data-bs-slide="next" onclick=send_config(this)>
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-4">
+                    <div id="carouselmodeselect" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselmodeselect" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselmodeselect" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselmodeselect" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/greenstripe.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Mode</h5>
+                                    <p>Full green</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/redstripe.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Mode</h5>
+                                    <p>Full red</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/redwhite.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Mode</h5>
+                                    <p>Running light</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselmodeselect"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselmodeselect"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div id="carouselbrightnessselect" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselbrightnessselect" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselbrightnessselect" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselbrightnessselect" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/eco.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Brightness</h5>
+                                    <p>eco</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/medium.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Brigthness</h5>
+                                    <p>medium</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/max.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Brightness</h5>
+                                    <p>max</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselbrightnessselect"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselbrightnessselect"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    
+
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="false">
+                        <div class="carousel-indicators">
+
+                            
+
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="container">
+                                <img src="images/flashfork.png" class="d-block w-100" alt="...">
+                                <img id="marker_arrow_pos" src="images/up_arrow.png" class="img-overlay-zero" width="40" height="40">
+                                
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Marker/Area</h5>
+                                    <p>Area 1</p>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="marker1">
+                                        <label class="form-check-label" for="flexCheckMarker1">Activate Marker 1</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="tipoffset"
+                                        placeholder=" Area: xxx (LEDs)">
+                                    <input type="text" class="form-control" id="tipoffset"
+                                        placeholder=" Position: xxx (cm)">
+                                        <label for="customRange2" class="form-label">Position</label>
+                                        <input type="range" class="form-range " min="0" max="5" oninput="move_arrow(this.value)" step="1.0" value="0.0" >
+                                    <button id="marker1_left_btn" type="button" class="btn btn-outline-primary"
+                                        title="move marker towards fork back">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <button id="marker1_right_btn" type="button" class="btn btn-outline-primary"
+                                        title="move marker towards tip">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/flashfork.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Marker/Area</h5>
+                                    <p>Area 2</p>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="marker2">
+                                        <label class="form-check-label" for="flexCheckMarker2">Activate Marker 2</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="tipoffset"
+                                        placeholder=" Area: xxx (LEDs)">
+                                    <input type="text" class="form-control" id="tipoffset"
+                                        placeholder=" Position: xxx (cm)">
+                                        <label for="customRange2" class="form-label">Position</label>
+                                        <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                                    <button id="marker2_left_btn" type="button" class="btn btn-outline-primary"
+                                        title="move marker towards fork back">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <button id="marker2_right_btn" type="button" class="btn btn-outline-primary"
+                                        title="move marker towards tip">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/flashfork.png" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Marker/Area</h5>
+                                    <p>Area 3</p>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="marker3">
+                                        <label class="form-check-label" for="flexCheckMarker3">Activate Marker 3</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="tipoffset"
+                                        placeholder=" Area: xxx (LEDs)">
+                                    <input type="text" class="form-control" id="tipoffset"
+                                        placeholder=" Position: xxx (cm)">
+                                        <label for="customRange2" class="form-label">Position</label>
+                                        <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                                    <button id="marker3_left_btn" type="button" class="btn btn-outline-primary"
+                                        title="move marker towards fork back">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <button id="marker3_right_btn" type="button" class="btn btn-outline-primary"
+                                        title="move marker towards tip">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <!-- 2. row
+                        
+                            
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="marker2">
+                                    <label class="form-check-label" for="flexCheckMarker2">Marker 2</label>
+                                </div>
+                            
+                                <input type="text" class="form-control" id="tipoffset" placeholder="xxx (mm)">
+                            
+                                <button id="marker2_left_btn" type="button" class="btn btn-outline-primary " style="float: right;" title="move marker towards fork back">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                            
+                                <button id="marker2_right_btn" type="button" class="btn btn-outline-primary" style="float: left;" title="move marker towards tip">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            
+                        
+                        <!-- 3. row
+                        
+                            
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="marker3">
+                                    <label class="form-check-label" for="flexCheckMarker3">Marker 3</label>
+                                </div>
+                            
+                                <input type="text" class="form-control" id="tipoffset" placeholder="xxx (mm)">
+                            
+                                <button id="marker3_left_btn" type="button" class="btn btn-outline-primary" style="float: right;" title="move marker towards fork back">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                            
+                                <button id="marker3_right_btn" type="button" class="btn btn-outline-primary" style="float: left;" title="move marker towards tip">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            
+                        -->
+
+
+
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+    </main>
+
+    <footer class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-12-sm col-md-12 col-lg-3 footer-logo ">
+                    <img class="img-fluid" alt="VETTER Solutions" src="images/Logo/vetter_solutions_logo.png"
+                        width="200" height="70">
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                    <p>
+                        VETTER Industrie GmbH
+                        <br>
+                        Carl-Benz-Straße 45
+                        <br>
+                        57299 Burbach
+                    </p>
+                    <p>
+                        <span class="fas fa-phone">
+                        </span>
+                        +49 2736 4961-0
+                        <br>
+
+                        <span class="fas fa-print">
+                        </span>
+                        +49 2736 4961-12
+                        <br>
+
+                        <span class="fas fa-envelope">
+                        </span>
+                        <a href="mailto:info@gabelzinken.de">info@gabelzinken.de</a>
+                    </p>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                    <p>
+                        Folgen Sie uns
+                    </p>
+                    <div class="row ">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://de.linkedin.com/showcase/vetter-industrie-gmbh-deutschland">
+                                <i class="fab fa-linkedin fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://www.xing.com/companies/vetterindustriegmbh">
+                                <i class="fab fa-xing fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://www.facebook.com/Vetter-Industrie-GmbH-14829988711989388/">
+                                <i class="fab fa-facebook fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://www.instagram.com/vetterforks/">
+                                <i class="fab fa-instagram fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                            <a href="https://vimeo.com/user85925194">
+                                <i class="fab fa-vimeo-v fa-2x">
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-2">
+                        <a href="https://www.smartfork.com/de/impressum/">Impressum</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/datenschutz/">Datenschutz</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/cookies/">Cookies</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/sitemap/">Sitemap</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/agb/">AGB</a>
+                    </div>
+                    <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                        <a href="https://www.smartfork.com/de/software-lizenzbedingungen/">Solutions Software</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+
+
+</html>

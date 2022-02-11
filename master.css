@@ -1,0 +1,196 @@
+.navbar-brand-center {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    color: white;
+  }
+  .header {
+    position: relative;
+    width: 100%;
+    top:0;
+  }
+  .main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("images/Logo/hintergrund_1520x720px.png");
+    background-size: cover;
+  }
+  .hidden {
+    display:none;
+  }
+  .footer {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    background-color: lightgrey;
+  }
+  .backgroundcolor {
+    background-color: rgb(42, 42, 42);
+  }
+  .header_font {
+    font-weight: 650;
+  }
+body {
+    width: 100%;
+    margin: 0 auto;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.carousel-red {
+  background: none repeat scroll 0 0 red;
+  margin-top: 20 px;
+  padding: 1%;
+}
+.carousel-green {
+  background: none repeat scroll 0 0 rgb(0, 255, 0);
+  margin-top: 20 px;
+  padding: 1%;
+}
+
+.img-overlay-zero {
+  position: absolute;
+  bottom: 380px ;
+  left: 190px ;
+  
+}
+.img-overlay-one {
+  position: absolute;
+  bottom: 370px ;
+  left: 240px ;
+  
+}
+.img-overlay-two {
+  position: absolute;
+  bottom: 360px ;
+  left: 290px ;
+  
+}
+.img-overlay-three {
+  position: absolute;
+  bottom: 350px ;
+  left: 340px ;
+  
+}
+.img-overlay-four {
+  position: absolute;
+  bottom: 340px ;
+  left: 390px ;
+  
+}
+.img-overlay-five {
+  position: absolute;
+  bottom: 330px ;
+  left: 440px ;
+  
+}
+
+input{
+  text-align: center;
+}
+
+.flex-wrapper{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-title{
+  background-color: #424242;
+  color:white;
+  
+}
+.side-menu{
+  background-color: #424242;
+  color: white;
+  width: 100%;;
+}
+
+.center {
+
+  display:inline-block;
+    width: 100%;
+    text-align: center;
+    vertical-align: bottom;
+
+}
+
+.sidemenu-row{
+  padding: 0%; 
+  margin: 0%;  
+  border-style: ridge;
+}
+
+.center-img{
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; 
+}
+
+.custom-button {
+  background-color: #6e6e6e;
+  border: #6e6e6e;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px 0px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+.custom-button:hover {
+  background-color: #5e5e5e;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted rgb(185, 0, 0);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(172, 162, 162);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.mytooltipclass{
+  height: 3em;
+  width: 10em;
+  background: gray;
+}
+
+/*
+.rotate17 {
+  -webkit-transform: rotate(17deg);
+  -moz-transform: rotate(17deg);
+  -o-transform: rotate(17deg);
+  -ms-transform: rotate(17deg);
+  transform: rotate(17deg);
+}
+*/

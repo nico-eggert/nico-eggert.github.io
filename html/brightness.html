@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="rgb(0 102 204)">
+    <title>Vetter Serial PWA</title>
+
+    <link rel="stylesheet" href="/master.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/logo129.png">
+    <link rel="icon" type="img/png" href="/images/Logo/vetter_solutions_129.png">
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- font awesome for icons-->
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+
+    
+
+</head>
+
+<body style="background-color: darkgray;">
+    <!-- main content -->
+    <div class="col " style="background-color: darkgray; ">
+
+
+        <div class="row"><br></div>
+        <div class="row">
+            <div class="col" style="width: 25%;"></div>
+            <div class="col" style="width: 50%; ">
+               <!-- <image id="preview_img" style="max-width: 100%; height: auto;" src="../images/eco.png"></image> -->
+            </div>
+            <div class="col" style="width: 25%;"></div>
+        </div>
+        <div class="row"><br></div>
+
+        <div class="row">
+            <div class="col" style="width: 2%";></div>
+            <div class="col" style="width: 24%">
+                <button id="btn_eco" type="button" class="btn btn-outline-primary " data-bs-toggle="button" autocomplete="off" 
+                                    title="Set Brighntess to ECO setting">
+                                    <image style="max-width: 100%;" src="../images/bulb_eco_transparent.png"></image>
+                                </button>
+            </div>
+            <div class="col" style="width: 24%">
+                <button id="btn_med" type="button" class="btn btn-outline-primary" data-bs-toggle="button" autocomplete="off" 
+                                    title="Set Brighntess to MEDIUM setting">
+                                    <image style="max-width: 100%;" src="../images/bulb_med_transparent.png"></image>
+                                </button>
+            </div> 
+            <div class="col" style="width: 24%">
+                <button id="btn_max" type="button" class="btn btn-outline-primary"  data-bs-toggle="button" autocomplete="off" 
+                                    title="Set Brighntess to MAX setting">
+                                    <image style="max-width: 100%;" src="../images/bulb_max_transparent.png"></image>
+                                </button>
+            </div>
+            <div class="col" style="width: 24%">
+                <button id="btn_save" type="button" class="btn btn-outline-danger active" data-bs-toggle="button" style="visibility: hidden;"
+                                    title="Save setting to ROM.">
+                                    <image style="max-width: 100%; " src="../images/save.png"></image>
+                                </button>
+            </div>
+            <div class="col" style="width: 2%"></div>
+        </div>
+        
+
+    </div>
+
+
+
+    <!-- scripts -->
+    <!-- jQuery -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    
+    <script src="../js/connect.js"></script>
+    <script src="../js/brightness.js"></script>
+    <!--<script src="../src/index.js"></script>-->
+    
+   
+</body>
+
