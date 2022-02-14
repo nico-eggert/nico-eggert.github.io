@@ -116,7 +116,7 @@ connectionstateUSB(); // Check USB connection
 function cyclicConnectionCheck() {
   console.log('deviceaddress: ', localStorage.getItem('deviceaddress'));
   if (localStorage.getItem('deviceaddress') == '') {
-    // do nothing
+    // do nothing, if no device adress has been specified
   }
   else {
     checkConnectionInterval = setInterval(checkconnection, 2500); // send message every cycle to check connection to device

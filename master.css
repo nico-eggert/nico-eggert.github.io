@@ -99,12 +99,12 @@ input{
 }
 
 .page-title{
-  background-color: #424242;
+  background-color:darkgray;
   color:white;
   
 }
 .side-menu{
-  background-color: #424242;
+  background-color:darkgray;
   color: white;
   width: 100%;;
 }
