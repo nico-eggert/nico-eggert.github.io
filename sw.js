@@ -89,7 +89,7 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/master.css',        // add path to those files here
     'https://nico-eggert.github.io/sw.js',
     'https://nico-eggert.github.io/manifest.json',
-    'https://nico-eggert.github.io/index.html',
+    'https://nico-eggert.github.io/src/index.html',
     'https://nico-eggert.github.io/css/bootstrap.min.css',
     'https://nico-eggert.github.io/css/bootstrap.min.css.map',
     'https://nico-eggert.github.io/js/bootstrap.bundle.min.js',
