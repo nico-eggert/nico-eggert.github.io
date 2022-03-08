@@ -81,7 +81,7 @@ self.addEventListener("fetch", e => {
 
 // test of sw for github webpage
 // test github sw
-var APP_PREFIX = 'ApplicationName_'     // Identifier for this app (this needs to be consistent across every cache update)
+var APP_PREFIX = 'VetterPWA_'     // Identifier for this app (this needs to be consistent across every cache update)
 var VERSION = 'version_0.04'              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
@@ -90,10 +90,8 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/sw.js',
     'https://nico-eggert.github.io/manifest.json',
     'https://nico-eggert.github.io/index.html',
-    //'https://nico-eggert.github.io/css/',
     'https://nico-eggert.github.io/css/bootstrap.min.css',
     'https://nico-eggert.github.io/css/bootstrap.min.css.map',
-    //'https://nico-eggert.github.io/js/',
     'https://nico-eggert.github.io/js/bootstrap.bundle.min.js',
     'https://nico-eggert.github.io/js/bootstrap.bundle.min.js.map',
     'https://nico-eggert.github.io/js/brightness.js',
@@ -102,9 +100,7 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/js/mode.js',
     'https://nico-eggert.github.io/js/XBee3.js',
     "https://nico-eggert.github.io/js/language.js",
-    //'https://nico-eggert.github.io/src/',
     'https://nico-eggert.github.io/src/index.js',
-    //'https://nico-eggert.github.io/images/',
     'https://nico-eggert.github.io/images/Flaggen/de.png',
     'https://nico-eggert.github.io/images/Flaggen/gb.png',
     'https://nico-eggert.github.io/images/Flaggen/us.png',
@@ -126,7 +122,6 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/images/bulb_max_transparent.png',
     "https://nico-eggert.github.io/images/check.png",
     "https://nico-eggert.github.io/images/fileupload.png",
-    //'https://nico-eggert.github.io/images/eco.png',
     'https://nico-eggert.github.io/images/greenstripe_transparent.png',
     'https://nico-eggert.github.io/images/greenstripe.png',
     'https://nico-eggert.github.io/images/M_transparent.png',
@@ -145,12 +140,11 @@ var URLS = [                            // Add URL you want to cache in this lis
     "https://nico-eggert.github.io/images/toolbox.png",
     "https://nico-eggert.github.io/images/up_arrow.png",
     "https://nico-eggert.github.io/images/x.png",
-    //'https://nico-eggert.github.io/fontawesome/', // TODO: durch eigene Images ersetzen
-    //'https://nico-eggert.github.io/html/',
     'https://nico-eggert.github.io/html/brightness.html',
     'https://nico-eggert.github.io/html/connect.html',
     'https://nico-eggert.github.io/html/length.html',
     'https://nico-eggert.github.io/html/mode.html',
+    'https://nico-eggert.github.io/html/load.html',
 ]
 
 // Respond with cached resources
