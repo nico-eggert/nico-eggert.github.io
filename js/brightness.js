@@ -5,6 +5,7 @@ const btnSAVE = document.getElementById('btn_save');
 var brightness_state_icon = window.parent.document.getElementById('brightness_state_icon');
 var brightness_state_icon_2 = window.parent.document.getElementById('brightness_state_icon_2');
 var sidemenu_save_btn = window.parent.document.getElementById('btnSave');
+var sidemenu_save_btn_2 = window.parent.document.getElementById('btnSave_2');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,13 +92,13 @@ function clickBrightnessEco() {
     if (localStorage.getItem('selected_channel') == '1') {
         console.log('ch 1');
         localStorage.setItem('selected_brightness', 'eco');
-        parent.sendXBeeData('{"memory":"ram","flash#1":{"brightness":"eco"}}');
+        parent.addtoSendQueue('{"memory":"ram","flash#1":{"brightness":"eco"}}');
 
     }
     else { // Channel 2
         console.log('ch 2');
         localStorage.setItem('selected_brightness_2', 'eco');
-        parent.sendXBeeData('{"memory":"ram","flash#2":{"brightness":"eco"}}');
+        parent.addtoSendQueue('{"memory":"ram","flash#2":{"brightness":"eco"}}');
 
     }
     highlightSaveBtns();
@@ -108,14 +109,14 @@ function clickBrightnessMedium() {
     if (localStorage.getItem('selected_channel') == '1') {
         console.log('ch 1');
         localStorage.setItem('selected_brightness', 'med');
-        parent.sendXBeeData('{"memory":"ram","flash#1":{"brightness":"medium"}}');
+        parent.addtoSendQueue('{"memory":"ram","flash#1":{"brightness":"medium"}}');
 
     }
     else { // Channel 2
         console.log('ch 2');
         brightness_state_icon_2.src = "../images/bulb_med_transparent.png";
         localStorage.setItem('selected_brightness_2', 'med');
-        parent.sendXBeeData('{"memory":"ram","flash#2":{"brightness":"medium"}}');
+        parent.addtoSendQueue('{"memory":"ram","flash#2":{"brightness":"medium"}}');
     }
     highlightSaveBtns();
     updateSelection();
@@ -124,12 +125,12 @@ function clickBrightnessMedium() {
 function clickBrightnessMax() {
     if (localStorage.getItem('selected_channel') == '1') {
         localStorage.setItem('selected_brightness', 'max');
-        parent.sendXBeeData('{"memory":"ram","flash#1":{"brightness":"max"}}');
+        parent.addtoSendQueue('{"memory":"ram","flash#1":{"brightness":"max"}}');
     }
     else { // Channel 2
         brightness_state_icon_2.src = "../images/bulb_max_transparent.png";
         localStorage.setItem('selected_brightness_2', 'max');
-        parent.sendXBeeData('{"memory":"ram","flash#2":{"brightness":"max"}}');
+        parent.addtoSendQueue('{"memory":"ram","flash#2":{"brightness":"max"}}');
     }
     highlightSaveBtns();
     updateSelection();
@@ -138,17 +139,17 @@ function clickBrightnessMax() {
 function clickSave() {
     if (localStorage.getItem('selected_channel') == '1') {
         if (localStorage.getItem('selected_brightness') == 'eco') {
-            parent.sendXBeeData('{"memory":"rom","flash#1":{"brightness":"eco"}}');
+            parent.addtoSendQueue('{"memory":"rom","flash#1":{"brightness":"eco"}}');
             btnSAVE.style.visibility = "hidden";
             //brightness_state_icon.src = "../images/bulb_eco_transparent.png";
         }
         if (localStorage.getItem('selected_brightness') == 'med') {
-            parent.sendXBeeData('{"memory":"rom","flash#1":{"brightness":"medium"}}');
+            parent.addtoSendQueue('{"memory":"rom","flash#1":{"brightness":"medium"}}');
             btnSAVE.style.visibility = "hidden";
             //brightness_state_icon.src = "../images/bulb_med_transparent.png";
         }
         if (localStorage.getItem('selected_brightness') == 'max') {
-            parent.sendXBeeData('{"memory":"rom","flash#1":{"brightness":"max"}}');
+            parent.addtoSendQueue('{"memory":"rom","flash#1":{"brightness":"max"}}');
             btnSAVE.style.visibility = "hidden";
             //brightness_state_icon.src = "../images/bulb_max_transparent.png";
         }
@@ -158,13 +159,31 @@ function clickSave() {
             sidemenu_save_btn.classList.add('btn-secondary');
         }
         console.log('before set Timeout getROMBrightness');
-        setTimeout(function(){getROMBrightness('1');}, 200);
+        setTimeout(function () { getROMBrightness('1'); }, 200);
     }
     else { // Channel 2
-        brightness_state_icon_2.src = "../images/bulb_max_transparent.png";
-        localStorage.setItem('selected_brightness_2', 'max');
-        parent.sendXBeeData('{"memory":"rom","flash#2":{"brightness":"max"}}');
-        btnSAVE.style.visibility = "visible";
+        if (localStorage.getItem('selected_brightness_2') == 'eco') {
+            parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"eco"}}');
+            btnSAVE.style.visibility = "hidden";
+            //brightness_state_icon.src = "../images/bulb_eco_transparent.png";
+        }
+        if (localStorage.getItem('selected_brightness') == 'med') {
+            parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"medium"}}');
+            btnSAVE.style.visibility = "hidden";
+            //brightness_state_icon.src = "../images/bulb_med_transparent.png";
+        }
+        if (localStorage.getItem('selected_brightness') == 'max') {
+            parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"max"}}');
+            btnSAVE.style.visibility = "hidden";
+            //brightness_state_icon.src = "../images/bulb_max_transparent.png";
+        }
+        //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+        if (sidemenu_save_btn.classList.contains('btn-danger')) {
+            sidemenu_save_btn.classList.remove('btn-danger');
+            sidemenu_save_btn.classList.add('btn-secondary');
+        }
+        console.log('before set Timeout getROMBrightness');
+        setTimeout(function () { getROMBrightness('2'); }, 200);
     }
 }
 
@@ -177,11 +196,11 @@ function clickSave() {
 function getROMBrightness(channel) {
     console.log("getROMBrightness")
     if (channel == '1') {
-        parent.sendXBeeData('{"memory":"rom","flash#1":{"brightness":"get"}}');
+        parent.addtoSendQueue('{"memory":"rom","flash#1":{"brightness":"get"}}');
         console.log('set Timeout setStateIcon');
     }
-    else {
-        parent.sendXBeeData('{"memory":"rom","flash#2":{"brightness":"get"}}')
+    if (channel == '2') {
+        parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"get"}}')
     }
     setTimeout(setStateIcon, 100);
 }
@@ -202,16 +221,26 @@ function setStateIcon() {
  */
 function highlightSaveBtns() {
     btnSAVE.style.visibility = "visible";
-    if (sidemenu_save_btn.classList.contains('btn-secondary')) {
-        sidemenu_save_btn.classList.remove("btn-secondary");
-        sidemenu_save_btn.classList.add("btn-danger");
-        sidemenu_save_btn.classList.add("active");
-    }
     if (btnSAVE.classList.contains('active')) {
         //do nothing
     } else {
         btnSAVE.classList.add('active');
     }
+    if (localStorage.getItem('selected_channel') == '1') {
+        if (sidemenu_save_btn.classList.contains('btn-secondary')) {
+            sidemenu_save_btn.classList.remove("btn-secondary");
+            sidemenu_save_btn.classList.add("btn-danger");
+            sidemenu_save_btn.classList.add("active");
+        }
+    }
+    if (localStorage.getItem('selected_channel') == '2') {
+        if (sidemenu_save_btn_2.classList.contains('btn-secondary')) {
+            sidemenu_save_btn_2.classList.remove("btn-secondary");
+            sidemenu_save_btn_2.classList.add("btn-danger");
+            sidemenu_save_btn_2.classList.add("active");
+        }
+    }
+
 }
 
 

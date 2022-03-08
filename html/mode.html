@@ -45,142 +45,397 @@
         </div>
     -->
         <div class="row"><br></div>
-        <!-- Running light-->
+        <!-- Mode-->
         <div class="row">
-
-            <div class="col" style="width: 20%;  display: flex; justify-content: center; align-items: center;">
+            <div class="col" style="min-width: 20%;  display: flex; justify-content: center; align-items: center;">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="Mode">
-                <label class="form-check-label" for="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1" id="mode_txt">
                     Mode
                 </label>
             </div>
-            <div class="col">
+            <div class="col" style="width: 19%; visibility: hidden;" id="btn_green_col">
                 <button id="btn_green" type="button" class="btn btn-outline-primary" title="Set LEDs to green standing" data-bs-toggle="button" autocomplete="off"> 
                     <image style="max-width: 100%;" src="../images/greenstripe.png"></image>
                 </button>
             </div>
-            <div class="col" style="width: 20%">
+            <div class="col" style="width: 19%; visibility: hidden;" id="btn_red_col">
                 <button id="btn_red" type="button" class="btn btn-outline-primary" title="Set LEDs to red standing" data-bs-toggle="button" autocomplete="off">
                     <image style="max-width: 100%;" src="../images/redstripe.png"></image>
                 </button>
             </div>
-            <div class="col" style="width: 20%">
+            <div class="col" style="width: 19%; visibility: hidden;" id="btn_runninglight_col">
                 <button id="btn_runninglight" type="button" class="btn btn-outline-primary"
                     title="Set LEDs to runninglight red/white">
                     <image id="img_btn_runninglight" style="max-width: 100%;" src="../images/runninglight_1.png" data-bs-toggle="button" autocomplete="off">
                     </image>
                 </button>
             </div>
-            <div class="col" style="width: 20%">
+            <div class="col" style="width: 19%">
                 <button id="btn_save" type="button" class="btn btn-outline-danger active" data-bs-toggle="button"
                     style="visibility: hidden;" title="Save setting to ROM.">
                     <image style="max-width: 100%; " src="../images/save.png"></image>
                 </button>
             </div>
+            <div class="col" style="width: 4%" ></div>
         </div>
         <!-- Marker -->
         <div class="row"><br></div>
         <div class="row">
-            <div class="col" style="width: 20%;  display: flex; justify-content: center; align-items: center;">
+            <div class="col" style="min-width: 20%;  display: flex; justify-content: center; align-items: center;">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="Marker">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Marker
                 </label>
             </div>
-            <div style="width: 20%">
+            <div style="width: 19%">
             </div>
-            <div style="width: 20%">
+            <div style="width: 19%">
             </div>
-            <div style="width: 20%">
+            <div style="width: 19%">
             </div>
-            <div style="width: 20%">
+            <div style="width: 19%">
             </div>
+            <div class="col" style="width: 4%"></div>
         </div>
         <div><br></div>
+        <!-- Marker 1-->
         <div class="row" id="Marker_1_Row" style="visibility: hidden;">
-            <div class="col" style="width: 20%;  display: flex; justify-content: center; align-items: center;">
+            <div class="col" style="width: 23%;  display: flex; justify-content: center; align-items: center;">
                 <input class="form-check-input" type="checkbox" value="" id="Marker_1">
                 <label class="form-check-label" for="flexCheckDefault">
                     Marker 1
                 </label>
             </div>
             <div id="Marker_1_Color"
-                style="width: 8%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
                 <div class="btn-group">
                     <button id="color_dropdown_btn1" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                        href="#" style="width: 100px;">Color
+                        href="#" style="width: 155px;">Color
                         </span>
                     </button>
                     <span class="caret"></span>
                     <ul class="dropdown-menu" id="color_dropdown_menu_1" style="background-color: black;">
-                        <li><a class="dropdown-item" href="#" style="background-color: green">Green</a></li>
-                        <li><a class="dropdown-item" href="#" style="background-color: red;">Red</a></li>
-                        <li><a class="dropdown-item" href="#" style="background-color: blue; color: white">Blue</a></li>
-                        <li><a class="dropdown-item" href="#" style="background-color: yellow;">Yellow</a></li>
-                        <li><a class="dropdown-item" href="#" style="background-color: white;">White</a></li>
-                        <li><a class="dropdown-item" href="#" style="background-color: cyan;">Cyan</a></li>
-                        <li><a class="dropdown-item" href="#" style="background-color: magenta;">Magenta</a></li>
+                        <li><a id="green_txt_1" class="dropdown-item" href="#" style="background-color: green">Green</a></li>
+                        <li><a id="red_txt_1" class="dropdown-item" href="#" style="background-color: red;">Red</a></li>
+                        <li><a id="blue_txt_1" class="dropdown-item" href="#" style="background-color: blue; color: white">Blue</a></li>
+                        <li><a id="yellow_txt_1" class="dropdown-item" href="#" style="background-color: yellow;">Yellow</a></li>
+                        <li><a id="white_txt_1"  class="dropdown-item" href="#" style="background-color: white;">White</a></li>
+                        <li><a id="cyan_txt_1" class="dropdown-item" href="#" style="background-color: cyan;">Cyan</a></li>
+                        <li><a id="magenta_txt_1" class="dropdown-item" href="#" style="background-color: magenta;">Magenta</a></li>
                     </ul>
                 </div>
                 <input type="hidden" id="selVal">
             </div>
 
             <div id="Marker_1_Position_Left"
-                style="width: 4%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
                 <button id="marker_1_shift_pos_left" class="btn btn-primary">
-                    <i class="fas fa-arrow-left"></i>
+                    <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
             <div id="Marker_1_Position"
-                style="width: 14%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;" title="Position in xxxx (mm)">
                 <input type="input" min="0" max="1870" class="form-control" id="marker_1_pos_input"
-                    placeholder="Position in xxxx (mm)" value="">
+                    placeholder="Position (mm)" value="" name="marker_1_pos_input">
             </div>
             <div id="Marker_1_Position_Right"
-                style="width: 4%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
                 <button id="marker_1_shift_pos_right" class=" btn btn-primary">
-                    <i class="fas fa-arrow-right"></i>
+                    <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
             <div id="Marker_1_Width_Left"
-                style="width: 4%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden; ">
                 <button id="marker_1_shift_width_left" class="btn btn-primary">
-                    <i class="fas fa-arrow-left"></i>
+                    <image class="arrows" src="../images/arrowleft.png"></images>
                 </button>
             </div>
             <div id="Marker_1_Width"
-                style="width: 14%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;" title="Width in xxxx (mm)">
                 <input type="input" class="form-control" id="marker_1_width_input" min="0" max="1870"
-                    placeholder="Width in xxxx (mm)" value="">
+                    placeholder="Width (mm)" value="" name="marker_1_width_input">
             </div>
             <div id="Marker_1_Width_Right"
-                style="width: 4%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden; position: relative;">
                 <button id="marker_1_shift_width_right" class="btn btn-primary">
-                    <i class="fas fa-arrow-right"></i>
+                    <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
-            <div style="width: 25%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-            </div>
-            <div style="width: 3%">
+            <div style="width: 4%">
             </div>
         </div>
+        <div><br></div>
+        <!-- Marker 2 -->
+        <div class="row" id="Marker_2_Row" style="visibility: hidden;">
+            <div class="col" style="width: 23%;  display: flex; justify-content: center; align-items: center;">
+                <input class="form-check-input" type="checkbox" value="" id="Marker_2">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marker 2
+                </label>
+            </div>
+            <div id="Marker_2_Color"
+                style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <div class="btn-group">
+                    <button id="color_dropdown_btn2" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        href="#" style="width: 155px;">Color
+                        </span>
+                    </button>
+                    <span class="caret"></span>
+                    <ul class="dropdown-menu" id="color_dropdown_menu_2" style="background-color: black;">
+                        <li><a id="green_txt_2" class="dropdown-item" href="#" style="background-color: green">Green</a></li>
+                        <li><a id="red_txt_2" class="dropdown-item" href="#" style="background-color: red;">Red</a></li>
+                        <li><a id="blue_txt_2" class="dropdown-item" href="#" style="background-color: blue; color: white">Blue</a></li>
+                        <li><a id="yellow_txt_2" class="dropdown-item" href="#" style="background-color: yellow;">Yellow</a></li>
+                        <li><a id="white_txt_2"  class="dropdown-item" href="#" style="background-color: white;">White</a></li>
+                        <li><a id="cyan_txt_2" class="dropdown-item" href="#" style="background-color: cyan;">Cyan</a></li>
+                        <li><a id="magenta_txt_2" class="dropdown-item" href="#" style="background-color: magenta;">Magenta</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" id="selVal">
+            </div>
 
+            <div id="Marker_2_Position_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_2_shift_pos_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></images>
+                </button>
+            </div>
+            <div id="Marker_2_Position"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" min="0" max="1870" class="form-control" id="marker_2_pos_input"
+                    placeholder="Position (mm)" value="" name="marker_2_pos_input">
+            </div>
+            <div id="Marker_2_Position_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_2_shift_pos_right" class=" btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div id="Marker_2_Width_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_2_shift_width_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_2_Width"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" class="form-control" id="marker_2_width_input" min="0" max="1870"
+                    placeholder="Width (mm)" value="" name="marker_2_width_input">
+            </div>
+            <div id="Marker_2_Width_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_2_shift_width_right" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div style="width: 4%">
+            </div>
+        </div>
 
         <div><br></div>
-        <div class="row">
+        <!-- Marker 3 -->
+        <div class="row" id="Marker_3_Row" style="visibility: hidden;">
+            <div class="col" style="width: 23%;  display: flex; justify-content: center; align-items: center;">
+                <input class="form-check-input" type="checkbox" value="" id="Marker_3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marker 3
+                </label>
+            </div>
+            <div id="Marker_3_Color"
+                style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
+                <div class="btn-group">
+                    <button id="color_dropdown_btn3" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        href="#" style="width: 155px;">Color
+                        </span>
+                    </button>
+                    <span class="caret"></span>
+                    <ul class="dropdown-menu" id="color_dropdown_menu_3" style="background-color: black;">
+                        <li><a id="green_txt_3" class="dropdown-item" href="#" style="background-color: green">Green</a></li>
+                        <li><a id="red_txt_3" class="dropdown-item" href="#" style="background-color: red;">Red</a></li>
+                        <li><a id="blue_txt_3" class="dropdown-item" href="#" style="background-color: blue; color: white">Blue</a></li>
+                        <li><a id="yellow_txt_3" class="dropdown-item" href="#" style="background-color: yellow;">Yellow</a></li>
+                        <li><a id="white_txt_3"  class="dropdown-item" href="#" style="background-color: white;">White</a></li>
+                        <li><a id="cyan_txt_3" class="dropdown-item" href="#" style="background-color: cyan;">Cyan</a></li>
+                        <li><a id="magenta_txt_3" class="dropdown-item" href="#" style="background-color: magenta;">Magenta</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" id="selVal">
+            </div>
+
+            <div id="Marker_3_Position_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_3_shift_pos_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_3_Position"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" min="0" max="1870" class="form-control" id="marker_3_pos_input"
+                    placeholder="Position (mm)" value="" name="marker_3_pos_input">
+            </div>
+            <div id="Marker_3_Position_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_3_shift_pos_right" class=" btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div id="Marker_3_Width_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_3_shift_width_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_3_Width"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" class="form-control" id="marker_3_width_input" min="0" max="1870"
+                    placeholder="Width (mm)" value="" name="marker_3_width_input">
+            </div>
+            <div id="Marker_3_Width_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_3_shift_width_right" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div style="width: 4%">
+            </div>
         </div>
-
         <div><br></div>
-        <div class="row">
+        <!-- Marker 4 -->
+        <div class="row" id="Marker_4_Row" style="visibility: hidden;">
+            <div class="col" style="width: 23%;  display: flex; justify-content: center; align-items: center;">
+                <input class="form-check-input" type="checkbox" value="" id="Marker_4">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marker 4
+                </label>
+            </div>
+            <div id="Marker_4_Color"
+                style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
+                <div class="btn-group">
+                    <button id="color_dropdown_btn4" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        href="#" style="width: 155px;">Color
+                        </span>
+                    </button>
+                    <span class="caret"></span>
+                    <ul class="dropdown-menu" id="color_dropdown_menu_4" style="background-color: black;">
+                        <li><a id="green_txt_4" class="dropdown-item" href="#" style="background-color: green">Green</a></li>
+                        <li><a id="red_txt_4" class="dropdown-item" href="#" style="background-color: red;">Red</a></li>
+                        <li><a id="blue_txt_4" class="dropdown-item" href="#" style="background-color: blue; color: white">Blue</a></li>
+                        <li><a id="yellow_txt_4" class="dropdown-item" href="#" style="background-color: yellow;">Yellow</a></li>
+                        <li><a id="white_txt_4"  class="dropdown-item" href="#" style="background-color: white;">White</a></li>
+                        <li><a id="cyan_txt_4" class="dropdown-item" href="#" style="background-color: cyan;">Cyan</a></li>
+                        <li><a id="magenta_txt_4" class="dropdown-item" href="#" style="background-color: magenta;">Magenta</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" id="selVal">
+            </div>
+
+            <div id="Marker_4_Position_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_4_shift_pos_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_4_Position"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" min="0" max="1870" class="form-control" id="marker_4_pos_input"
+                    placeholder="Position (mm)" value="" name="marker_4_pos_input">
+            </div>
+            <div id="Marker_4_Position_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_4_shift_pos_right" class=" btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div id="Marker_4_Width_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_4_shift_width_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_4_Width"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" class="form-control" id="marker_4_width_input" min="0" max="1870"
+                    placeholder="Width (mm)" value="" name="marker_4_width_input">
+            </div>
+            <div id="Marker_4_Width_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_4_shift_width_right" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div style="width: 4%">
+            </div>
         </div>
-        <div class="row">
+        <div><br></div>
+        <!-- Marker 5 -->
+        <div class="row" id="Marker_5_Row" style="visibility: hidden;">
+            <div class="col" style="width: 23%;  display: flex; justify-content: center; align-items: center;">
+                <input class="form-check-input" type="checkbox" value="" id="Marker_5">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marker 5
+                </label>
+            </div>
+            <div id="Marker_5_Color"
+                style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
-        </div>
-        <div class="row">
+                <div class="btn-group">
+                    <button id="color_dropdown_btn5" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        href="#" style="width: 155px;">Color
+                        </span>
+                    </button>
+                    <span class="caret"></span>
+                    <ul class="dropdown-menu" id="color_dropdown_menu_5" style="background-color: black;">
+                        <li><a id="green_txt_5" class="dropdown-item" href="#" style="background-color: green">Green</a></li>
+                        <li><a id="red_txt_5" class="dropdown-item" href="#" style="background-color: red;">Red</a></li>
+                        <li><a id="blue_txt_5" class="dropdown-item" href="#" style="background-color: blue; color: white">Blue</a></li>
+                        <li><a id="yellow_txt_5" class="dropdown-item" href="#" style="background-color: yellow;">Yellow</a></li>
+                        <li><a id="white_txt_5"  class="dropdown-item" href="#" style="background-color: white;">White</a></li>
+                        <li><a id="cyan_txt_5" class="dropdown-item" href="#" style="background-color: cyan;">Cyan</a></li>
+                        <li><a id="magenta_txt_5" class="dropdown-item" href="#" style="background-color: magenta;">Magenta</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" id="selVal">
+            </div>
 
+            <div id="Marker_5_Position_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_5_shift_pos_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_5_Position"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" min="0" max="1870" class="form-control" id="marker_5_pos_input"
+                    placeholder="Position (mm)" value="" name="marker_5_pos_input">
+            </div>
+            <div id="Marker_5_Position_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_5_shift_pos_right" class=" btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div id="Marker_5_Width_Left"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_5_shift_width_left" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowleft.png"></image>
+                </button>
+            </div>
+            <div id="Marker_5_Width"
+                style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <input type="input" class="form-control" id="marker_5_width_input" min="0" max="1870"
+                    placeholder="Width (mm)" value="" name="marker_5_width_input">
+            </div>
+            <div id="Marker_5_Width_Right"
+                style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
+                <button id="marker_5_shift_width_right" class="btn btn-primary">
+                    <image class="arrows" src="../images/arrowright.png"></image>
+                </button>
+            </div>
+            <div style="width: 4%">
+            </div>
         </div>
 
     </div>
@@ -195,6 +450,9 @@
 
     <script src="../js/connect.js"></script>
     <script src="../js/mode.js"></script>
+    <script>
+        parent.updateLanguage();
+    </script>
 
 
 </body>

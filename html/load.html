@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="theme-color" content="rgb(0 102 204)">
     <title>Vetter Serial PWA</title>
 
@@ -19,71 +19,24 @@
     <link rel="stylesheet" href="/fontawesome/css/brands.min.css">
 
 
-    
+
 
 </head>
 
 <body style="background-color: darkgray;">
     <!-- main content -->
     <div class="col " style="background-color: darkgray; ">
-
-
         <div class="row"><br></div>
         <div class="row">
-            <div class="col"></div>
-            <div class="col" style="text-align: center;">
-                <label class="form-label">Load:</label>
+            <div class="col container">
+                <div id="spinner" class="loader" style="text-align: center; display: block;"></div>
             </div>
-            <div class="col "></div>
         </div>
+        <div><br></div>
         <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <input type="text" style="width: 100%;" id="devicename" aria-describedby="device name"
-                    placeholder="SF-Flash-123">
+            <div class="col container">
+                <p id="loading_text" style="text-align: center; display: block;">Loading Data to RAM, please wait!</p>
             </div>
-            <div class="col"></div>
-        </div>
-        <div class="row"><br></div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col" style="text-align: center;">
-                <label class="form-label">Password:</label>
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <input type="password" style="width: 100%;" id="password" aria-describedby="password"
-                    placeholder="****">
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row"><br></div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col" style="text-align: center;">
-                <button type="style" class="btn btn-primary btn-pad" title="connect" id="butConnect"> <i
-                        class="fas fa-plug"></i> </button>
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row"><br></div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
-                        aria-valuemax="100">0%</div>
-                </div>
-            </div>
-            <div class="col"></div>
-
-        </div>
-        <div class="row"><br></div>
-        <div class="row ">
-            <p id="txt_progressbarstep" style="text-align: center;">Connecting to Device SF-Flash-123</p>
         </div>
 
     </div>
@@ -92,13 +45,21 @@
 
     <!-- scripts -->
     <!-- jQuery -->
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
-    
-  <script src="../js/connect.js"></script>
-    
-    
-   
+    <script>
+        var spinnerelem = document.getElementById('spinner');
+        var textelem = document.getElementById('loading_text');
+        function checkLoadingvariable() {
+            if (localStorage.getItem('loadingdata') == 'true') {
+                spinnerelem.style.display = 'block';
+                textelem.style.display = 'block;'
+            }
+            if (localStorage.getItem('loadingdata') == 'false') {
+                spinnerelem.style.display = 'none';
+                textelem.style.display = 'none';
+            }
+        }
+        setInterval(checkLoadingvariable, 100);
+    </script>
 </body>
-

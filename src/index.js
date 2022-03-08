@@ -1,24 +1,6 @@
-/*
-let checkserverstate;
+const stringdata_array = []; // array to save all string commands in a queue
 
-let port;
-const btnConnect = document.getElementById('btnConnect');
-const btnReadserial = document.getElementById('btnReadserial');
-const btnSendmsg = document.getElementById('btnSendmsg');
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  //btnConnect.addEventListener('click', clickConnect);
-  //btnReadserial.addEventListener('click', clickReadserial);
-  //btnSendmsg.addEventListener('click', clickSendmsg);
-});
-*/
-
-
-//const { clearInterval } = require("timers");
-
-//const { freemem } = require("os");
-//const BTNLOADSETTINGS = document.getElementById('btnLoadsettings');
+// button constants
 const BTNSAVESETTINGS = document.getElementById('btnSavesettings');
 const BTNCHANNEL = document.getElementById('btnChannel');
 const BTNCONNECT = document.getElementById('btnConnect');
@@ -37,51 +19,91 @@ const BTNMODE_2_CH2 = document.getElementById('btnMode_2_CH2');
 const BTNSAVE_2 = document.getElementById('btnSave_2');
 const BTNLOAD_2 = document.getElementById('btnLoad_2');
 const FRAME = document.getElementById('frame');
-// LocalStorage Items correspond to the data in the RAM
+// localStorage items correspond to the data in the RAM
+localStorage.setItem('usb_connected','false');
+localStorage.setItem('selected_language', '');
+localStorage.setItem('loadingdata', 'false');
+localStorage.setItem('deviceaddress', '');
 localStorage.setItem('selected_channel', '');
 localStorage.setItem('selected_mode', '');
-localStorage.setItem('selected_length', '335mm');
-localStorage.setItem('selected_brightness', 'MED');
+// CHANNEL 1
+localStorage.setItem('selected_length', 'none');
+localStorage.setItem('selected_brightness', 'none');
 localStorage.setItem('selected_mode1_CH1', 'none');
 localStorage.setItem('selected_mode2_CH1', 'none');
-localStorage.setItem('selected_color_marker1_CH1', 'none');
+// marker channel 1 mode 1 
+localStorage.setItem('selected_color_marker1_CH1', 'off');
 localStorage.setItem('selected_position_marker1_CH1', 'none');
 localStorage.setItem('selected_width_marker1_CH1', 'none');
-localStorage.setItem('selected_color_marker2_CH1', 'none');
+localStorage.setItem('selected_color_marker2_CH1', 'off');
 localStorage.setItem('selected_position_marker2_CH1', 'none');
 localStorage.setItem('selected_width_marker2_CH1', 'none');
-localStorage.setItem('selected_color_marker3_CH1', 'none');
+localStorage.setItem('selected_color_marker3_CH1', 'off');
 localStorage.setItem('selected_position_marker3_CH1', 'none');
 localStorage.setItem('selected_width_marker3_CH1', 'none');
-localStorage.setItem('selected_color_marker4_CH1', 'none');
+localStorage.setItem('selected_color_marker4_CH1', 'off');
 localStorage.setItem('selected_position_marker4_CH1', 'none');
 localStorage.setItem('selected_width_marker4_CH1', 'none');
-localStorage.setItem('selected_color_marker5_CH1', 'none');
+localStorage.setItem('selected_color_marker5_CH1', 'off');
 localStorage.setItem('selected_position_marker5_CH1', 'none');
 localStorage.setItem('selected_width_marker5_CH1', 'none');
-localStorage.setItem('selected_length_2', '335mm');
-localStorage.setItem('selected_brightness_2', 'MED');
-localStorage.setItem('selected_mode_1_CH2', 'none');
-localStorage.setItem('selected_mode_2_CH2', 'none');
-localStorage.setItem('selected_color_marker1_CH2', 'none');
+// marker channel 1 mode 2 
+localStorage.setItem('selected_color_marker1_CH1_mode2', 'off');
+localStorage.setItem('selected_position_marker1_CH1_mode2', 'none');
+localStorage.setItem('selected_width_marker1_CH1_mode2', 'none');
+localStorage.setItem('selected_color_marker2_CH1_mode2', 'off');
+localStorage.setItem('selected_position_marker2_CH1_mode2', 'none');
+localStorage.setItem('selected_width_marker2_CH1_mode2', 'none');
+localStorage.setItem('selected_color_marker3_CH1_mode2', 'off');
+localStorage.setItem('selected_position_marker3_CH1_mode2', 'none');
+localStorage.setItem('selected_width_marker3_CH1_mode2', 'none');
+localStorage.setItem('selected_color_marker4_CH1_mode2', 'off');
+localStorage.setItem('selected_position_marker4_CH1_mode2', 'none');
+localStorage.setItem('selected_width_marker4_CH1_mode2', 'none');
+localStorage.setItem('selected_color_marker5_CH1_mode2', 'off');
+localStorage.setItem('selected_position_marker5_CH1_mode2', 'none');
+localStorage.setItem('selected_width_marker5_CH1_mode2', 'none');
+// CHANNEL 2
+localStorage.setItem('selected_length_2', 'none');
+localStorage.setItem('selected_brightness_2', 'none');
+localStorage.setItem('selected_mode1_CH2', 'none');
+localStorage.setItem('selected_mode2_CH2', 'none');
+// marker channel 2 mode 1
+localStorage.setItem('selected_color_marker1_CH2', 'off');
 localStorage.setItem('selected_position_marker1_CH2', 'none');
 localStorage.setItem('selected_width_marker1_CH2', 'none');
-localStorage.setItem('selected_color_marker2_CH2', 'none');
+localStorage.setItem('selected_color_marker2_CH2', 'off');
 localStorage.setItem('selected_position_marker2_CH2', 'none');
 localStorage.setItem('selected_width_marker2_CH2', 'none');
-localStorage.setItem('selected_color_marker3_CH2', 'none');
+localStorage.setItem('selected_color_marker3_CH2', 'off');
 localStorage.setItem('selected_position_marker3_CH2', 'none');
 localStorage.setItem('selected_width_marker3_CH2', 'none');
-localStorage.setItem('selected_color_marker4_CH2', 'none');
+localStorage.setItem('selected_color_marker4_CH2', 'off');
 localStorage.setItem('selected_position_marker4_CH2', 'none');
 localStorage.setItem('selected_width_marker4_CH2', 'none');
-localStorage.setItem('selected_color_marker5_CH2', 'none');
+localStorage.setItem('selected_color_marker5_CH2', 'off');
 localStorage.setItem('selected_position_marker5_CH2', 'none');
 localStorage.setItem('selected_width_marker5_CH2', 'none');
-localStorage.setItem('deviceaddress', '');
+// marker channel 2 mode 2
+localStorage.setItem('selected_color_marker1_CH2_mode2', 'off');
+localStorage.setItem('selected_position_marker1_CH2_mode2', 'none');
+localStorage.setItem('selected_width_marker1_CH2_mode2', 'none');
+localStorage.setItem('selected_color_marker2_CH2_mode2', 'off');
+localStorage.setItem('selected_position_marker2_CH2_mode2', 'none');
+localStorage.setItem('selected_width_marker2_CH2_mode2', 'none');
+localStorage.setItem('selected_color_marker3_CH2_mode2', 'off');
+localStorage.setItem('selected_position_marker3_CH2_mode2', 'none');
+localStorage.setItem('selected_width_marker3_CH2_mode2', 'none');
+localStorage.setItem('selected_color_marker4_CH2_mode2', 'off');
+localStorage.setItem('selected_position_marker4_CH2_mode2', 'none');
+localStorage.setItem('selected_width_marker4_CH2_mode2', 'none');
+localStorage.setItem('selected_color_marker5_CH2_mode2', 'off');
+localStorage.setItem('selected_position_marker5_CH2_mode2', 'none');
+localStorage.setItem('selected_width_marker5_CH2_mode2', 'none');
 
 
 
+// click event listener for buttons
 document.addEventListener('DOMContentLoaded', () => {
   BTNSAVESETTINGS.addEventListener('click', saveSettingstoFile);
   BTNCONNECT.addEventListener('click', loadConnectpage);
@@ -101,9 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
   BTNLOAD_2.addEventListener('click', loadLoadpage_CH2);
 })
 
-var language = window.navigator.userLanguage || window.navigator.language;
-console.log('language:', language);
-var checkConnectionInterval;
+
+
+
+
+var checkConnectionInterval; // interval return variable, can be cleared to reset the interval call of connection check
 var constate; // connectionstate to devicename macadress
 var nomsgcounter = 0; // counts the number of FIFO read commands without any new data
 
@@ -116,7 +140,7 @@ connectionstateUSB(); // Check USB connection
 function cyclicConnectionCheck() {
   console.log('deviceaddress: ', localStorage.getItem('deviceaddress'));
   if (localStorage.getItem('deviceaddress') == '') {
-    // do nothing, if no device adress has been specified
+    // do nothing
   }
   else {
     checkConnectionInterval = setInterval(checkconnection, 2500); // send message every cycle to check connection to device
@@ -231,207 +255,371 @@ function handleFileSelect(evt) {
         var string = e.target.result;
         var stringarray = string.split(/\r|\n/); // newline splits the array entries
         var count_entries = stringarray.length;
+        console.log('file entries:', count_entries);
         var JSONmsg = '';
-        if (count_entries != '43') { // verify if number of parameters is sufficient
-          alert('Parameter count does not match expected number!');
+        if (count_entries != '73') { // verify if number of parameters is sufficient
+          alert('Parameter count does not match expected number of elements(!=43)!');
         }
-        for (var k = 0; k < count_entries; k++) {
-          //console.log(stringarray[k]);
-          let position = stringarray[k].search(":"); //delimiter position
-          let value = stringarray[k].substring(position + 1, stringarray[k].length);
-          // every parameters has a fixed position in the stringarray corresponding to k
-          if (k == '1') {
-            localStorage.setItem('selected_length', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"length":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '2') {
-            localStorage.setItem('selected_brightness', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"brightness":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '3') {
-            localStorage.setItem('selected_mode1_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"operation mode#1":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '4') {
-            localStorage.setItem('selected_mode2_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"operation mode#2":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '5') {
-            localStorage.setItem('selected_color_marker1_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker1#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '6') {
-            localStorage.setItem('selected_position_marker1_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker1#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '7') {
-            localStorage.setItem('selected_width_marker1_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker1#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '8') {
-            localStorage.setItem('selected_color_marker2_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker2#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '9') {
-            localStorage.setItem('selected_position_marker2_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker2#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '10') {
-            localStorage.setItem('selected_width_marker2_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker2#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '11') {
-            localStorage.setItem('selected_color_marker3_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker3#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '12') {
-            localStorage.setItem('selected_position_marker3_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker3#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '13') {
-            localStorage.setItem('selected_width_marker3_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker3#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '14') {
-            localStorage.setItem('selected_color_marker4_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker4#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '15') {
-            localStorage.setItem('selected_position_marker4_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker4#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '16') {
-            localStorage.setItem('selected_width_marker4_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker4#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '17') {
-            localStorage.setItem('selected_color_marker5_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker5#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '18') {
-            localStorage.setItem('selected_position_marker5_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker5#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '19') {
-            localStorage.setItem('selected_width_marker5_CH1', value);
-            JSONmsg = '{"memory":"ram","flash#1":{"marker5#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '22') { //note: skip \n\n entries before Channnel 2:
-            localStorage.setItem('selected_length_2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"length":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '23') {
-            localStorage.setItem('selected_brightness_2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"brightness":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '24') {
-            localStorage.setItem('selected_mode_1_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"operation mode#1":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '25') {
-            localStorage.setItem('selected_mode_2_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"operation mode#2":"' + value + '"}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '26') {
-            localStorage.setItem('selected_color_marker1_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker1#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '27') {
-            localStorage.setItem('selected_position_marker1_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker1#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '28') {
-            localStorage.setItem('selected_width_marker1_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker1#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '29') {
-            localStorage.setItem('selected_color_marker2_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker2#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '30') {
-            localStorage.setItem('selected_position_marker2_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker2#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '31') {
-            localStorage.setItem('selected_width_marker2_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker2#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '32') {
-            localStorage.setItem('selected_color_marker3_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker3#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '33') {
-            localStorage.setItem('selected_position_marker3_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker3#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '34') {
-            localStorage.setItem('selected_width_marker3_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker3#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '35') {
-            localStorage.setItem('selected_color_marker4_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker4#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '36') {
-            localStorage.setItem('selected_position_marker4_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker4#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '37') {
-            localStorage.setItem('selected_width_marker4_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker4#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '38') {
-            localStorage.setItem('selected_color_marker5_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker5#1":{"color":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '39') {
-            localStorage.setItem('selected_position_marker5_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker5#1":{"position":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
-          if (k == '40') {
-            localStorage.setItem('selected_width_marker5_CH2', value);
-            JSONmsg = '{"memory":"ram","flash#2":{"marker5#1":{"width":"' + value + '"}}}';
-            sendXBeeData(JSONmsg);
-          }
+        else {
+          FRAME.src = "/html/load.html";
+          clearInterval(checkConnectionInterval); // deactivate connection check
+          constate = false; // reset connection state variable of connection check
+          localStorage.setItem('loadingdata', 'true');
+          for (var k = 0; k < count_entries; k++) {
+            //console.log(stringarray[k]);
+            let position = stringarray[k].search(":"); //delimiter position
+            let value = stringarray[k].substring(position + 1, stringarray[k].length);
+            // every parameters has a fixed position in the stringarray corresponding to k
+            if (k == '1') {
+              localStorage.setItem('selected_length', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"length":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '2') {
+              localStorage.setItem('selected_brightness', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"brightness":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '3') {
+              localStorage.setItem('selected_mode1_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"operation mode#1":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '4') {
+              localStorage.setItem('selected_mode2_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"operation mode#2":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '5') {
+              localStorage.setItem('selected_color_marker1_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#1":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '6') {
+              localStorage.setItem('selected_position_marker1_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#1":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '7') {
+              localStorage.setItem('selected_width_marker1_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#1":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '8') {
+              localStorage.setItem('selected_color_marker2_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#2":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '9') {
+              localStorage.setItem('selected_position_marker2_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#2":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '10') {
+              localStorage.setItem('selected_width_marker2_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#2":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '11') {
+              localStorage.setItem('selected_color_marker3_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#3":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '12') {
+              localStorage.setItem('selected_position_marker3_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#3":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '13') {
+              localStorage.setItem('selected_width_marker3_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#3":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '14') {
+              localStorage.setItem('selected_color_marker4_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#4":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '15') {
+              localStorage.setItem('selected_position_marker4_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#4":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '16') {
+              localStorage.setItem('selected_width_marker4_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#4":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '17') {
+              localStorage.setItem('selected_color_marker5_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#5":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '18') {
+              localStorage.setItem('selected_position_marker5_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#5":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '19') {
+              localStorage.setItem('selected_width_marker5_CH1', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker1#5":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '20') {
+              localStorage.setItem('selected_color_marker1_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#1":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '21') {
+              localStorage.setItem('selected_position_marker1_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#1":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '22') {
+              localStorage.setItem('selected_width_marker1_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#1":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '23') {
+              localStorage.setItem('selected_color_marker2_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#2":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '24') {
+              localStorage.setItem('selected_position_marker2_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#2":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '25') {
+              localStorage.setItem('selected_width_marker2_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#2":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '26') {
+              localStorage.setItem('selected_color_marker3_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#3":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '27') {
+              localStorage.setItem('selected_position_marker3_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#3":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '28') {
+              localStorage.setItem('selected_width_marker3_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#3":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '29') {
+              localStorage.setItem('selected_color_marker4_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#4":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '30') {
+              localStorage.setItem('selected_position_marker4_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#4":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '31') {
+              localStorage.setItem('selected_width_marker4_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#4":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '32') {
+              localStorage.setItem('selected_color_marker5_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#5":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '33') {
+              localStorage.setItem('selected_position_marker5_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#5":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '34') {
+              localStorage.setItem('selected_width_marker5_CH1_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#1":{"marker2#5":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '37') { //note: skip \n\n entries before Channnel 2:
+              localStorage.setItem('selected_length_2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"length":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '38') {
+              localStorage.setItem('selected_brightness_2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"brightness":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '39') {
+              localStorage.setItem('selected_mode1_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"operation mode#1":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '40') {
+              localStorage.setItem('selected_mode2_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"operation mode#2":"' + value + '"}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '41') {
+              localStorage.setItem('selected_color_marker1_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#1":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '42') {
+              localStorage.setItem('selected_position_marker1_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#1":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '43') {
+              localStorage.setItem('selected_width_marker1_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#1":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '44') {
+              localStorage.setItem('selected_color_marker2_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#2":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '45') {
+              localStorage.setItem('selected_position_marker2_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#2":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '46') {
+              localStorage.setItem('selected_width_marker2_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#2":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '47') {
+              localStorage.setItem('selected_color_marker3_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#3":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '48') {
+              localStorage.setItem('selected_position_marker3_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#3":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '49') {
+              localStorage.setItem('selected_width_marker3_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#3":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '50') {
+              localStorage.setItem('selected_color_marker4_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#4":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '51') {
+              localStorage.setItem('selected_position_marker4_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#4":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '52') {
+              localStorage.setItem('selected_width_marker4_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#4":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '53') {
+              localStorage.setItem('selected_color_marker5_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#5":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '54') {
+              localStorage.setItem('selected_position_marker5_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#5":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '55') {
+              localStorage.setItem('selected_width_marker5_CH2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker1#5":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '56') {
+              localStorage.setItem('selected_color_marker1_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#1":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '57') {
+              localStorage.setItem('selected_position_marker1_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#1":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '58') {
+              localStorage.setItem('selected_width_marker1_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#1":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '59') {
+              localStorage.setItem('selected_color_marker2_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#2":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '60') {
+              localStorage.setItem('selected_position_marker2_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#2":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '61') {
+              localStorage.setItem('selected_width_marker2_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#2":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '62') {
+              localStorage.setItem('selected_color_marker3_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#3":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '63') {
+              localStorage.setItem('selected_position_marker3_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#3":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '64') {
+              localStorage.setItem('selected_width_marker3_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#3":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '65') {
+              localStorage.setItem('selected_color_marker4_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#4":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '66') {
+              localStorage.setItem('selected_position_marker4_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#4":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '67') {
+              localStorage.setItem('selected_width_marker4_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#4":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '68') {
+              localStorage.setItem('selected_color_marker5_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#5":{"color":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '69') {
+              localStorage.setItem('selected_position_marker5_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#5":{"position":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
+            }
+            if (k == '70') {
+              localStorage.setItem('selected_width_marker5_CH2_mode2', value);
+              JSONmsg = '{"memory":"ram","flash#2":{"marker2#5":{"width":"' + value + '"}}}';
+              addtoSendQueue(JSONmsg);
 
-        };
+              addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');// send to trigger cyclic connection check again
+              setTimeout(getNextDataFromQueue, 500); //read answer of get power command to trigger cyclic connection check
+
+              // open both channels to show user that the loaded data is not saved yet
+              showChannel1Sidemenu();
+              showChannel2Sidemenu();
+              setTimeout(resetLoadingvariable, 7000);
+            }
+          }
+        }
       }
     })(f);
 
@@ -444,11 +632,14 @@ function handleFileSelect(evt) {
   highlight_saveall(2);
 
 }
-
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-
-
+/**
+ * Sets 'loadingdata' local Storage variable to false.
+ */
+function resetLoadingvariable() {
+  localStorage.setItem('loadingdata', 'false');
+}
 
 /**
  * Save settings from localstorage variables to file
@@ -462,41 +653,71 @@ function saveSettingstoFile() {
   data.push("Brightness:" + localStorage.getItem('selected_brightness') + "\n");
   data.push("Mode1_CH1:" + localStorage.getItem('selected_mode1_CH1') + "\n");
   data.push("Mode2_CH2:" + localStorage.getItem('selected_mode2_CH1') + "\n");
-  data.push("Marker1_color:" + localStorage.getItem('selected_color_marker1_CH1') + "\n");
-  data.push("Marker1_position:" + localStorage.getItem('selected_position_marker1_CH1') + "\n");
-  data.push("Marker1_width:" + localStorage.getItem('selected_width_marker1_CH1') + "\n");
-  data.push("Marker2_color:" + localStorage.getItem('selected_color_marker2_CH1') + "\n");
-  data.push("Marker2_position:" + localStorage.getItem('selected_position_marker2_CH1') + "\n");
-  data.push("Marker2_width:" + localStorage.getItem('selected_width_marker2_CH1') + "\n");
-  data.push("Marker3_color:" + localStorage.getItem('selected_color_marker3_CH1') + "\n");
-  data.push("Marker3_position:" + localStorage.getItem('selected_position_marker3_CH1') + "\n");
-  data.push("Marker3_width:" + localStorage.getItem('selected_width_marker3_CH1') + "\n");
-  data.push("Marker4_color:" + localStorage.getItem('selected_color_marker4_CH1') + "\n");
-  data.push("Marker4_position:" + localStorage.getItem('selected_position_marker4_CH1') + "\n");
-  data.push("Marker4_width:" + localStorage.getItem('selected_width_marker4_CH1') + "\n");
-  data.push("Marker5_color:" + localStorage.getItem('selected_color_marker5_CH1') + "\n");
-  data.push("Marker5_position:" + localStorage.getItem('selected_position_marker5_CH1') + "\n");
-  data.push("Marker5_width:" + localStorage.getItem('selected_width_marker5_CH1') + "\n\n");
+  data.push("Marker1#1_color:" + localStorage.getItem('selected_color_marker1_CH1') + "\n");
+  data.push("Marker1#1_position:" + localStorage.getItem('selected_position_marker1_CH1') + "\n");
+  data.push("Marker1#1_width:" + localStorage.getItem('selected_width_marker1_CH1') + "\n");
+  data.push("Marker1#2_color:" + localStorage.getItem('selected_color_marker2_CH1') + "\n");
+  data.push("Marker1#2_position:" + localStorage.getItem('selected_position_marker2_CH1') + "\n");
+  data.push("Marker1#2_width:" + localStorage.getItem('selected_width_marker2_CH1') + "\n");
+  data.push("Marker1#3_color:" + localStorage.getItem('selected_color_marker3_CH1') + "\n");
+  data.push("Marker1#3_position:" + localStorage.getItem('selected_position_marker3_CH1') + "\n");
+  data.push("Marker1#3_width:" + localStorage.getItem('selected_width_marker3_CH1') + "\n");
+  data.push("Marker1#4_color:" + localStorage.getItem('selected_color_marker4_CH1') + "\n");
+  data.push("Marker1#4_position:" + localStorage.getItem('selected_position_marker4_CH1') + "\n");
+  data.push("Marker1#4_width:" + localStorage.getItem('selected_width_marker4_CH1') + "\n");
+  data.push("Marker1#5_color:" + localStorage.getItem('selected_color_marker5_CH1') + "\n");
+  data.push("Marker1#5_position:" + localStorage.getItem('selected_position_marker5_CH1') + "\n");
+  data.push("Marker1#5_width:" + localStorage.getItem('selected_width_marker5_CH1') + "\n");
+  data.push("Marker2#1_color:" + localStorage.getItem('selected_color_marker1_CH1_mode2') + "\n");
+  data.push("Marker2#1_position:" + localStorage.getItem('selected_position_marker1_CH1_mode2') + "\n");
+  data.push("Marker2#1_width:" + localStorage.getItem('selected_width_marker1_CH1_mode2') + "\n");
+  data.push("Marker2#2_color:" + localStorage.getItem('selected_color_marker2_CH1_mode2') + "\n");
+  data.push("Marker2#2_position:" + localStorage.getItem('selected_position_marker2_CH1_mode2') + "\n");
+  data.push("Marker2#2_width:" + localStorage.getItem('selected_width_marker2_CH1_mode2') + "\n");
+  data.push("Marker2#3_color:" + localStorage.getItem('selected_color_marker3_CH1_mode2') + "\n");
+  data.push("Marker2#3_position:" + localStorage.getItem('selected_position_marker3_CH1_mode2') + "\n");
+  data.push("Marker2#3_width:" + localStorage.getItem('selected_width_marker3_CH1_mode2') + "\n");
+  data.push("Marker2#4_color:" + localStorage.getItem('selected_color_marker4_CH1_mode2') + "\n");
+  data.push("Marker2#4_position:" + localStorage.getItem('selected_position_marker4_CH1_mode2') + "\n");
+  data.push("Marker2#4_width:" + localStorage.getItem('selected_width_marker4_CH1_mode2') + "\n");
+  data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH1_mode2') + "\n");
+  data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH1_mode2') + "\n");
+  data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH1_mode2') + "\n\n");
   data.push("Channel 2: \n");
-  data.push("Length:" + localStorage.getItem('selected_length') + "\n");
-  data.push("Brightness:" + localStorage.getItem('selected_brightness') + "\n");
+  data.push("Length:" + localStorage.getItem('selected_length_2') + "\n");
+  data.push("Brightness:" + localStorage.getItem('selected_brightness_2') + "\n");
   data.push("Mode1_CH2:" + localStorage.getItem('selected_mode1_CH2') + "\n");
   data.push("Mode2_CH2:" + localStorage.getItem('selected_mode2_CH2') + "\n");
-  data.push("Marker1_color:" + localStorage.getItem('selected_color_marker1_CH2') + "\n");
-  data.push("Marker1_position:" + localStorage.getItem('selected_position_marker1_CH2') + "\n");
-  data.push("Marker1_width:" + localStorage.getItem('selected_width_marker1_CH2') + "\n");
-  data.push("Marker2_color:" + localStorage.getItem('selected_color_marker2_CH2') + "\n");
-  data.push("Marker2_position:" + localStorage.getItem('selected_position_marker2_CH2') + "\n");
-  data.push("Marker2_width:" + localStorage.getItem('selected_width_marker2_CH2') + "\n");
-  data.push("Marker3_color:" + localStorage.getItem('selected_color_marker3_CH2') + "\n");
-  data.push("Marker3_position:" + localStorage.getItem('selected_position_marker3_CH2') + "\n");
-  data.push("Marker3_width:" + localStorage.getItem('selected_width_marker3_CH2') + "\n");
-  data.push("Marker4_color:" + localStorage.getItem('selected_color_marker4_CH2') + "\n");
-  data.push("Marker4_position:" + localStorage.getItem('selected_position_marker4_CH2') + "\n");
-  data.push("Marker4_width:" + localStorage.getItem('selected_width_marker4_CH2') + "\n");
-  data.push("Marker5_color:" + localStorage.getItem('selected_color_marker5_CH2') + "\n");
-  data.push("Marker5_position:" + localStorage.getItem('selected_position_marker5_CH2') + "\n");
-  data.push("Marker5_width:" + localStorage.getItem('selected_width_marker5_CH2') + "\n\n");
+  data.push("Marker1#1_color:" + localStorage.getItem('selected_color_marker1_CH2') + "\n");
+  data.push("Marker1#1_position:" + localStorage.getItem('selected_position_marker1_CH2') + "\n");
+  data.push("Marker1#1_width:" + localStorage.getItem('selected_width_marker1_CH2') + "\n");
+  data.push("Marker1#2_color:" + localStorage.getItem('selected_color_marker2_CH2') + "\n");
+  data.push("Marker1#2_position:" + localStorage.getItem('selected_position_marker2_CH2') + "\n");
+  data.push("Marker1#2_width:" + localStorage.getItem('selected_width_marker2_CH2') + "\n");
+  data.push("Marker1#3_color:" + localStorage.getItem('selected_color_marker3_CH2') + "\n");
+  data.push("Marker1#3_position:" + localStorage.getItem('selected_position_marker3_CH2') + "\n");
+  data.push("Marker1#3_width:" + localStorage.getItem('selected_width_marker3_CH2') + "\n");
+  data.push("Marker1#4_color:" + localStorage.getItem('selected_color_marker4_CH2') + "\n");
+  data.push("Marker1#4_position:" + localStorage.getItem('selected_position_marker4_CH2') + "\n");
+  data.push("Marker1#4_width:" + localStorage.getItem('selected_width_marker4_CH2') + "\n");
+  data.push("Marker1#5_color:" + localStorage.getItem('selected_color_marker5_CH2') + "\n");
+  data.push("Marker1#5_position:" + localStorage.getItem('selected_position_marker5_CH2') + "\n");
+  data.push("Marker1#5_width:" + localStorage.getItem('selected_width_marker5_CH2') + "\n");
+  data.push("Marker2#1_color:" + localStorage.getItem('selected_color_marker1_CH2_mode2') + "\n");
+  data.push("Marker2#1_position:" + localStorage.getItem('selected_position_marker1_CH2_mode2') + "\n");
+  data.push("Marker2#1_width:" + localStorage.getItem('selected_width_marker1_CH2_mode2') + "\n");
+  data.push("Marker2#2_color:" + localStorage.getItem('selected_color_marker2_CH2_mode2') + "\n");
+  data.push("Marker2#2_position:" + localStorage.getItem('selected_position_marker2_CH2_mode2') + "\n");
+  data.push("Marker2#2_width:" + localStorage.getItem('selected_width_marker2_CH2_mode2') + "\n");
+  data.push("Marker2#3_color:" + localStorage.getItem('selected_color_marker3_CH2_mode2') + "\n");
+  data.push("Marker2#3_position:" + localStorage.getItem('selected_position_marker3_CH2_mode2') + "\n");
+  data.push("Marker2#3_width:" + localStorage.getItem('selected_width_marker3_CH2_mode2') + "\n");
+  data.push("Marker2#4_color:" + localStorage.getItem('selected_color_marker4_CH2_mode2') + "\n");
+  data.push("Marker2#4_position:" + localStorage.getItem('selected_position_marker4_CH2_mode2') + "\n");
+  data.push("Marker2#4_width:" + localStorage.getItem('selected_width_marker4_CH2_mode2') + "\n");
+  data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH2_mode2') + "\n");
+  data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH2_mode2') + "\n");
+  data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH2_mode2') + "\n\n");
   var properties = { type: 'text/plain' }; // Specify the file's mime-type.
   try {
     // Specify the filename using the File constructor, but ...
@@ -571,10 +792,10 @@ function saveSettings_CH1() {
 
   //TODO: Nach testphase einfügen
 
-  sendXBeeData('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
+  addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
   console.log('send read all rom in 2s ....');
-  setTimeout(function () { sendXBeeData('{"memory":"rom","flash#1":{"all":"get"}}'); }, 2000); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
-  console.log('read FIFO after 500 ms ....');
+  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 2000); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
+  console.log('read FIFO after 2,5 s ....');
   setTimeout(getNextDataFromQueue, 2500); //  
 
 
@@ -585,10 +806,10 @@ function saveSettings_CH1() {
   if (localStorage.getItem('selected_length') == '635 mm') {
     document.getElementById('length_state_icon').src = "../images/635mm_transparent.png";
   }
-  if (localStorage.getItem('selected_length') == '935mm') {
+  if (localStorage.getItem('selected_length') == '935 mm') {
     document.getElementById('length_state_icon').src = "../images/935mm_transparent.png";
   }
-  if (localStorage.getItem('selected_length') == '1870mm') {
+  if (localStorage.getItem('selected_length') == '1870 mm') {
     document.getElementById('length_state_icon').src = "../images/1870mm_transparent.png";
   }
 
@@ -601,24 +822,29 @@ function saveSettings_CH1() {
   if (localStorage.getItem('selected_brightness') == 'max') {
     document.getElementById('brightness_state_icon').src = "../images/bulb_max_transparent.png";
   }
-
   if (localStorage.getItem('selected_mode1_CH1') == 'all green') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/greenstripe_transparent.png";
+    document.getElementById('mode1_state_icon_ch1').src = "../images/greenstripe.png";
   }
   if (localStorage.getItem('selected_mode1_CH1') == 'all red') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/redstripe_transparent.png";
+    document.getElementById('mode1_state_icon_ch1').src = "../images/redstripe.png";
   }
   if (localStorage.getItem('selected_mode1_CH1') == 'runninglight') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/runninglight_transparent.png";
+    document.getElementById('mode1_state_icon_ch1').src = "../images/runninglight_1.png";
+  }
+  if (localStorage.getItem('selected_mode1_CH1') == 'marker1') {
+    document.getElementById('mode1_state_icon_ch1').src = "../images/M_transparent.png";
   }
   if (localStorage.getItem('selected_mode2_CH1') == 'all green') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/greenstripe_transparent.png";
+    document.getElementById('mode2_state_icon_ch1').src = "../images/greenstripe.png";
   }
   if (localStorage.getItem('selected_mode2_CH1') == 'all red') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/redstripe_transparent.png";
+    document.getElementById('mode2_state_icon_ch1').src = "../images/redstripe.png";
   }
   if (localStorage.getItem('selected_mode2_CH1') == 'runninglight') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_transparent.png";
+    document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_1.png";
+  }
+  if (localStorage.getItem('selected_mode2_CH1') == 'marker2') {
+    document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
   }
 }
 
@@ -627,9 +853,9 @@ function loadLoadpage_CH1() {
   document.getElementById('load_div').style.backgroundColor = "darkgray";
   document.getElementById('menu_header').textContent = "Load Settings";
   localStorage.setItem('selected_channel', '1');
-  setTimeout(function () { sendXBeeData('{"memory":"ram","flash#1":{"all":"get"}}') }, 50);
-  setTimeout(function () { sendXBeeData('{"memory":"rom","flash#1":{"all":"get"}}') }, 200);
-  //nur für test
+  setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}') }, 50);
+  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}') }, 250);
+  //nur für test TODO: nach test auskommentieren!
   var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
 }
 /**
@@ -666,19 +892,86 @@ function loadMode2page_CH2() {
   localStorage.setItem('selected_mode', '2');
 }
 function saveSettings_CH2() {
+  FRAME.src = "";
   reset_sidemenu_bgcolor();
   document.getElementById('save_div_2').style.backgroundColor = "darkgray";
   document.getElementById('menu_header').textContent = "Save Settings";
   localStorage.setItem('selected_channel', '2');
 
+  if (BTNSAVE_2.classList.contains('btn-danger')) {
+    BTNSAVE_2.classList.remove("btn-danger");
+    BTNSAVE_2.classList.add("btn-secondary");
+    console.log('save all settings');
+  }
+  if (BTNSAVE_2.classList.contains('active')) {
+    BTNSAVE_2.classList.remove("active");
+  }
+
+  //TODO: Nach testphase einfügen
+
+  addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
+  console.log('send read all rom in 3,5s ....');
+  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 70x50 ms = 3500 ms
+  console.log('read FIFO after 4 s ....');
+  setTimeout(getNextDataFromQueue, 4000); //  
+
+
+  //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
+  if (localStorage.getItem('selected_length_2') == '335 mm') {
+    document.getElementById('length_state_icon_2').src = "../images/335mm_transparent.png";
+  }
+  if (localStorage.getItem('selected_length_2') == '635 mm') {
+    document.getElementById('length_state_icon_2').src = "../images/635mm_transparent.png";
+  }
+  if (localStorage.getItem('selected_length_2') == '935 mm') {
+    document.getElementById('length_state_icon_2').src = "../images/935mm_transparent.png";
+  }
+  if (localStorage.getItem('selected_length_2') == '1870 mm') {
+    document.getElementById('length_state_icon_2').src = "../images/1870mm_transparent.png";
+  }
+
+  if (localStorage.getItem('selected_brightness_2') == 'eco') {
+    document.getElementById('brightness_state_icon_2').src = "../images/bulb_eco_transparent.png";
+  }
+  if (localStorage.getItem('selected_brightness_2') == 'med') {
+    document.getElementById('brightness_state_icon_2').src = "../images/bulb_med_transparent.png";
+  }
+  if (localStorage.getItem('selected_brightness_2') == 'max') {
+    document.getElementById('brightness_state_icon_2').src = "../images/bulb_max_transparent.png";
+  }
+
+  if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
+    document.getElementById('mode1_state_icon_ch2').src = "../images/greenstripe.png";
+  }
+  if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
+    document.getElementById('mode1_state_icon_ch2').src = "../images/redstripe.png";
+  }
+  if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
+    document.getElementById('mode1_state_icon_ch2').src = "../images/runninglight_1.png";
+  }
+  if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
+    document.getElementById('mode1_state_icon_ch2').src = "../images/M_transparent.png";
+  }
+  if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
+    document.getElementById('mode2_state_icon_ch2').src = "../images/greenstripe.png";
+  }
+  if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
+    document.getElementById('mode2_state_icon_ch2').src = "../images/redstripe.png";
+  }
+  if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
+    document.getElementById('mode2_state_icon_ch2').src = "../images/runninglight_1.png";
+  }
+  if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
+    document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
+  }
 }
 function loadLoadpage_CH2() {
   reset_sidemenu_bgcolor();
   document.getElementById('load_div').style.backgroundColor = "darkgray";
   document.getElementById('menu_header').textContent = "Load Settings";
   localStorage.setItem('selected_channel', '2');
-  setTimeout(function () { sendXBeeData('{"memory":"ram","flash#2":{"all":"get"}}') }, 50);
-  setTimeout(function () { sendXBeeData('{"memory":"rom","flash#2":{"all":"get"}}') }, 200);
+  setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}') }, 50);
+  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}') }, 200);
   //nur für test
   var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
 
@@ -728,7 +1021,7 @@ function highlight_saveall(channel) {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").then(registration => {
     console.log("SW Registered!");
-    console.log(registration);
+    //console.log(registration);
   }).catch(error => {
     console.log("SW Registration failed!");
     console.log(error);
@@ -737,236 +1030,92 @@ if ("serviceWorker" in navigator) {
   console.log("Service Worker not supported");
 }
 
-/*
-//check serial support
-if ("serial" in navigator) {
-  console.log("Serial supported")
-}
-else {
-  console.log("Serial not supported")
-}
-*/
+
 /** Sets up event listener for serial connection to USB-Dongle
  *  */
 async function connectionstateUSB() {
   navigator.serial.addEventListener('connect', (e) => {
     // Connect to `e.target` or add it to a list of available ports.
+    localStorage.setItem('usb_connected','true');
+    updateLanguage();
     console.log("connected to USB serial");
   });
 
   // on disconnetion of usb device change state text, switch to connect html and delete stored device address, reset connection state icon
   navigator.serial.addEventListener('disconnect', (e) => {
     // Remove `e.target` from the list of available ports.
+    localStorage.setItem('usb_connected','false');
+    updateLanguage();
     console.log("disconnected USB serial");
-    /*
-    clearInterval(checkConnectionInterval);
-    document.getElementById('status').innerHTML = 'USB: Disconnected';
-    FRAME.src = "/html/connect.html";
-    localStorage.setItem('deviceaddress', ''); // reset device address
-    var elem = document.getElementById('connect_state_icon');
-    elem.classList.remove("fa-check");
-    elem.classList.add("fa-times");
-    hideChannel1Sidemenu();
-    hideChannel2Sidemenu();
-    if (BTNCHANNEL.classList.contains('disabled')) {
-      BTNCHANNEL.classList.remove('disabled');
-    }
-    else {
-      BTNCHANNEL.classList.add('disabled');
-    }
-    if (BTNCHANNEL_2.classList.contains('disabled')) {
-      BTNCHANNEL_2.classList.remove('disabled');
-    }
-    else {
-      BTNCHANNEL_2.classList.add('disabled');
-    }
-    */
     location.reload(); // reload of page to reset serial connection on connection failure
   });
 }
 
-/*
- const filter = { usbVendorId: 0x2341 }; // arduino uno add to request port filters: [{VendorId}]
- 
- // request port  and open a connection
- port = await navigator.serial.requestPort({ filters: [filter] });
- // - Wait for the port to open
- await port.open({
-   baudRate: 57600, // 57600 xbee, 9600 standard
-   dataBits: 8,
-   parity: "none",
-   stopBits: 1,
-   flowControl: "none"
- })
-}
- 
- 
- 
-async function readSerial() {
- // TextDecoder 
- //const textDecoder = new TextDecoderStream();
- //const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
- //const reader = textDecoder.readable.getReader();
- 
- 
- // Listen to data coming from the serial device.
- while (port.readable) {
-   const reader = port.readable.getReader();
- 
-   try {
-     while (true) {
-       const { value, done } = await reader.read();
-       if (done) {
-         // Allow the serial port to be closed later.
-         reader.releaseLock();
-         break;
-       }
-       //console.log("pre selection: ",value);
-       if (value[0] > 47 & value[0] < 65) { //ASCII 47 = "/", ab ASCII 48 "0" , ...
- 
-         //console.log(value[0]);
-         document.getElementById("sample").innerHTML = String.fromCharCode(value[0]); // ASCII to char conversion to html element
-       }
-       if (value[0] > 64) {
-         // remove return character (ASCII 13, or '\r') and a newline character (ASCII 10, or '\n')
-         //rsp_msg=remove2ItemAll(value,"13"); 
- 
-         let str = new TextDecoder().decode(value);
-         document.getElementById("rec_msg").innerHTML = str;
-       }
-     }
-   } catch (error) {
-     // TODO: Handle non-fatal read error.
-   }
- }
-}
- 
-/**
-* Remove all entries in Array
-*/
-/*
-function remove2ItemAll(arr, value) {
-  var i = 0;
-  while (i < arr.length) {
-    if (arr[i] === value) {
-      arr.splice(i, 2);
-    } else {
-      ++i;
-    }
-  }
-  return arr;
-}
- 
-async function writeSerial() {
-  const writer = port.writable.getWriter();
-  var data = document.getElementById('send_msg_input').value;
- 
-  var enc = new TextEncoder();
-  data = enc.encode(data);
- 
-  await writer.write(data);
- 
-  // Allow the serial port to be closed later
-  writer.releaseLock();
-}
- 
-/**
- * Button Click Funtions
- */
-/*
-async function clickConnect() {
-  await connect();
-  document.getElementById('status').innerText = 'Connected'; // Update Connection Status
-  //readSerial();
-}
- 
-async function clickReadserial() {
-  readSerial();
-}
- 
-async function clickSendmsg() {
-  writeSerial();
-  console.log('write serial');
-}
- 
- 
+
 /**
  * Check Server Connectivity
  * @returns 
  */
 async function webserverstate() {
   $.ajax({
-    url: "http://127.0.0.1:8887/",
+    url: "http://127.0.0.1:8887/", //server url localhost: http://127.0.0.1:8887/ or http://nico-eggert.github.io/
     cache: false,
     async: false,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       // some error code.
       console.log('no connection to webserver');
-      document.getElementById('server_status').innerHTML = 'Not Available';
+      // possible display of connetion state in html element
+      //document.getElementById('server_status').innerHTML = 'Not Available';
     },
     success: function (html) {
       // do something.
       console.log('connection to webserver available');
-      document.getElementById('server_status').innerHTML = 'Available';
+      // possible display of connetion state in html element
+      //document.getElementById('server_status').innerHTML = 'Available';
     }
   });
 }
 
 
-
+/**
+ * Starts connection to the serial interface.
+ */
 async function connectSerial() {
   XBee3.begin();
 }
 
 /**
- * Sends a message to the deviceadress and verifies if a return message is send.
+ * Sends a message to the deviceadress and verifies if a return message is send within 500ms.
  * Returns a bool state to show the connection state.
  * Deactivates channels in sidemenu and loads connection page.
- * @returns state: true -> connection running , false -> connection lost
+ * @returns state : true -> connection running , false -> connection lost
  */
 async function checkconnection() {
   var state;
-  sendXBeeData('{"memory":"ram","flash":{"power":"get"}}');
-  console.log('dealy 1 500ms');
+  addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');
   let delayres = await delay(500);
-  getNextDataFromQueue(); // read Fifo data
-  console.log('delay 2 500ms');
+  getNextDataFromQueue(); // read Fifo data, changes constate variable
   delayres = await delay(500);
-  console.log('after delay 1 und 2');
   state = constate;
+
+
+  state = true;//TODO: wieder löschen nach test, nur um verbindung immer aufrecht zu halten in testphase
+
   if (state) {
     return state;
   }
   else {// connection lost
     console.log("connection lost");
-    /*
-    clearInterval(checkConnectionInterval);
-    document.getElementById('status').innerHTML = 'USB: Disconnected';
-    localStorage.setItem('deviceaddress', ''); // reset device address
-    var elem = document.getElementById('connect_state_icon');
-    elem.classList.remove("fa-check");
-    elem.classList.add("fa-times");
-    hideChannel1Sidemenu();
-    hideChannel2Sidemenu();
-    if (BTNCHANNEL.classList.contains('disabled')) {
-      // do nothing
-    }
-    else {
-      BTNCHANNEL.classList.add('disabled');
-    }
-    if (BTNCHANNEL_2.classList.contains('disabled')) {
-      // do nothing
-    }
-    else {
-      BTNCHANNEL_2.classList.add('disabled');
-    }
-    FRAME.src = "/html/connect.html";
-    */
     location.reload(); // reload of page to reset serial connection on connection failure
     return state;
   }
 }
 
+/**
+ * Set a delay time until follwing code gets executed.
+ * @param {number} delayInms 
+ * @returns 
+ */
 async function delay(delayInms) {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -981,9 +1130,11 @@ async function delay(delayInms) {
  * Looks through all entries in FIFO.
  * Updates local Storage variables for selection of RAM settings.
  * Updates state icons in sidemenu with ROM settings.
+ * Updates constate variable which showcases if connetion to mac address device is still running.
  */
+//TODO: add channel 2 functions
 async function getNextDataFromQueue() {
-  console.log('getDatafromQueue');
+  //console.log('getDatafromQueue');
 
   var RXData = new XBeeData();
   var data_count = XBee3.RxQueue.getLength();
@@ -1011,16 +1162,13 @@ async function getNextDataFromQueue() {
     if (RXData.JSONDocument["flash"]) {
       if (RXData.JSONDocument["flash"]["power"]) {
         if (RXData.JSONDocument["flash"]["power"] == 'on') {
-          console.log("constate true");
-
           if (constate == false) {
-            console.log('constate false -> ')
+            console.log('constate in init false -> start cyclicConnectionCheck');
             cyclicConnectionCheck(); // start connection check
           }
           constate = true;
         }
         if (RXData.JSONDocument["flash"]["power"] == 'off') {
-          //sendXBeeData('{"memory":"ram","flash":{"power":"on"}}');
           constate = false;
           clearInterval(checkConnectionInterval); // resetIntervalTimer
         }
@@ -1071,6 +1219,9 @@ async function getNextDataFromQueue() {
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'runninglight') {
             localStorage.setItem('selected_mode1_CH1', 'runninglight');
           }
+          if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'marker1') {
+            localStorage.setItem('selected_mode1_CH1', 'marker1');
+          }
         }
         // operation mode 2 channel 1
         if (RXData.JSONDocument["flash#1"]["operation mode#2"]) {
@@ -1082,6 +1233,9 @@ async function getNextDataFromQueue() {
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'runninglight') {
             localStorage.setItem('selected_mode2_CH1', 'runninglight');
+          }
+          if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'marker2') {
+            localStorage.setItem('selected_mode2_CH1', 'marker2');
           }
         }
       }
@@ -1121,20 +1275,22 @@ async function getNextDataFromQueue() {
             document.getElementById('mode1_state_icon_ch1').src = "../images/runninglight_empty.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'all green') {
-            document.getElementById('mode1_state_icon_ch1').src = "../images/greenstripe_transparent.png";
+            document.getElementById('mode1_state_icon_ch1').src = "../images/greenstripe.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'all red') {
-            document.getElementById('mode1_state_icon_ch1').src = "../images/redstripe_transparent.png";
+            document.getElementById('mode1_state_icon_ch1').src = "../images/redstripe.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'runninglight') {
-            document.getElementById('mode1_state_icon_ch1').src = "../images/runninglight_transparent.png";
+            document.getElementById('mode1_state_icon_ch1').src = "../images/runninglight_1.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'marker1') {
             document.getElementById('mode1_state_icon_ch1').src = "../images/M_transparent.png";
           }
+          /*
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'marker2') {
             document.getElementById('mode1_state_icon_ch1').src = "../images/M_transparent.png";
           }
+          */
         }
         // operation mode 2 channel 1
         if (RXData.JSONDocument["flash#1"]["operation mode#2"]) {
@@ -1142,19 +1298,163 @@ async function getNextDataFromQueue() {
             document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_empty.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'all green') {
-            document.getElementById('mode2_state_icon_ch1').src = "../images/greenstripe_transparent.png";
+            document.getElementById('mode2_state_icon_ch1').src = "../images/greenstripe.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'all red') {
-            document.getElementById('mode2_state_icon_ch1').src = "../images/redstripe_transparent.png";
+            document.getElementById('mode2_state_icon_ch1').src = "../images/redstripe.png";
           }
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'runninglight') {
-            document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_transparent.png";
+            document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_1.png";
           }
+          /*
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'marker1') {
             document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
           }
+          */
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'marker2') {
             document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
+          }
+        }
+      }
+    }
+    // Channel 2
+    // Load RAM settings to local storage variables
+    if (RXData.JSONDocument["flash#2"]) {
+      if (RXData.JSONDocument["memory"] == "ram") {
+        console.log("ram");
+
+        // length
+        if (RXData.JSONDocument["flash#2"]["length"]) {
+          if (RXData.JSONDocument["flash#2"]["length"] == '335 mm') {
+            localStorage.setItem('selected_length_2', '335 mm');
+          }
+          if (RXData.JSONDocument["flash#2"]["length"] == '635 mm') {
+            localStorage.setItem('selected_length_2', '635 mm');
+          }
+          if (RXData.JSONDocument["flash#2"]["length"] == '935 mm') {
+            localStorage.setItem('selected_length_2', '935 mm');
+          }
+          if (RXData.JSONDocument["flash#2"]["length"] == '1870 mm') {
+            localStorage.setItem('selected_length_2', '1870 mm');
+          }
+        }
+        // brightness
+        if (RXData.JSONDocument["flash#2"]["brightness"]) {
+          if (RXData.JSONDocument["flash#2"]["brightness"] == 'eco') {
+            localStorage.setItem('selected_brightness_2', 'eco');
+          }
+          if (RXData.JSONDocument["flash#2"]["brightness"] == 'medium') {
+            localStorage.setItem('selected_brightness_2', 'med');
+          }
+          if (RXData.JSONDocument["flash#2"]["brightness"] == 'max') {
+            localStorage.setItem('selected_brightness_2', 'max');
+          }
+        }
+        // operation mode 1 channel 2
+        if (RXData.JSONDocument["flash#2"]["operation mode#1"]) {
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'all green') {
+            localStorage.setItem('selected_mode1_CH2', 'all green');
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'all red') {
+            localStorage.setItem('selected_mode1_CH2', 'all red');
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'runninglight') {
+            localStorage.setItem('selected_mode1_CH2', 'runninglight');
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker1') {
+            localStorage.setItem('selected_mode1_CH2', 'marker1');
+          }
+        }
+        // operation mode 2 channel 2
+        if (RXData.JSONDocument["flash#2"]["operation mode#2"]) {
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'all green') {
+            localStorage.setItem('selected_mode2_CH2', 'all green');
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'all red') {
+            localStorage.setItem('selected_mode2_CH2', 'all red');
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'runninglight') {
+            localStorage.setItem('selected_mode2_CH2', 'runninglight');
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker2') {
+            localStorage.setItem('selected_mode2_CH2', 'marker2');
+          }
+        }
+      }
+      // Set sidemenu icons to ROM settings
+      if (RXData.JSONDocument["memory"] == "rom") {
+        console.log("rom");
+        // length
+        if (RXData.JSONDocument["flash#2"]["length"]) {
+          if (RXData.JSONDocument["flash#2"]["length"] == '335 mm') {
+            document.getElementById('length_state_icon_2').src = "../images/335mm_transparent.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["length"] == '635 mm') {
+            document.getElementById('length_state_icon_2').src = "../images/635mm_transparent.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["length"] == '935 mm') {
+            document.getElementById('length_state_icon_2').src = "../images/935mm_transparent.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["length"] == '1870 mm') {
+            document.getElementById('length_state_icon_2').src = "../images/1870mm_transparent.png";
+          }
+        }
+        // brightness
+        if (RXData.JSONDocument["flash#2"]["brightness"]) {
+          if (RXData.JSONDocument["flash#2"]["brightness"] == 'eco') {
+            document.getElementById('brightness_state_icon_2').src = "../images/bulb_eco_transparent.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["brightness"] == 'medium') {
+            document.getElementById('brightness_state_icon_2').src = "../images/bulb_med_transparent.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["brightness"] == 'max') {
+            document.getElementById('brightness_state_icon_2').src = "../images/bulb_max_transparent.png";
+          }
+        }
+        // operation mode 1 channel 2
+        if (RXData.JSONDocument["flash#2"]["operation mode#1"]) {
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'all off') {
+            document.getElementById('mode1_state_icon_ch2').src = "../images/runninglight_empty.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'all green') {
+            document.getElementById('mode1_state_icon_ch2').src = "../images/greenstripe.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'all red') {
+            document.getElementById('mode1_state_icon_ch2').src = "../images/redstripe.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'runninglight') {
+            document.getElementById('mode1_state_icon_ch2').src = "../images/runninglight_1.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'marker1') {
+            document.getElementById('mode1_state_icon_ch2').src = "../images/M_transparent.png";
+          }
+          /*
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'marker2') {
+            document.getElementById('mode1_state_icon_ch2').src = "../images/M_transparent.png";
+          }
+          */
+        }
+        // operation mode 2 channel 2
+        if (RXData.JSONDocument["flash#2"]["operation mode#2"]) {
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'all off') {
+            document.getElementById('mode2_state_icon_ch2').src = "../images/runninglight_empty.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'all green') {
+            document.getElementById('mode2_state_icon_ch2').src = "../images/greenstripe.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'all red') {
+            document.getElementById('mode2_state_icon_ch2').src = "../images/redstripe.png";
+          }
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'runninglight') {
+            document.getElementById('mode2_state_icon_ch2').src = "../images/runninglight_1.png";
+          }
+          /*
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker1') {
+            document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
+          }
+          */
+          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker2') {
+            document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
           }
         }
       }
@@ -1165,27 +1465,50 @@ async function getNextDataFromQueue() {
       alert('Error: Message overflow. 50+ messages in FIFO!');
     }
   }
-  console.log('FIFO is empty');
 }
 
 /**
- * Sends the TXString comand to the previously
- * @param {string} TXString corresponding to command overview
+ * Sends the first string command in the queue array
+ * use stringdata_array with all strings that should be send
  */
-async function sendXBeeData(TXString) {
+async function sendXBeeData() {
   let address = localStorage.getItem('deviceaddress');
   if (address == '') {
     //do nothing
-    console.log('no deviceaddress existing');
+    //console.log('no device address existing');
   }
   else {
-    const TXData = new XBeeData();
-    TXData.MACAddress.set(address);
-    TXData.JSONDocument = JSON.parse(TXString);
-    console.log('Send Data: ', TXData);
-    XBee3.writeJSONDocument(TXData);
+    if (stringdata_array[0] === undefined) {
+      //do nothing
+      //console.log('ERROR: fct[sendXBeeData] array undefined');
+    }
+    else {
+      const TXData = new XBeeData();
+      TXData.MACAddress.set(address);
+      console.log('Send Data String: ', stringdata_array[0]);
+      TXData.JSONDocument = JSON.parse(stringdata_array[0]); // use first entry
+      //console.log('Send Data: ', TXData);
+      XBee3.writeJSONDocument(TXData);
+      stringdata_array.shift(); // remove first entry
+      messages = stringdata_array.length; // update message count
+      //console.log('messages in SEND queue: ', messages);
+    }
   }
 }
+
+/**
+ * adds the string_element to the end of the send queue
+ * @param {command} string_element string element representing the json format command
+ */
+function addtoSendQueue(string_element) {
+  var count_entries = stringdata_array.length;
+  stringdata_array[count_entries] = string_element;
+}
+
+// send first data in SendQueue periodically
+setInterval(sendXBeeData, 100);
+
+
 
 
 

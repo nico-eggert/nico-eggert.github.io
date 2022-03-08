@@ -4,7 +4,7 @@
     "start_url": ".",
     "background_color": "rgb(220 220 220)",
     "theme_color": "rgb(0 102 204)",
-    "display": "fullscreen",
+    "display": "standalone",
     "icons": [
         {
             "src": "images/Logo/vetter_solutions_129.png",

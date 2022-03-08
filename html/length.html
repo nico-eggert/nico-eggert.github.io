@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/fontawesome/css/brands.min.css">
 
 
-    
+
 
 </head>
 
@@ -42,54 +42,72 @@
         <div class="row"><br></div>
 
         <div class="row">
-            <div class="col" style="width: 5%";></div>
-            <div class="col" style="width: 18%";>
-                <button id="btn_s" type="button" class="btn btn-outline-primary"  data-bs-toggle="button" autocomplete="off"
-                                    title="LED stripe Length 335 mm.">
-                                    <image style="max-width: 100%;" src="../images/335.png"></image>
-                                </button>
+            <div class="col" style="width: 5%" ;></div>
+            <div class="col" style="width: 18%" ;>
+                <button id="btn_s" type="button" class="btn btn-outline-primary" data-bs-toggle="button"
+                    autocomplete="off" title="LED stripe Length 335 mm.">
+                    <image id="image_335" style="max-width: 100%;" src="../images/335.png"></image>
+                </button>
             </div>
             <div class="col" style="width: 18%">
-                <button id="btn_m" type="button" class="btn btn-outline-primary" data-bs-toggle="button" autocomplete="off"
-                                    title="LED stripe Length 635 mm.">
-                                    <image style="max-width: 100%;" src="../images/635.png"></image>
-                                </button>
-            </div> 
-            <div class="col" style="width: 18%">
-                <button id="btn_l" type="button" class="btn btn-outline-primary" data-bs-toggle="button" autocomplete="off"
-                                    title="LED stripe Length 935 mm.">
-                                    <image style="max-width: 100%;" src="../images/935.png"></image>
-                                </button>
+                <button id="btn_m" type="button" class="btn btn-outline-primary" data-bs-toggle="button"
+                    autocomplete="off" title="LED stripe Length 635 mm.">
+                    <image style="max-width: 100%;" src="../images/635.png"></image>
+                </button>
             </div>
             <div class="col" style="width: 18%">
-                <button id="btn_xl" type="button" class="btn btn-outline-primary" data-bs-toggle="button" autocomplete="off"
-                                    title="LED stripe Length 1870 mm.">
-                                    <image style="max-width: 100%;" src="../images/1870.png"></image>
-                                </button>
+                <button id="btn_l" type="button" class="btn btn-outline-primary" data-bs-toggle="button"
+                    autocomplete="off" title="LED stripe Length 935 mm.">
+                    <image style="max-width: 100%;" src="../images/935.png"></image>
+                </button>
             </div>
             <div class="col" style="width: 18%">
-                <button id="btn_save" type="button" class="btn btn-outline-danger active" data-bs-toggle="button" style="visibility: hidden;"
-                                    title="Save setting to ROM.">
-                                    <image style="max-width: 100%;" class="img-fluid" src="../images/save.png"></image>
-                                </button>
+                <button id="btn_xl" type="button" class="btn btn-outline-primary" data-bs-toggle="button"
+                    autocomplete="off" title="LED stripe Length 1870 mm.">
+                    <image style="max-width: 100%;" src="../images/1870.png"></image>
+                </button>
             </div>
-            <div class="col" style="width: 5%";></div>
+            <div class="col" style="width: 18%">
+                <button id="btn_save" type="button" class="btn btn-outline-danger active" data-bs-toggle="button"
+                    style="visibility: hidden;" title="Save setting to ROM.">
+                    <image id="image_save" style="max-width: 100%; height: auto" class="img-fluid"
+                        src="../images/save.png"></image>
+                </button>
+            </div>
+            <div class="col" style="width: 5%" ;></div>
         </div>
-        
-
     </div>
 
 
 
-    <!-- scripts -->
+    <!-- scripts 257-->
     <!-- jQuery -->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
-    
+
     <script src="../js/connect.js"></script>
     <script src="../js/length.js"></script>
-    
-   
-</body>
 
+    <script>
+        var img_width = document.getElementById('btn_s').clientWidth;
+        var img_height = document.getElementById('btn_s').clientHeight;
+        var saveimg = document.getElementById('image_save');
+        var saveimg_height = saveimg.clientHeight;
+        var saveimg_width = saveimg.clientWidth;
+
+        console.log('width', img_width);
+        console.log('height:', img_height);
+        console.log('save height:', saveimg_height);
+        console.log('save width:', saveimg_width);
+    </script>
+    <!--
+    saveimg.style.width = img_width+'px';
+    saveimg.style.height= img_height+'px';
+
+    console.log('save height:',saveimg_height);
+    console.log('save width:', saveimg_width);
+    
+    -->
+
+</body>
