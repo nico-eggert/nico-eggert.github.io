@@ -1,88 +1,5 @@
-/*
-// Service worker 
-self.addEventListener("install", e => {
-    e.waitUntil(
-        caches.open("static").then(cache => {
-            return cache.addAll([
-                "./",
-                "master.css",
-                "sw.js",
-                "manifest.json",
-                "index.html",
-                "./css/",
-                "./css/bootstrap.min.css",
-                "./css/bootstrap.min.css.map",
-                "./js/",
-                "./js/bootstrap.bundle.min.js",
-                "./js/bootstrap.bundle.min.js.map",
-                "./js/brightness.js",
-                "./js/connect.js",
-                "./js/length.js",
-                "./js/mode.js",
-                "./js/XBee3.js",
-                "./src/",
-                "./src/index.js",
-                "./images/",
-                "./images/Flaggen/de.png",
-                "./images/Flaggen/gb.png",
-                "./images/Flaggen/us.png",
-                "./images/Logo/vetter_solutions_129.png",
-                "./images/Logo/vetter_solutions_512.png",
-                "./images/335.png",
-                "./images/335mm_transparent.png",
-                "./images/635.png",
-                "./images/635mm_transparent.png",
-                "./images/935.png",
-                "./images/935mm_transparent.png",
-                "./images/1870.png",
-                "./images/1870mm_transparent.png",
-                "./images/bulb_eco_transparent.png",
-                "./images/bulb_med_transparent.png",
-                "./images/bulb_max_transparent.png",
-                "./images/eco.png",
-                "./images/greenstripe_transparent.png",
-                "./images/greenstripe.png",
-                "./images/M_transparent.png",
-                "./images/M.png",
-                "./images/marker_preview.png",
-                "./images/redstripe_transparent.png",
-                "./images/redstripe.png",
-                "./images/redwhite.png",
-                "./images/runninglight_1.png",
-                "./images/runninglight_2.png",
-                "./images/runninglight_empty.png",
-                "./images/runninglight_transparent.png",
-                "./images/save.png",
-                "./fontawesome/", // TODO: durch eigene Images ersetzen
-                "./html/",
-                "./html/brightness.html",
-                "./html/connect.html",
-                "./html/length.html",
-                "./html/mode.html",
-            ]);
-        })
-    );
-});
-*/
-/*
-// Runs whenever there is a fetch request
-// If there is an event listener for the fetch request, it means, that the application can be installed
-self.addEventListener("fetch", e => {
-    //console.log(`Intercepting fetch request for: ${e.request.url}`);
-    e.respondWith(
-        caches.match(e.request).then(response => {
-            return response || fetch(e.request).catch(function (e){
-                console.log('webserver is offline');
-            });
-        })
-    );
-});
-*/
-
-// test of sw for github webpage
-// test github sw
 var APP_PREFIX = 'VetterPWA_'     // Identifier for this app (this needs to be consistent across every cache update)
-var VERSION = 'version_0.10'              // Version of the off-line cache (change this value everytime you want to update cache)
+var VERSION = 'version_0.11'              // Version of the off-line cache (change this value everytime if you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
     'https://nico-eggert.github.io/',                     // If you have separate JS/CSS files,
@@ -156,7 +73,6 @@ self.addEventListener('fetch', function (e) {
                 console.log('file is not cached, fetching : ' + e.request.url)
                 return fetch(e.request)
             }
-
             // You can omit if/else for console.log & put one line below like this too.
             // return request || fetch(e.request)
         })

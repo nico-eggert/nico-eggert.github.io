@@ -156,7 +156,7 @@ function updateLanguage() {
     frameDoc.getElementById('btnSerialConnect').innerHTML = '<image style="width: 8%; height: 8%; float:left;" src="../images/plug.png">' + lang.btnSerialConnect + '</image>';
     frameDoc.getElementById('btnDeviceConnect').innerHTML = '<image style="width: 8%; height: 8%; float:left;" src="../images/plug.png">' + lang.btnDeviceConnect + '</image>';
   }
-  if (document.getElementById('frame').src == 'https://nico-eggert.github.io/html/mode.html') {
+  if (FRAME.src == 'https://nico-eggert.github.io/html/mode.html') {
     frameDoc.getElementById('mode_txt').innerHTML = lang.mode_txt;
     // Colors 1
     frameDoc.getElementById('color_dropdown_btn1').innerHTML = lang.color_dropdown_btn;

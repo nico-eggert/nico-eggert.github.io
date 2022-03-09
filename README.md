@@ -46,3 +46,16 @@ Für das Übernehmen der Einstellungen muss immer "Save all" betätigt werden, d
 # Zukunft:
 Erweiterung als Schnittstelle für Konfigurationseinstellungen anderer SmartFork-Komponenten.
 
+# Anleitung Website Update https://nico-eggert.github.io/
+Soll aus dem Github Verzeichnis ConfigPWA ein update auf die Website geladen werden, müssen folgende Schritte durchgeführt werden:
+
+1. Generell können alle Files bis auf sw.js aus dem ConfigPWA Ordner kopiert und in nico-eggert.github.io Ordner ersetzt werden.
+2. In sw.js Versionsnummer erhöhen, 
+    z.B: var VERSION = 'version_0.10' => 'version_0.11' 
+3. Gibt es neue Bilder, .js- oder .html- Dateien müssen diese in sw.js in die chacheliste ergänzt werden, 
+    z.B: var URLS = 'https://nico-eggert.github.io/js/newjsfile.js', 
+4. Immer in language.js in den if-Schleifen FRAME.src zuweisungen auf die Website-adresse anpassen:
+    Für Frame elements with images (connect.html + mode.html),
+    z.B.: von if (FRAME.src == 'http://127.0.0.1:8887/html/mode.html') in if (FRAME.src == 'https://nico-eggert.github.io/html/mode.html') ändern
+5. In index.html versionsnummer in div id="version_number" erhöhen, 
+    z.B: v0.10 => v0.11
