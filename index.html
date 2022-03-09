@@ -7,16 +7,16 @@
     <meta name="theme-color" content="rgb(0 102 204)">
     <title>Vetter Serial PWA</title>
 
-    <link rel="stylesheet" href="https://nico-eggert.github.io/master.css">
-    <link rel="manifest" href="https://nico-eggert.github.io/manifest.json">
-    <link rel="apple-touch-icon" href="https://nico-eggert.github.io/images/logo129.png">
-    <link rel="icon" type="img/png" href="https://nico-eggert.github.io/images/Logo/vetter_solutions_129.png">
+    <link rel="stylesheet" href="/master.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/logo129.png">
+    <link rel="icon" type="img/png" href="/images/Logo/vetter_solutions_129.png">
 
     <!-- bootstrap 5 -->
-    <link rel="stylesheet" href="https://nico-eggert.github.io/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- font awesome for icons-->
-    <link rel="stylesheet" href="https://nico-eggert.github.io/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="https://nico-eggert.github.io/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/fontawesome/css/brands.min.css">
 
 </head>
 
@@ -25,9 +25,9 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                
+
                 <a class=" navbar-brand navbar-brand-center" href="#">
-                    <img src="https://nico-eggert.github.io/images/Logo/vetter_solutions_129.png"  width="30" height="30" alt="logo">
+                    <img src="/images/Logo/vetter_solutions_129.png" width="30" height="30" alt="logo">
                     <span id="title_txt"></span>
                 </a>
                 <!--
@@ -50,13 +50,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown">
-                            <img id="language_image" src="https://nico-eggert.github.io/images/Flaggen/de.png" width="36" height="30" >
+                            <img id="language_image" src="/images/Flaggen/de.png" width="36" height="30">
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark"  role="menu">
-                            <li><a class="dropdown-item" href="#" value="de" id="select_de"><img id="de_flag" src="https://nico-eggert.github.io/images/Flaggen/de.png" width="30"
-                                        height="25"></a></li>
-                            <li><a class="dropdown-item" href="#" value="en" id="select_en"><img id="en_flag" src="https://nico-eggert.github.io/images/Flaggen/gb.png" width="30"
-                                        height="25"></a></li>
+                        <ul class="dropdown-menu dropdown-menu-dark" role="menu">
+                            <li><a class="dropdown-item" href="#" value="de" id="select_de"><img id="de_flag"
+                                        src="/images/Flaggen/de.png" width="30" height="25"></a></li>
+                            <li><a class="dropdown-item" href="#" value="en" id="select_en"><img id="en_flag"
+                                        src="/images/Flaggen/gb.png" width="30" height="25"></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -71,14 +71,14 @@
                 <div class="col-4">
                     <p class="fs-6" id="usb_status_txt"></p>
                 </div>
-                
+
                 <div class="col-4">
                     <p id="menu_header" class="fs-5 fw-bold" style="text-decoration: underline; font-size:x-large;"></p>
                 </div>
                 <div title="Save settings to file" class="col-3">
                 </div>
                 <div class="col-1">
-                    v0.08
+                    v0.09
                 </div>
 
 
@@ -92,14 +92,14 @@
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242;  background-color: darkgray; border-radius: 10px;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position:relative">
                                 <!--<i class="center fas fa-plug"></i>-->
-                                <image class=" center-img" src="https://nico-eggert.github.io/images/plug.png"></image>
+                                <image class=" center-img" src="images/plug.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnConnect" class="center btn btn-primary"></button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position:relative">
                                 <!--<i id="connect_state_icon" class="center fas fa-times"></i>-->
-                                <image id="connect_state_icon" class="center-img" src="https://nico-eggert.github.io/images/x.png"></image>
+                                <image id="connect_state_icon" class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
                         <!-- Channel 1-->
@@ -114,14 +114,14 @@
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; display: none; ">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative">
                                 <!--<i class="center fas fa-ruler-horizontal"></i>-->
-                                <image class="center-img" src="https://nico-eggert.github.io/images/ruler.png"></image>
+                                <image class="center-img" src="images/ruler.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnLength" class="center btn btn-primary">Length</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <!--<i id="length_state_icon" class="center fas fa-times"></i> -->
-                                <image id="length_state_icon" class=" center-img" src="https://nico-eggert.github.io/images/335mm_transparent.png">
+                                <image id="length_state_icon" class=" center-img" src="images/335mm_transparent.png">
                                 </image>
                             </div>
                         </div>
@@ -129,27 +129,27 @@
                         <div id="brightness_div" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/adjust.png"></image>
+                                <image class="center-img" src="images/adjust.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnBrightness" class="center btn btn-primary">Brightness</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="brightness_state_icon" class="center-img"
-                                    src="https://nico-eggert.github.io/images/bulb_med_transparent.png"></i>
+                                    src="images/bulb_med_transparent.png"></i>
                             </div>
                         </div>
                         <!-- Mode 1 -->
                         <div id="mode1_div_CH1" class="row"
                             style="padding: 0%; margin: 0%;  border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/toolbox.png"></image>
+                                <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnMode_1_CH1" class="center btn btn-primary">Mode 1</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode1_state_icon_ch1" class="center-img" src="https://nico-eggert.github.io/images/runninglight_empty.png">
+                                <image id="mode1_state_icon_ch1" class="center-img" src="images/runninglight_empty.png">
                                 </image>
                             </div>
                         </div>
@@ -157,13 +157,13 @@
                         <div id="mode2_div_CH1" class="row"
                             style="padding: 0%; margin: 0%;  border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/toolbox.png"></image>
+                                <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnMode_2_CH1" class="center btn btn-primary">Mode 2</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode2_state_icon_ch1" class="center-img" src="https://nico-eggert.github.io/images/runninglight_empty.png">
+                                <image id="mode2_state_icon_ch1" class="center-img" src="images/runninglight_empty.png">
                                 </image>
                             </div>
                         </div>
@@ -171,27 +171,27 @@
                         <div id="save_div" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242;  border-radius: 10px; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/save.png"></image>
+                                <image class="center-img" src="images/save.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnSave" class="center btn btn-secondary">Save all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/x.png"></image>
+                                <image class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
                         <!-- Load -->
                         <div id="load_div" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; border-radius: 10px; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/fileupload.png"></image>
+                                <image class="center-img" src="images/fileupload.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnLoad" class="center btn btn-secondary"
                                     title="Read ROM and RAM data of flash">Read all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/x.png"></image>
+                                <image class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
                         <!-- Channel 2-->
@@ -205,13 +205,13 @@
                         <div id="length_div_2" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/ruler.png"></image>
+                                <image class="center-img" src="images/ruler.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnLength_2" class="center btn btn-primary">Length</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="length_state_icon_2" class="center-img" src="https://nico-eggert.github.io/images/335mm_transparent.png">
+                                <image id="length_state_icon_2" class="center-img" src="images/335mm_transparent.png">
                                 </image>
                             </div>
                         </div>
@@ -219,40 +219,40 @@
                         <div id="brightness_div_2" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/adjust.png"></image>
+                                <image class="center-img" src="images/adjust.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnBrightness_2" class="center btn btn-primary">Brightness</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="brightness_state_icon_2" class="center-img"
-                                    src="https://nico-eggert.github.io/images/bulb_med_transparent.png"></i>
+                                    src="images/bulb_med_transparent.png"></i>
                             </div>
                         </div>
                         <!-- Mode 1-->
                         <div id="mode1_div_CH2" class="row"
                             style="padding: 0%; margin: 0%;  border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/toolbox.png"></image>
+                                <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnMode_1_CH2" class="center btn btn-primary">Mode 1</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode1_state_icon_ch2" class="center-img" src="https://nico-eggert.github.io/images/runninglight_empty.png">
+                                <image id="mode1_state_icon_ch2" class="center-img" src="images/runninglight_empty.png">
                                 </image>
                             </div>
                         </div>
                         <div id="mode2_div_CH2" class="row"
                             style="padding: 0%; margin: 0%;  border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/toolbox.png"></image>
+                                <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnMode_2_CH2" class="center btn btn-primary">Mode 2</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode2_state_icon_ch2" class="center-img" src="https://nico-eggert.github.io/images/runninglight_empty.png">
+                                <image id="mode2_state_icon_ch2" class="center-img" src="images/runninglight_empty.png">
                                 </image>
                             </div>
                         </div>
@@ -260,62 +260,75 @@
                         <div id="save_div_2" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242;  border-radius: 10px; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/save.png"></image>
+                                <image class="center-img" src="images/save.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnSave_2" class="center btn btn-secondary">Save all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/x.png"></image>
+                                <image class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
                         <!-- Load -->
                         <div id="load_div_2" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; border-radius: 10px; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/fileupload.png"></image>
+                                <image class="center-img" src="images/fileupload.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnLoad_2" class="center btn btn-secondary"
                                     title="Read ROM and RAM data of flash">Read all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image class="center-img" src="https://nico-eggert.github.io/images/x.png"></image>
+                                <image class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
                         <!-- Local Configdata-->
                         <div id="local_config_div" class="row "
                             style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px;">
                             <div style="width: 100%; padding:0%;  margin: 0%;">
-                                <button id="btnLocal_config" class="center btn btn-primary disabled">Local Configdata</button>
+                                <button id="btnLocal_config" class="center btn btn-primary disabled">Local
+                                    Configdata</button>
                             </div>
                         </div>
-                        <!--
-                        <div id="local_load_div" class="row "
-                            style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px;">
-                            <div style="width: 100%; padding:0%;  margin: 0%;">
-                                <button id="local_load_btn" class="center btn btn-primary disabled">Channel 2</button>
+                        <!-- Save Settings-->
+                        <div id="local_save_div" class="row" title="Save settings to file"
+                            style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px; display: none;">                           
+                            <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
+                                <image class="center-img" src="images/save.png"></image>
+                            </div>
+                            <div style="width: 80%; padding:0%;  margin: 0%;">
+                                <button class="custom-button" style="width: 100%;">
+                                    <a id="btnSavesettings" style="color: white;" target="_blank"
+                                        download="file.txt"></a>
+                                </button>
+                            </div>
+                            <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
+                                <image id="saveSettings_img" class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
-                        -->
-                        <div class="row" title="Load settings from file" >
-                            <input type="file" id="files" class="center btn btn-secondary" name="files[]" multiple />
-                            <!--<output id="list"></output>-->
-        
+                        <!-- Load Settings-->
+                        <div id="local_load_div" class="row" title="Load settings from file"
+                            style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; border-radius: 10px; display:none;">
+                            <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
+                                <image class="center-img" src="images/fileupload.png"></image>
+                            </div>
+                            <div style="width: 80%; padding:0%;  margin: 0%;">
+                                <label id="btnLoadsettings" for="files" class="custom-button"
+                                    style="width: 100%;">Einstellungen Laden</label>
+                                <input type="file" id="files" style="display: none;" />
+                            </div>
+                            <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
+                                <image id="loadSettings_img" class="center-img" src="images/x.png"></image>
+                            </div>
                         </div>
-                        <div id="local_save_div"  class="row" title="Save settings to file">
-                            <button class="custom-button">
-                                <a id="btnSavesettings" style="color: white;" target="_blank" download="file.txt"></a>
-                            </button>
-                        </div>
-
                     </div>
                 </div>
 
 
                 <div class="container-fluid" style="width: 75%;  padding: 0%; ">
                     <!-- class="col-9 side-menu flex-wrapper" style="background-color: darkgray; width: 100%;" -->
-                    <iframe class="flex-wrapper" style="width: 100%; " id="frame" src="https://nico-eggert.github.io/html/connect.html"
+                    <iframe class="flex-wrapper" style="width: 100%; " id="frame" src="/html/connect.html"
                         frameborder="0" scrolling="no" allowfullscreen></iframe>
 
                 </div>
@@ -327,7 +340,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-12-sm col-md-12 col-lg-3 footer-logo ">
-                    <img class="img-fluid" alt="VETTER Solutions" src="https://nico-eggert.github.io/images/Logo/vetter_solutions_logo.png"
+                    <img class="img-fluid" alt="VETTER Solutions" src="../images/Logo/vetter_solutions_logo.png"
                         width="200" height="70">
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
@@ -422,10 +435,10 @@
     <!-- scripts -->
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://nico-eggert.github.io/js/bootstrap.bundle.min.js"></script>
-    <script src="https://nico-eggert.github.io/src/index.js"></script>
-    <script src="https://nico-eggert.github.io/js/XBee3.js"></script>
-    <script src="https://nico-eggert.github.io/js/language.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="src/index.js"></script>
+    <script src="js/XBee3.js"></script>
+    <script src="js/language.js"></script>
 
 
     <!--

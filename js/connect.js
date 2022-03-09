@@ -22,8 +22,8 @@ else {
 }
 
 
-  
- 
+
+
 
 /*
 // connection button function
@@ -136,24 +136,24 @@ function clickSerialConnect() {
   localStorage.setItem('deviceaddress', document.getElementById('devicename').value);
   console.log('deviceadress: ', localStorage.getItem('deviceaddress'));
   // Enable device connection
-  var elem=document.getElementById('btnDeviceConnect');
-  if(elem.classList.contains('disabled')){
+  var elem = document.getElementById('btnDeviceConnect');
+  if (elem.classList.contains('disabled')) {
     elem.classList.remove('disabled');
   }
   // set local storage variable
-  localStorage.setItem('usb_connected','true');
+  localStorage.setItem('usb_connected', 'true');
 }
 
 /**
  * Checks connection to device by sending a message and checking if a response message is send.
  * Then starts animation of progressbar.
  */
-async function clickConnect(){
-  document.getElementById('progressbar_div').style.visibility="visible";
+async function clickConnect() {
+  document.getElementById('progressbar_div').style.visibility = "visible";
   var connectionstate = false;
   connectionstate = parent.checkconnection();
   console.log('timeout start progressbar');
-  var delayres =await parent.delay(1500);
+  var delayres = await parent.delay(1500);
   console.log('check connectionstate before animation: ', connectionstate);
   connectionstate.then(animateProgressbar());
 }
@@ -179,64 +179,52 @@ function animateProgressbar() {
   }
   if (pbcount == 25) {
     //TODO: Add function call usb-connection
-    if(localStorage.getItem('selected_language') == 'en' ){
-    $("#txt_progressbarstep").text("Connection to USB-Dongle successful");
+    if (localStorage.getItem('selected_language') == 'en') {
+      $("#txt_progressbarstep").text("Connection to USB-Dongle successful");
     }
-    if(localStorage.getItem('selected_language') == 'de' ){
+    if (localStorage.getItem('selected_language') == 'de') {
       $("#txt_progressbarstep").text("Verbindung USB-Dongle erfolgreich");
     }
   }
   if (pbcount == 50) {
     //TODO: Add function call search for and connect to SF-Flash device
-    if(localStorage.getItem('selected_language') == 'en' ){
-    $("#txt_progressbarstep").text("Connection to SF-Flash successful");
+    if (localStorage.getItem('selected_language') == 'en') {
+      $("#txt_progressbarstep").text("Connection to SF-Flash successful");
     }
-    if(localStorage.getItem('selected_language') == 'de' ){
+    if (localStorage.getItem('selected_language') == 'de') {
       $("#txt_progressbarstep").text("SF-Flash Verbindung erfolgreich");
     }
   }
   if (pbcount == 75) {
     parent.addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}');
     parent.addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}');
-    //setTimeout(function () { parent.addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}') }, 50);
-    //setTimeout(function () { parent.addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}') }, 200);
-
-
-    //TODO: Add function call read current settings on flash
-    if(localStorage.getItem('selected_language') == 'en' ){
-    $("#txt_progressbarstep").text("Get data from SF-Flash");
+    if (localStorage.getItem('selected_language') == 'en') {
+      $("#txt_progressbarstep").text("Get data from SF-Flash");
     }
-    if(localStorage.getItem('selected_language') == 'de' ){
+    if (localStorage.getItem('selected_language') == 'de') {
       $("#txt_progressbarstep").text("Anfragen der SF-Flash Daten");
     }
   }
   if (pbcount == 85) {
     setTimeout(function () { parent.getNextDataFromQueue() }, 100);
-
-
-    //TODO: Add function call read current settings on flash
-    if(localStorage.getItem('selected_language') == 'en' ){
-    $("#txt_progressbarstep").text("Reading data from SF-Flash");
+    if (localStorage.getItem('selected_language') == 'en') {
+      $("#txt_progressbarstep").text("Reading data from SF-Flash");
     }
-    if(localStorage.getItem('selected_language') == 'de' ){
+    if (localStorage.getItem('selected_language') == 'de') {
       $("#txt_progressbarstep").text("Auslesen der SF-Flash Daten");
     }
   }
   if (pbcount == 100) {
     parent.cyclicConnectionCheck();
-    if(localStorage.getItem('selected_language') == 'en' ){
-    $("#txt_progressbarstep").text("Success");
+    if (localStorage.getItem('selected_language') == 'en') {
+      $("#txt_progressbarstep").text("Success");
     }
-    if(localStorage.getItem('selected_language') == 'de' ){
+    if (localStorage.getItem('selected_language') == 'de') {
       $("#txt_progressbarstep").text("Auslesen erfolgreich");
     }
     var elem = window.parent.document.getElementById('connect_state_icon');
-    elem.src="images/check.png";
-    /*
-    elem.classList.remove("fa-times");
-    elem.classList.add("fa-check");
-    */
-
+    elem.src = "images/check.png";
+    // enable sidemenu buttons
     btnChannel = parent.document.getElementById('btnChannel');
     if (btnChannel.classList.contains('disabled')) {
       btnChannel.classList.remove('disabled');
@@ -245,8 +233,12 @@ function animateProgressbar() {
     if (btnChannel_2.classList.contains('disabled')) {
       btnChannel_2.classList.remove('disabled');
     }
+    btnLocalconfig = parent.document.getElementById('btnLocal_config');
+    if (btnLocalconfig.classList.contains('disabled')) {
+      btnLocalconfig.classList.remove('disabled');
+    }
     window.parent.document.getElementById('frame').src = "";
-}
+  }
 
   // Wait for sometime before running this script again
   if (pbcount != 100) {

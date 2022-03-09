@@ -82,14 +82,13 @@ self.addEventListener("fetch", e => {
 // test of sw for github webpage
 // test github sw
 var APP_PREFIX = 'VetterPWA_'     // Identifier for this app (this needs to be consistent across every cache update)
-var VERSION = 'version_0.08'              // Version of the off-line cache (change this value everytime you want to update cache)
+var VERSION = 'version_0.09'              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
     'https://nico-eggert.github.io/',                     // If you have separate JS/CSS files,
     'https://nico-eggert.github.io/master.css',        // add path to those files here
     'https://nico-eggert.github.io/sw.js',
     'https://nico-eggert.github.io/manifest.json',
-    //'https://nico-eggert.github.io/src/index.html',
     'https://nico-eggert.github.io/css/bootstrap.min.css',
     'https://nico-eggert.github.io/css/bootstrap.min.css.map',
     'https://nico-eggert.github.io/js/bootstrap.bundle.min.js',
@@ -100,7 +99,7 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/js/mode.js',
     'https://nico-eggert.github.io/js/XBee3.js',
     'https://nico-eggert.github.io/js/language.js',
-    'https://nico-eggert.github.io/src/index.js', // Check if this needs t be in top level
+    'https://nico-eggert.github.io/src/index.js', 
     'https://nico-eggert.github.io/images/Flaggen/de.png',
     'https://nico-eggert.github.io/images/Flaggen/gb.png',
     'https://nico-eggert.github.io/images/Flaggen/us.png',
@@ -122,20 +121,16 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/images/bulb_max_transparent.png',
     'https://nico-eggert.github.io/images/check.png',
     'https://nico-eggert.github.io/images/fileupload.png',
-    //'https://nico-eggert.github.io/images/greenstripe_transparent.png',
     'https://nico-eggert.github.io/images/greenstripe.png',
     'https://nico-eggert.github.io/images/M_transparent.png',
     'https://nico-eggert.github.io/images/M.png',
     'https://nico-eggert.github.io/images/marker_preview.png',
     'https://nico-eggert.github.io/images/plug.png',
-    //'https://nico-eggert.github.io/images/redstripe_transparent.png',
     'https://nico-eggert.github.io/images/redstripe.png',
     'https://nico-eggert.github.io/images/ruler.png',
-    //'https://nico-eggert.github.io/images/redwhite.png',
     'https://nico-eggert.github.io/images/runninglight_1.png',
     'https://nico-eggert.github.io/images/runninglight_2.png',
     'https://nico-eggert.github.io/images/runninglight_empty.png',
-    //'https://nico-eggert.github.io/images/runninglight_transparent.png',
     'https://nico-eggert.github.io/images/save.png',
     'https://nico-eggert.github.io/images/toolbox.png',
     'https://nico-eggert.github.io/images/up_arrow.png',

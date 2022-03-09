@@ -22,6 +22,8 @@ var col_red = document.getElementById('btn_red_col');
 var col_runninglight = document.getElementById('btn_runninglight_col');
 
 var marker = document.getElementById('Marker');
+var min_value = 0; // min value of starting position or width for markers
+var max_value = 1870; // min value of starting position or width for markers
 //marker 1
 var markerrow1 = document.getElementById('Marker_1_Row');
 var marker_1 = document.getElementById('Marker_1');
@@ -2636,6 +2638,9 @@ $('#Marker_5').change(function () {
 $('#marker_1_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_1_pos_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'position', String(elem.value));
@@ -2645,6 +2650,9 @@ $('#marker_1_shift_pos_left').click(function () {
 $('#marker_1_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_1_pos_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'position', String(elem.value));
@@ -2652,6 +2660,12 @@ $('#marker_1_shift_pos_right').click(function () {
 })
 $('#marker_1_pos_input').change(function () {
     var elem = document.getElementById('marker_1_pos_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'position', String(elem.value));
@@ -2664,6 +2678,9 @@ $('#marker_1_pos_input').change(function () {
 $('#marker_2_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('2', 'position', String(elem.value));
@@ -2672,6 +2689,9 @@ $('#marker_2_shift_pos_left').click(function () {
 $('#marker_2_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('2', 'position', String(elem.value));
@@ -2679,6 +2699,12 @@ $('#marker_2_shift_pos_right').click(function () {
 })
 $('#marker_2_pos_input').change(function () {
     var elem = document.getElementById('marker_2_pos_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('2', 'position', String(elem.value));
@@ -2691,6 +2717,9 @@ $('#marker_2_pos_input').change(function () {
 $('#marker_3_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('3', 'position', String(elem.value));
@@ -2699,6 +2728,9 @@ $('#marker_3_shift_pos_left').click(function () {
 $('#marker_3_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('3', 'position', String(elem.value));
@@ -2706,6 +2738,12 @@ $('#marker_3_shift_pos_right').click(function () {
 })
 $('#marker_3_pos_input').change(function () {
     var elem = document.getElementById('marker_3_pos_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('3', 'position', String(elem.value));
@@ -2718,6 +2756,9 @@ $('#marker_3_pos_input').change(function () {
 $('#marker_4_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('4', 'position', String(elem.value));
@@ -2726,6 +2767,9 @@ $('#marker_4_shift_pos_left').click(function () {
 $('#marker_4_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('4', 'position', String(elem.value));
@@ -2733,6 +2777,12 @@ $('#marker_4_shift_pos_right').click(function () {
 })
 $('#marker_4_pos_input').change(function () {
     var elem = document.getElementById('marker_4_pos_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('4', 'position', String(elem.value));
@@ -2745,6 +2795,9 @@ $('#marker_4_pos_input').change(function () {
 $('#marker_5_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('5', 'position', String(elem.value));
@@ -2753,6 +2806,9 @@ $('#marker_5_shift_pos_left').click(function () {
 $('#marker_5_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('5', 'position', String(elem.value));
@@ -2760,6 +2816,12 @@ $('#marker_5_shift_pos_right').click(function () {
 })
 $('#marker_5_pos_input').change(function () {
     var elem = document.getElementById('marker_5_pos_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('5', 'position', String(elem.value));
@@ -2773,6 +2835,9 @@ $('#marker_1_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_1_width_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'width', String(elem.value));
@@ -2782,6 +2847,9 @@ $('#marker_1_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_1_width_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'width', String(elem.value));
@@ -2789,6 +2857,12 @@ $('#marker_1_shift_width_right').click(function () {
 })
 $('#marker_1_width_input').change(function () {
     var elem = document.getElementById('marker_1_width_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'width', String(elem.value));
@@ -2804,6 +2878,9 @@ $('#marker_2_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_2_width_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('2', 'width', String(elem.value));
@@ -2813,6 +2890,9 @@ $('#marker_2_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_2_width_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('2', 'width', String(elem.value));
@@ -2820,6 +2900,12 @@ $('#marker_2_shift_width_right').click(function () {
 })
 $('#marker_2_width_input').change(function () {
     var elem = document.getElementById('marker_2_width_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('2', 'width', String(elem.value));
@@ -2833,6 +2919,9 @@ $('#marker_3_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_3_width_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('3', 'width', String(elem.value));
@@ -2842,6 +2931,9 @@ $('#marker_3_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_3_width_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('3', 'width', String(elem.value));
@@ -2849,6 +2941,12 @@ $('#marker_3_shift_width_right').click(function () {
 })
 $('#marker_3_width_input').change(function () {
     var elem = document.getElementById('marker_3_width_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('3', 'width', String(elem.value));
@@ -2862,6 +2960,9 @@ $('#marker_4_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_4_width_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('4', 'width', String(elem.value));
@@ -2871,6 +2972,9 @@ $('#marker_4_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_4_width_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('4', 'width', String(elem.value));
@@ -2878,6 +2982,12 @@ $('#marker_4_shift_width_right').click(function () {
 })
 $('#marker_4_width_input').change(function () {
     var elem = document.getElementById('marker_4_width_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('4', 'width', String(elem.value));
@@ -2891,6 +3001,9 @@ $('#marker_5_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_5_width_input');
     elem.value = Number(elem.value) - 1;
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('5', 'width', String(elem.value));
@@ -2900,6 +3013,9 @@ $('#marker_5_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_5_width_input');
     elem.value = Number(elem.value) + 1;
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
     var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('5', 'width', String(elem.value));
@@ -2907,6 +3023,12 @@ $('#marker_5_shift_width_right').click(function () {
 })
 $('#marker_5_width_input').change(function () {
     var elem = document.getElementById('marker_5_width_input');
+    if (elem.value > max_value){
+        elem.value = max_value;
+    }
+    if( elem.value < min_value){
+        elem.value = min_value;
+    }
     var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('5', 'width', String(elem.value));

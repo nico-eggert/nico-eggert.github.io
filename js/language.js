@@ -5,6 +5,7 @@ var de = {
   title: "Vetter Flash Konfiguration",
   usb_status_disconnected: "Status: Keine Verbindung",
   usb_status_connected: "Status: Verbunden",
+  loadsettings: "Einstellungen laden",
   savesettings: "Einstellungen speichern",
   menu_header: "Verbindung",
   btn_connect: "Verbinden",
@@ -42,6 +43,7 @@ var en = {
   title: "Vetter Flash Configuration",
   usb_status_disconnected: "State: Disconnected",
   usb_status_connected: "State: Connected",
+  loadsettings: "Load settings",
   savesettings: "Save settings",
   menu_header: "Connection",
   btn_connect: "Connect",
@@ -128,6 +130,7 @@ function updateLanguage() {
       elem.classList.remove('disabled');
     }
   }
+  document.getElementById('btnLoadsettings').innerHTML = lang.loadsettings;
   document.getElementById('btnSavesettings').innerHTML = lang.savesettings;
   document.getElementById('menu_header').innerHTML = lang.menu_header;
   document.getElementById('btnConnect').innerHTML = lang.btn_connect;
@@ -148,12 +151,12 @@ function updateLanguage() {
   document.getElementById('btnLocal_config').innerHTML = lang.btnLocal_config;
   // FRAME elements with images
   var frameDoc = FRAME.contentDocument ? frame.contentDocument : frame.contentWindow.document;
-  if (FRAME.src == 'https://nico-eggert.github.io/html/connect.html') {
+  if (FRAME.src == 'http://127.0.0.1:8887/html/connect.html') {
     frameDoc.getElementById('device_txt').innerHTML = lang.device_txt;
     frameDoc.getElementById('btnSerialConnect').innerHTML = '<image style="width: 8%; height: 8%; float:left;" src="../images/plug.png">' + lang.btnSerialConnect + '</image>';
     frameDoc.getElementById('btnDeviceConnect').innerHTML = '<image style="width: 8%; height: 8%; float:left;" src="../images/plug.png">' + lang.btnDeviceConnect + '</image>';
   }
-  if (document.getElementById('frame').src == 'https://nico-eggert.github.io/html/mode.html') {
+  if (document.getElementById('frame').src == 'http://127.0.0.1:8887/html/mode.html') {
     frameDoc.getElementById('mode_txt').innerHTML = lang.mode_txt;
     // Colors 1
     frameDoc.getElementById('color_dropdown_btn1').innerHTML = lang.color_dropdown_btn;

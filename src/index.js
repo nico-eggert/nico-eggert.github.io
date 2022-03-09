@@ -18,6 +18,7 @@ const BTNMODE_1_CH2 = document.getElementById('btnMode_1_CH2');
 const BTNMODE_2_CH2 = document.getElementById('btnMode_2_CH2');
 const BTNSAVE_2 = document.getElementById('btnSave_2');
 const BTNLOAD_2 = document.getElementById('btnLoad_2');
+const BTNLOCALCONGIG = document.getElementById('btnLocal_config');
 const FRAME = document.getElementById('frame');
 // localStorage items correspond to the data in the RAM
 localStorage.setItem('usb_connected','false');
@@ -121,10 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
   BTNMODE_2_CH2.addEventListener('click', loadMode2page_CH2);
   BTNSAVE_2.addEventListener('click', saveSettings_CH2);
   BTNLOAD_2.addEventListener('click', loadLoadpage_CH2);
+  BTNLOCALCONGIG.addEventListener('click', toggleLocalCongigSidemenu);
 })
-
-
-
 
 
 var checkConnectionInterval; // interval return variable, can be cleared to reset the interval call of connection check
@@ -206,6 +205,23 @@ function showChannel2Sidemenu() {
     $("#load_div_2").hide();
   }
 }
+
+/**
+ * Hides or shows localconfig sidemenu buttons
+ */
+function toggleLocalCongigSidemenu(){
+    var elem = document.getElementById('local_save_div');
+    var displaystyle = elem.style.display;
+    if(displaystyle == "none"){
+      $('#local_save_div').show();
+      $('#local_load_div').show();
+    }
+    else{
+      $('#local_save_div').hide();
+      $('#local_load_div').hide();
+    }
+}
+
 /**
  * Hides the channel 2 sidemenu buttons
  */
@@ -235,6 +251,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
  * Writes the local storage variables to RAM.
  */
 function handleFileSelect(evt) {
+  reset_sidemenu_bgcolor();
   var files = evt.target.files; // FileList object
 
   // files is a FileList of File objects.
@@ -617,6 +634,7 @@ function handleFileSelect(evt) {
               showChannel1Sidemenu();
               showChannel2Sidemenu();
               setTimeout(resetLoadingvariable, 7000);
+              setTimeout(setLoadimage, 7000);
             }
           }
         }
@@ -635,6 +653,13 @@ function handleFileSelect(evt) {
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 /**
+ * Displays check image on load config data element
+ */
+function setLoadimage(){
+  document.getElementById("loadSettings_img").src = "../images/check.png";
+}
+
+/**
  * Sets 'loadingdata' local Storage variable to false.
  */
 function resetLoadingvariable() {
@@ -645,7 +670,7 @@ function resetLoadingvariable() {
  * Save settings from localstorage variables to file
  */
 function saveSettingstoFile() {
-  console.log('clicked saveSettingstoFile');
+  reset_sidemenu_bgcolor();
   var file;
   var data = [];
   data.push("Channel 1: \n");
@@ -729,9 +754,8 @@ function saveSettingstoFile() {
   var url = URL.createObjectURL(file);
   console.log(url);
   document.getElementById('btnSavesettings').href = url;
+  document.getElementById('saveSettings_img').src = "../images/check.png";
 }
-
-
 
 /**
  * Load the selected page into the frame and highlight the corresponding sidemenu for Channel 1.
@@ -996,7 +1020,6 @@ function reset_sidemenu_bgcolor() {
   document.getElementById('load_div_2').style.backgroundColor = "#424242";
 
 }
-
 /**
  * Highlights the save all button in the sidemenu for the selected channel.
  * @param {number} channel the channel number */
@@ -1016,7 +1039,6 @@ function highlight_saveall(channel) {
     }
   }
 }
-
 // service worker setup
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").then(registration => {
