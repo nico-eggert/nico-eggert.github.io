@@ -14,9 +14,7 @@
 
     <!-- bootstrap 5 -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- font awesome for icons-->
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+   
 
 </head>
 
@@ -71,15 +69,16 @@
                 <div class="col-4">
                     <p class="fs-6" id="usb_status_txt"></p>
                 </div>
-
                 <div class="col-4">
                     <p id="menu_header" class="fs-5 fw-bold" style="text-decoration: underline; font-size:x-large;"></p>
                 </div>
                 <div title="Save settings to file" class="col-3">
                 </div>
                 <div class="col-1" id="version_number">
-                    v0.11
+                    v0.12
                 </div>
+
+
             </div>
             <!-- sidebar menu-->
             <div class="row">
@@ -111,15 +110,13 @@
                         <div id="length_div" class="row"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; display: none; ">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative">
-                                <!--<i class="center fas fa-ruler-horizontal"></i>-->
                                 <image class="center-img" src="images/ruler.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
                                 <button id="btnLength" class="center btn btn-primary">Length</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <!--<i id="length_state_icon" class="center fas fa-times"></i> -->
-                                <image id="length_state_icon" class=" center-img" src="images/335mm_transparent.png">
+                                <image id="length_state_icon" class=" center-img" src="images/x.png">
                                 </image>
                             </div>
                         </div>
@@ -134,7 +131,7 @@
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="brightness_state_icon" class="center-img"
-                                    src="images/bulb_med_transparent.png"></i>
+                                    src="images/x.png"></i>
                             </div>
                         </div>
                         <!-- Mode 1 -->
@@ -147,7 +144,7 @@
                                 <button id="btnMode_1_CH1" class="center btn btn-primary">Mode 1</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode1_state_icon_ch1" class="center-img" src="images/runninglight_empty.png">
+                                <image id="mode1_state_icon_ch1" class="center-img" src="images/x.png">
                                 </image>
                             </div>
                         </div>
@@ -161,7 +158,7 @@
                                 <button id="btnMode_2_CH1" class="center btn btn-primary">Mode 2</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode2_state_icon_ch1" class="center-img" src="images/runninglight_empty.png">
+                                <image id="mode2_state_icon_ch1" class="center-img" src="images/x.png">
                                 </image>
                             </div>
                         </div>
@@ -209,7 +206,7 @@
                                 <button id="btnLength_2" class="center btn btn-primary">Length</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="length_state_icon_2" class="center-img" src="images/335mm_transparent.png">
+                                <image id="length_state_icon_2" class="center-img" src="images/x.png">
                                 </image>
                             </div>
                         </div>
@@ -224,7 +221,7 @@
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="brightness_state_icon_2" class="center-img"
-                                    src="images/bulb_med_transparent.png"></i>
+                                    src="images/x.png"></i>
                             </div>
                         </div>
                         <!-- Mode 1-->
@@ -237,10 +234,11 @@
                                 <button id="btnMode_1_CH2" class="center btn btn-primary">Mode 1</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode1_state_icon_ch2" class="center-img" src="images/runninglight_empty.png">
+                                <image id="mode1_state_icon_ch2" class="center-img" src="images/x.png">
                                 </image>
                             </div>
                         </div>
+                         <!-- Mode 2-->
                         <div id="mode2_div_CH2" class="row"
                             style="padding: 0%; margin: 0%;  border-style: solid; border-color: #424242; display: none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
@@ -250,7 +248,7 @@
                                 <button id="btnMode_2_CH2" class="center btn btn-primary">Mode 2</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
-                                <image id="mode2_state_icon_ch2" class="center-img" src="images/runninglight_empty.png">
+                                <image id="mode2_state_icon_ch2" class="center-img" src="images/x.png">
                                 </image>
                             </div>
                         </div>
@@ -289,7 +287,7 @@
                                     Configdata</button>
                             </div>
                         </div>
-                        <!-- Save Settings-->
+                        <!-- Save Local Configdata-->
                         <div id="local_save_div" class="row" title="Save settings to file"
                             style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px; display: none;">                           
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
@@ -305,7 +303,7 @@
                                 <image id="saveSettings_img" class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
-                        <!-- Load Settings-->
+                        <!-- Load Local Configdata-->
                         <div id="local_load_div" class="row" title="Load settings from file"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; border-radius: 10px; display:none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
@@ -337,7 +335,7 @@
     <footer class="bg-light">
         <div class="container">
             <div class="row">
-               
+                
 
             </div>
         </div>
