@@ -1,7 +1,4 @@
-//let port;
-//let checkserverstate;
 var pbcount = 0; //ProgressBarCounter for animation of the percentage
-//var serialconnected = false; // check if device is connected to serial port
 
 /**
  * Setup for button click event of connection buttons
@@ -13,119 +10,6 @@ if (btnSerialConnect != null) {
   btnDeviceConnect.addEventListener('click', clickConnect);
 }
 
-//check serial support
-if ("serial" in navigator) {
-  //console.log("Serial supported")
-}
-else {
-  //console.log("Serial not supported")
-}
-
-
-
-
-
-/*
-// connection button function
-async function connect() {
-  console.log('async function connect');
-
-
-
-  const filter = { usbVendorId: 0x2341 }; // arduino uno add to request port filters: [{VendorId}]
-
-  // request port  and open a connection
-  port = await navigator.serial.requestPort({ filters: [filter] });
-  // - Wait for the port to open
-  await port.open({
-    baudRate: 57600, // 57600 xbee, 9600 standard
-    dataBits: 8,
-    parity: "none",
-    stopBits: 1,
-    flowControl: "none"
-  }).then(toggle_serialconstate());
-}
-*/
-/*
-function toggle_serialconstate() {
-  if (serialconnected == true) {
-    serialconnected = false;
-  }
-  else {
-    serialconnected = true;
-  }
-}
-*/
-
-/*
-async function readSerial() {
-  // TextDecoder 
-  //const textDecoder = new TextDecoderStream();
-  //const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-  //const reader = textDecoder.readable.getReader();
-
-
-  // Listen to data coming from the serial device.
-  while (port.readable) {
-    const reader = port.readable.getReader();
-
-    try {
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-          // Allow the serial port to be closed later.
-          reader.releaseLock();
-          break;
-        }
-        //console.log("pre selection: ",value);
-        if (value[0] > 47 & value[0] < 65) { //ASCII 47 = "/", ab ASCII 48 "0" , ...
-
-          //console.log(value[0]);
-          document.getElementById("sample").innerHTML = String.fromCharCode(value[0]); // ASCII to char conversion to html element
-        }
-        if (value[0] > 64) {
-          // remove return character (ASCII 13, or '\r') and a newline character (ASCII 10, or '\n')
-          //rsp_msg=remove2ItemAll(value,"13"); 
-
-          let str = new TextDecoder().decode(value);
-          document.getElementById("rec_msg").innerHTML = str;
-        }
-      }
-    } catch (error) {
-      // TODO: Handle non-fatal read error.
-    }
-  }
-}
-
-/**
- * Remove all entries in Array
- */
-/*
-function remove2ItemAll(arr, value) {
-  var i = 0;
-  while (i < arr.length) {
-    if (arr[i] === value) {
-      arr.splice(i, 2);
-    } else {
-      ++i;
-    }
-  }
-  return arr;
-}
-
-
-async function writeSerial() {
-  const writer = port.writable.getWriter();
-  var data = document.getElementById('send_msg_input').value;
-
-  var enc = new TextEncoder();
-  data = enc.encode(data);
-
-  await writer.write(data);
-
-  // Allow the serial port to be closed later
-  writer.releaseLock();
-}
 
 /**
  * Start connection process -> Establish serial connection to USB device.
@@ -157,15 +41,6 @@ async function clickConnect() {
   console.log('check connectionstate before animation: ', connectionstate);
   connectionstate.then(animateProgressbar());
 }
-/*
-async function clickReadserial() {
-  readSerial();
-}
-
-async function clickSendmsg() {
-  writeSerial();
-}
-*/
 /**
  * Animation function for the progress bar
  * Fills the bar and changes the shown percentage and a text to display the current connection step
@@ -177,7 +52,7 @@ function animateProgressbar() {
     pbcount = pbcount + 1;
     $(".progress-bar").css("width", pbcount + "%").text(pbcount + "%");
   }
-  if (pbcount == 25) {
+  if (pbcount == 20) {
     //TODO: Add function call usb-connection
     if (localStorage.getItem('selected_language') == 'en') {
       $("#txt_progressbarstep").text("Connection to USB-Dongle successful");
@@ -186,7 +61,7 @@ function animateProgressbar() {
       $("#txt_progressbarstep").text("Verbindung USB-Dongle erfolgreich");
     }
   }
-  if (pbcount == 50) {
+  if (pbcount == 40) {
     //TODO: Add function call search for and connect to SF-Flash device
     if (localStorage.getItem('selected_language') == 'en') {
       $("#txt_progressbarstep").text("Connection to SF-Flash successful");
@@ -195,9 +70,11 @@ function animateProgressbar() {
       $("#txt_progressbarstep").text("SF-Flash Verbindung erfolgreich");
     }
   }
-  if (pbcount == 75) {
+  if (pbcount == 60) {
     parent.addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}');
     parent.addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}');
+    parent.addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}');
+    parent.addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}');
     if (localStorage.getItem('selected_language') == 'en') {
       $("#txt_progressbarstep").text("Get data from SF-Flash");
     }
@@ -205,8 +82,8 @@ function animateProgressbar() {
       $("#txt_progressbarstep").text("Anfragen der SF-Flash Daten");
     }
   }
-  if (pbcount == 85) {
-    setTimeout(function () { parent.getNextDataFromQueue() }, 100);
+  if (pbcount == 80) {
+    setTimeout(function () { parent.getNextDataFromQueue() }, 200);
     if (localStorage.getItem('selected_language') == 'en') {
       $("#txt_progressbarstep").text("Reading data from SF-Flash");
     }

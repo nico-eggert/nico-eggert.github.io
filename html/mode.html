@@ -50,24 +50,23 @@
                 </label>
             </div>
             <div class="col" style="width: 19%; visibility: hidden;" id="btn_green_col">
-                <button id="btn_green" type="button" class="btn btn-outline-primary" title="Set LEDs to green standing" data-bs-toggle="button" autocomplete="off"> 
+                <button id="btn_green" type="button" class="custom-button-general" title="Set LEDs to green standing" data-bs-toggle="button" autocomplete="off"> 
                     <image style="max-width: 100%;" src="../images/greenstripe.png"></image>
                 </button>
             </div>
             <div class="col" style="width: 19%; visibility: hidden;" id="btn_red_col">
-                <button id="btn_red" type="button" class="btn btn-outline-primary" title="Set LEDs to red standing" data-bs-toggle="button" autocomplete="off">
+                <button id="btn_red" type="button" class="custom-button-general" title="Set LEDs to red standing" data-bs-toggle="button" autocomplete="off">
                     <image style="max-width: 100%;" src="../images/redstripe.png"></image>
                 </button>
             </div>
             <div class="col" style="width: 19%; visibility: hidden;" id="btn_runninglight_col">
-                <button id="btn_runninglight" type="button" class="btn btn-outline-primary"
-                    title="Set LEDs to runninglight red/white">
-                    <image id="img_btn_runninglight" style="max-width: 100%;" src="../images/runninglight_1.png" data-bs-toggle="button" autocomplete="off">
+                <button id="btn_runninglight" type="button" class="custom-button-general" title="Set LEDs to runninglight red/white" data-bs-toggle="button" autocomplete="off">
+                    <image id="img_btn_runninglight" style="max-width: 100%;" src="../images/runninglight_1.png" >
                     </image>
                 </button>
             </div>
             <div class="col" style="width: 19%">
-                <button id="btn_save" type="button" class="btn btn-outline-danger active" data-bs-toggle="button"
+                <button id="btn_save" type="button" class="custom-button-save active" data-bs-toggle="button"
                     style="visibility: hidden;" title="Save setting to ROM.">
                     <image style="max-width: 100%; " src="../images/save.png"></image>
                 </button>
@@ -106,7 +105,7 @@
                 style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
                 <div class="btn-group">
-                    <button id="color_dropdown_btn1" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    <button id="color_dropdown_btn1" class="custom-button-general dropdown-toggle" data-bs-toggle="dropdown"
                         href="#" style="width: 155px;">Color
                         </span>
                     </button>
@@ -123,12 +122,13 @@
                 </div>
                 <input type="hidden" id="selVal">
             </div>
-
+            <div style="width: 2%">
+            </div>
             <div id="Marker_1_Position_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_1_shift_pos_left" class="btn btn-primary">
+                <button id="marker_1_shift_pos_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
-                </button>
+                </button> <!-- btn btn-primary -->
             </div>
             <div id="Marker_1_Position"
                 style="width: 17%; display: flex; justify-content: center; align-items: center; visibility: hidden;" title="Position in xxxx (mm)">
@@ -137,13 +137,13 @@
             </div>
             <div id="Marker_1_Position_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_1_shift_pos_right" class=" btn btn-primary">
+                <button id="marker_1_shift_pos_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
             <div id="Marker_1_Width_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden; ">
-                <button id="marker_1_shift_width_left" class="btn btn-primary">
+                <button id="marker_1_shift_width_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></images>
                 </button>
             </div>
@@ -154,11 +154,11 @@
             </div>
             <div id="Marker_1_Width_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden; position: relative;">
-                <button id="marker_1_shift_width_right" class="btn btn-primary">
+                <button id="marker_1_shift_width_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
-            <div style="width: 4%">
+            <div style="width: 2%">
             </div>
         </div>
         <div><br></div>
@@ -173,7 +173,7 @@
             <div id="Marker_2_Color"
                 style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
                 <div class="btn-group">
-                    <button id="color_dropdown_btn2" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    <button id="color_dropdown_btn2" class="custom-button-general dropdown-toggle" data-bs-toggle="dropdown"
                         href="#" style="width: 155px;">Color
                         </span>
                     </button>
@@ -190,10 +190,11 @@
                 </div>
                 <input type="hidden" id="selVal">
             </div>
-
+            <div style="width: 2%">
+            </div>
             <div id="Marker_2_Position_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_2_shift_pos_left" class="btn btn-primary">
+                <button id="marker_2_shift_pos_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></images>
                 </button>
             </div>
@@ -204,13 +205,13 @@
             </div>
             <div id="Marker_2_Position_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_2_shift_pos_right" class=" btn btn-primary">
+                <button id="marker_2_shift_pos_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
             <div id="Marker_2_Width_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_2_shift_width_left" class="btn btn-primary">
+                <button id="marker_2_shift_width_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -221,11 +222,11 @@
             </div>
             <div id="Marker_2_Width_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_2_shift_width_right" class="btn btn-primary">
+                <button id="marker_2_shift_width_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
-            <div style="width: 4%">
+            <div style="width: 2%">
             </div>
         </div>
 
@@ -242,7 +243,7 @@
                 style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
                 <div class="btn-group">
-                    <button id="color_dropdown_btn3" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    <button id="color_dropdown_btn3" class="custom-button-general dropdown-toggle" data-bs-toggle="dropdown"
                         href="#" style="width: 155px;">Color
                         </span>
                     </button>
@@ -259,10 +260,11 @@
                 </div>
                 <input type="hidden" id="selVal">
             </div>
-
+            <div style="width: 2%">
+            </div>
             <div id="Marker_3_Position_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_3_shift_pos_left" class="btn btn-primary">
+                <button id="marker_3_shift_pos_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -273,13 +275,13 @@
             </div>
             <div id="Marker_3_Position_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_3_shift_pos_right" class=" btn btn-primary">
+                <button id="marker_3_shift_pos_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
             <div id="Marker_3_Width_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_3_shift_width_left" class="btn btn-primary">
+                <button id="marker_3_shift_width_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -290,11 +292,11 @@
             </div>
             <div id="Marker_3_Width_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_3_shift_width_right" class="btn btn-primary">
+                <button id="marker_3_shift_width_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
-            <div style="width: 4%">
+            <div style="width: 2%">
             </div>
         </div>
         <div><br></div>
@@ -310,7 +312,7 @@
                 style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
                 <div class="btn-group">
-                    <button id="color_dropdown_btn4" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    <button id="color_dropdown_btn4" class="custom-button-general dropdown-toggle" data-bs-toggle="dropdown"
                         href="#" style="width: 155px;">Color
                         </span>
                     </button>
@@ -327,10 +329,11 @@
                 </div>
                 <input type="hidden" id="selVal">
             </div>
-
+            <div style="width: 2%">
+            </div>
             <div id="Marker_4_Position_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_4_shift_pos_left" class="btn btn-primary">
+                <button id="marker_4_shift_pos_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -341,13 +344,13 @@
             </div>
             <div id="Marker_4_Position_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_4_shift_pos_right" class=" btn btn-primary">
+                <button id="marker_4_shift_pos_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
             <div id="Marker_4_Width_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_4_shift_width_left" class="btn btn-primary">
+                <button id="marker_4_shift_width_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -358,11 +361,11 @@
             </div>
             <div id="Marker_4_Width_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_4_shift_width_right" class="btn btn-primary">
+                <button id="marker_4_shift_width_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
-            <div style="width: 4%">
+            <div style="width: 2%">
             </div>
         </div>
         <div><br></div>
@@ -378,7 +381,7 @@
                 style="width: 11%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
 
                 <div class="btn-group">
-                    <button id="color_dropdown_btn5" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    <button id="color_dropdown_btn5" class="custom-button-general dropdown-toggle" data-bs-toggle="dropdown"
                         href="#" style="width: 155px;">Color
                         </span>
                     </button>
@@ -395,10 +398,11 @@
                 </div>
                 <input type="hidden" id="selVal">
             </div>
-
+            <div style="width: 2%">
+            </div>
             <div id="Marker_5_Position_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_5_shift_pos_left" class="btn btn-primary">
+                <button id="marker_5_shift_pos_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -409,13 +413,13 @@
             </div>
             <div id="Marker_5_Position_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_5_shift_pos_right" class=" btn btn-primary">
+                <button id="marker_5_shift_pos_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
             <div id="Marker_5_Width_Left"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_5_shift_width_left" class="btn btn-primary">
+                <button id="marker_5_shift_width_left" class="custom-button-general">
                     <image class="arrows" src="../images/arrowleft.png"></image>
                 </button>
             </div>
@@ -426,14 +430,13 @@
             </div>
             <div id="Marker_5_Width_Right"
                 style="width: 7%; display: flex; justify-content: center; align-items: center; visibility: hidden;">
-                <button id="marker_5_shift_width_right" class="btn btn-primary">
+                <button id="marker_5_shift_width_right" class="custom-button-general">
                     <image class="arrows" src="../images/arrowright.png"></image>
                 </button>
             </div>
-            <div style="width: 4%">
+            <div style="width: 2%">
             </div>
         </div>
-
     </div>
 
 
@@ -446,9 +449,5 @@
 
     <script src="../js/connect.js"></script>
     <script src="../js/mode.js"></script>
-    <script>
-        parent.updateLanguage();
-    </script>
-
 
 </body>

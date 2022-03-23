@@ -21,7 +21,7 @@ const BTNLOAD_2 = document.getElementById('btnLoad_2');
 const BTNLOCALCONGIG = document.getElementById('btnLocal_config');
 const FRAME = document.getElementById('frame');
 // localStorage items correspond to the data in the RAM
-localStorage.setItem('usb_connected','false');
+localStorage.setItem('usb_connected', 'false');
 localStorage.setItem('selected_language', '');
 localStorage.setItem('loadingdata', 'false');
 localStorage.setItem('deviceaddress', '');
@@ -209,17 +209,17 @@ function showChannel2Sidemenu() {
 /**
  * Hides or shows localconfig sidemenu buttons
  */
-function toggleLocalCongigSidemenu(){
-    var elem = document.getElementById('local_save_div');
-    var displaystyle = elem.style.display;
-    if(displaystyle == "none"){
-      $('#local_save_div').show();
-      $('#local_load_div').show();
-    }
-    else{
-      $('#local_save_div').hide();
-      $('#local_load_div').hide();
-    }
+function toggleLocalCongigSidemenu() {
+  var elem = document.getElementById('local_save_div');
+  var displaystyle = elem.style.display;
+  if (displaystyle == "none") {
+    $('#local_save_div').show();
+    $('#local_load_div').show();
+  }
+  else {
+    $('#local_save_div').hide();
+    $('#local_load_div').hide();
+  }
 }
 
 /**
@@ -655,7 +655,7 @@ document.getElementById('files').addEventListener('change', handleFileSelect, fa
 /**
  * Displays check image on load config data element
  */
-function setLoadimage(){
+function setLoadimage() {
   document.getElementById("loadSettings_img").src = "../images/check.png";
 }
 
@@ -746,15 +746,19 @@ function saveSettingstoFile() {
   var properties = { type: 'text/plain' }; // Specify the file's mime-type.
   try {
     // Specify the filename using the File constructor, but ...
+    console.log('file');
     file = new File(data, "sf-flash-config.txt", properties);
   } catch (e) {
     // ... fall back to the Blob constructor if that isn't supported. Note: File name can not be specified!
+    console.log('blob');
     file = new Blob(data, properties);
   }
   var url = URL.createObjectURL(file);
   console.log(url);
   document.getElementById('btnSavesettings').href = url;
   document.getElementById('saveSettings_img').src = "../images/check.png";
+  BTNSAVESETTINGS.removeAttribute('href');
+
 }
 
 /**
@@ -764,38 +768,38 @@ function loadConnectpage() {
   FRAME.src = "/html/connect.html";
   reset_sidemenu_bgcolor();
   document.getElementById('connect_div').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Connection";
+  updateLanguage();
   localStorage.setItem('selected_channel', '1');
 }
 function loadLengthpage_CH1() {
   FRAME.src = "/html/length.html";
   reset_sidemenu_bgcolor();
   document.getElementById('length_div').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Length Settings";
+  updateLanguage();
   localStorage.setItem('selected_channel', '1');
 }
 function loadBrightnesspage_CH1() {
   FRAME.src = "/html/brightness.html";
   reset_sidemenu_bgcolor();
   document.getElementById('brightness_div').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Brightness Settings";
+  updateLanguage();
   localStorage.setItem('selected_channel', '1');
 }
 function loadMode1page_CH1() {
-  FRAME.src = "/html/mode.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode1_div_CH1').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Mode Settings";
   localStorage.setItem('selected_channel', '1');
   localStorage.setItem('selected_mode', '1');
+  reset_sidemenu_bgcolor();
+  document.getElementById('mode1_div_CH1').style.backgroundColor = "darkgray";
+  FRAME.src = "/html/mode.html";
+  updateLanguage();
 }
 function loadMode2page_CH1() {
-  FRAME.src = "/html/mode.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode2_div_CH1').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Mode Settings";
   localStorage.setItem('selected_channel', '1');
   localStorage.setItem('selected_mode', '2');
+  reset_sidemenu_bgcolor();
+  document.getElementById('mode2_div_CH1').style.backgroundColor = "darkgray";
+  FRAME.src = "/html/mode.html";
+  updateLanguage();
 }
 // Sends msg to save all local storage variables to rom
 // then read the ROM settings to update the sidemenu icons
@@ -805,9 +809,9 @@ function saveSettings_CH1() {
   document.getElementById('save_div').style.backgroundColor = "darkgray";
   localStorage.setItem('selected_channel', '1');
 
-  if (BTNSAVE.classList.contains('btn-danger')) {
-    BTNSAVE.classList.remove("btn-danger");
-    BTNSAVE.classList.add("btn-secondary");
+  if (BTNSAVE.classList.contains('custom-button-save')) {
+    BTNSAVE.classList.remove("custom-button-save");
+    BTNSAVE.classList.add("custom-button-default");
     console.log('save all settings');
   }
   if (BTNSAVE.classList.contains('active')) {
@@ -817,13 +821,14 @@ function saveSettings_CH1() {
   //TODO: Nach testphase einfügen
 
   addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
-  console.log('send read all rom in 2s ....');
-  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 2000); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
-  console.log('read FIFO after 2,5 s ....');
-  setTimeout(getNextDataFromQueue, 2500); //  
+  console.log('send read all rom in 3,5s ....');
+  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
+  console.log('read FIFO after 4 s ....');
+  setTimeout(getNextDataFromQueue, 4000); //  
 
 
   //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
+  /*
   if (localStorage.getItem('selected_length') == '335 mm') {
     document.getElementById('length_state_icon').src = "../images/335mm_transparent.png";
   }
@@ -870,6 +875,7 @@ function saveSettings_CH1() {
   if (localStorage.getItem('selected_mode2_CH1') == 'marker2') {
     document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
   }
+  */
 }
 
 function loadLoadpage_CH1() {
@@ -889,31 +895,31 @@ function loadLengthpage_CH2() {
   FRAME.src = "/html/length.html";
   reset_sidemenu_bgcolor();
   document.getElementById('length_div_2').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Length Settings";
+  updateLanguage();
   localStorage.setItem('selected_channel', '2');
 }
 function loadBrightnesspage_CH2() {
   FRAME.src = "/html/brightness.html";
   reset_sidemenu_bgcolor();
   document.getElementById('brightness_div_2').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Brightness Settings";
+  updateLanguage();
   localStorage.setItem('selected_channel', '2');
 }
 function loadMode1page_CH2() {
-  FRAME.src = "/html/mode.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode1_div_CH2').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Mode Settings";
   localStorage.setItem('selected_channel', '2');
   localStorage.setItem('selected_mode', '1');
+  reset_sidemenu_bgcolor();
+  document.getElementById('mode1_div_CH2').style.backgroundColor = "darkgray";
+  FRAME.src = "/html/mode.html";
+  updateLanguage();
 }
 function loadMode2page_CH2() {
-  FRAME.src = "/html/mode.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode2_div_CH2').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Mode Settings";
   localStorage.setItem('selected_channel', '2');
   localStorage.setItem('selected_mode', '2');
+  reset_sidemenu_bgcolor();
+  document.getElementById('mode2_div_CH2').style.backgroundColor = "darkgray";
+  FRAME.src = "/html/mode.html";
+  updateLanguage();
 }
 function saveSettings_CH2() {
   FRAME.src = "";
@@ -922,9 +928,9 @@ function saveSettings_CH2() {
   document.getElementById('menu_header').textContent = "Save Settings";
   localStorage.setItem('selected_channel', '2');
 
-  if (BTNSAVE_2.classList.contains('btn-danger')) {
-    BTNSAVE_2.classList.remove("btn-danger");
-    BTNSAVE_2.classList.add("btn-secondary");
+  if (BTNSAVE_2.classList.contains('custom-button-save')) {
+    BTNSAVE_2.classList.remove("custom-button-save");
+    BTNSAVE_2.classList.add("custom-button-default");
     console.log('save all settings');
   }
   if (BTNSAVE_2.classList.contains('active')) {
@@ -933,14 +939,15 @@ function saveSettings_CH2() {
 
   //TODO: Nach testphase einfügen
 
-  addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
+  addtoSendQueue('{"memory":"rom","flash#2":{"all":"ram"}}'); //write all RAM data to ROM
   console.log('send read all rom in 3,5s ....');
-  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 70x50 ms = 3500 ms
+  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 70x50 ms = 3500 ms
   console.log('read FIFO after 4 s ....');
   setTimeout(getNextDataFromQueue, 4000); //  
 
 
   //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
+  /*
   if (localStorage.getItem('selected_length_2') == '335 mm') {
     document.getElementById('length_state_icon_2').src = "../images/335mm_transparent.png";
   }
@@ -988,17 +995,17 @@ function saveSettings_CH2() {
   if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
     document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
   }
+  */
 }
 function loadLoadpage_CH2() {
   reset_sidemenu_bgcolor();
-  document.getElementById('load_div').style.backgroundColor = "darkgray";
+  document.getElementById('load_div_2').style.backgroundColor = "darkgray";
   document.getElementById('menu_header').textContent = "Load Settings";
   localStorage.setItem('selected_channel', '2');
   setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}') }, 50);
   setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}') }, 200);
   //nur für test
   var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
-
 }
 /**
  * Reset the backgroundcolor of the side menu to the standard color
@@ -1025,16 +1032,16 @@ function reset_sidemenu_bgcolor() {
  * @param {number} channel the channel number */
 function highlight_saveall(channel) {
   if (channel == '1') {
-    if (BTNSAVE.classList.contains('btn-secondary')) {
-      BTNSAVE.classList.remove("btn-secondary");
-      BTNSAVE.classList.add("btn-danger");
+    if (BTNSAVE.classList.contains('custom-button-default')) {
+      BTNSAVE.classList.remove("custom-button-default");
+      BTNSAVE.classList.add("custom-button-save");
       BTNSAVE.classList.add("active");
     }
   }
   if (channel == '2') {
-    if (BTNSAVE_2.classList.contains('btn-secondary')) {
-      BTNSAVE_2.classList.remove("btn-secondary");
-      BTNSAVE_2.classList.add("btn-danger");
+    if (BTNSAVE_2.classList.contains('custom-button-default')) {
+      BTNSAVE_2.classList.remove("custom-button-default");
+      BTNSAVE_2.classList.add("custom-button-save");
       BTNSAVE_2.classList.add("active");
     }
   }
@@ -1058,7 +1065,7 @@ if ("serviceWorker" in navigator) {
 async function connectionstateUSB() {
   navigator.serial.addEventListener('connect', (e) => {
     // Connect to `e.target` or add it to a list of available ports.
-    localStorage.setItem('usb_connected','true');
+    localStorage.setItem('usb_connected', 'true');
     updateLanguage();
     console.log("connected to USB serial");
   });
@@ -1066,7 +1073,7 @@ async function connectionstateUSB() {
   // on disconnetion of usb device change state text, switch to connect html and delete stored device address, reset connection state icon
   navigator.serial.addEventListener('disconnect', (e) => {
     // Remove `e.target` from the list of available ports.
-    localStorage.setItem('usb_connected','false');
+    localStorage.setItem('usb_connected', 'false');
     updateLanguage();
     console.log("disconnected USB serial");
     location.reload(); // reload of page to reset serial connection on connection failure
@@ -1128,6 +1135,15 @@ async function checkconnection() {
   }
   else {// connection lost
     console.log("connection lost");
+    // reset sidemenu icons to X
+    document.getElementById('length_state_icon').src = 'images/x.png';
+    document.getElementById('brightness_state_icon').src = 'images/x.png';
+    document.getElementById('mode1_state_icon_ch1').src = 'images/x.png';
+    document.getElementById('mode2_state_icon_ch1').src = 'images/x.png';
+    document.getElementById('length_state_icon_2').src = 'images/x.png';
+    document.getElementById('brightness_state_icon_2').src = 'images/x.png';
+    document.getElementById('mode1_state_icon_ch2').src = 'images/x.png';
+    document.getElementById('mode2_state_icon_ch2').src = 'images/x.png';
     location.reload(); // reload of page to reset serial connection on connection failure
     return state;
   }

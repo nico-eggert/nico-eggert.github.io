@@ -219,16 +219,16 @@ function highlightSaveBtns() {
         btnSAVE.classList.add('active');
     }
     if (localStorage.getItem('selected_channel') == '1') {
-        if (sidemenu_save_btn.classList.contains('btn-secondary')) {
-            sidemenu_save_btn.classList.remove("btn-secondary");
-            sidemenu_save_btn.classList.add("btn-danger");
+        if (sidemenu_save_btn.classList.contains('custom-button-default')) {
+            sidemenu_save_btn.classList.remove("custom-button-default");
+            sidemenu_save_btn.classList.add("custom-button-save");
             sidemenu_save_btn.classList.add("active");
         }
     }
     if (localStorage.getItem('selected_channel') == '2') {
-        if (sidemenu_save_btn_2.classList.contains('btn-secondary')) {
-            sidemenu_save_btn_2.classList.remove("btn-secondary");
-            sidemenu_save_btn_2.classList.add("btn-danger");
+        if (sidemenu_save_btn_2.classList.contains('custom-button-default')) {
+            sidemenu_save_btn_2.classList.remove("custom-button-default");
+            sidemenu_save_btn_2.classList.add("custom-button-save");
             sidemenu_save_btn_2.classList.add("active");
         }
     }
@@ -257,9 +257,9 @@ function clickSave() {
             length_state_icon.src = "../images/1870mm_transparent.png";
         }
         //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn.classList.contains('btn-danger')) {
-            sidemenu_save_btn.classList.remove('btn-danger');
-            sidemenu_save_btn.classList.add('btn-secondary');
+        if (sidemenu_save_btn.classList.contains('custom-button-save')) {
+            sidemenu_save_btn.classList.remove('custom-butten-save');
+            sidemenu_save_btn.classList.add('custom-button-default');
         }
         console.log('before set Timeout getROMBrightness');
         setTimeout(getROMLength("1"), 200);
@@ -286,9 +286,9 @@ function clickSave() {
             length_state_icon.src = "../images/1870mm_transparent.png";
         }
         //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn_2.classList.contains('btn-danger')) {
-            sidemenu_save_btn_2.classList.remove('btn-danger');
-            sidemenu_save_btn_2.classList.add('btn-secondary');
+        if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
+            sidemenu_save_btn_2.classList.remove('custom-button-save');
+            sidemenu_save_btn_2.classList.add('custom-button-default');
         }
         console.log('before set Timeout getROMBrightness');
         setTimeout(getROMLength("2"), 200);

@@ -14,7 +14,8 @@
 
     <!-- bootstrap 5 -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-   
+    
+    
 
 </head>
 
@@ -28,22 +29,6 @@
                     <img src="/images/Logo/vetter_solutions_129.png" width="30" height="30" alt="logo">
                     <span id="title_txt"></span>
                 </a>
-                <!--
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown">
-                            <img src="/images/Flaggen/de.png" width="36" height="30" value="inital">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark"  role="menu">
-                            <li><a class="dropdown-item" href="" value="de" id="select_de"><img id="de_flag" src="/images/Flaggen/de.png" width="30"
-                                        height="25"></a></li>
-                            <li><a class="dropdown-item" href="" value="en" id="select_en"><img id="en_flag" src="/images/Flaggen/gb.png" width="30"
-                                        height="25"></a></li>
-                        </ul>
-                    </li>
-                </ul>
-                -->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
@@ -66,8 +51,10 @@
     <main class="main text-center flex-wrapper">
         <div class="container-fluid" style="width: 100%;">
             <div class="row page-title">
-                <div class="col-4">
+                <div class="col-3">
                     <p class="fs-6" id="usb_status_txt"></p>
+                </div>
+                <div class="col-1">
                 </div>
                 <div class="col-4">
                     <p id="menu_header" class="fs-5 fw-bold" style="text-decoration: underline; font-size:x-large;"></p>
@@ -75,7 +62,7 @@
                 <div title="Save settings to file" class="col-3">
                 </div>
                 <div class="col-1" id="version_number">
-                    v0.12
+                    v0.14
                 </div>
 
 
@@ -92,18 +79,18 @@
                                 <image class=" center-img" src="images/plug.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnConnect" class="center btn btn-primary"></button>
+                                <button id="btnConnect" class="center custom-button-general"></button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position:relative">
                                 <!--<i id="connect_state_icon" class="center fas fa-times"></i>-->
                                 <image id="connect_state_icon" class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
-                        <!-- Channel 1-->
+                        <!-- LED Band / Channel 1-->
                         <div id="channel_div_1" class="row "
                             style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px;">
                             <div style="width: 100%; padding:0%;  margin: 0%;">
-                                <button id="btnChannel" class="center btn btn-primary disabled">Channel 1</button>
+                                <button id="btnChannel" class="center custom-button-general disabled">Channel 1</button>
                             </div>
                         </div>
                         <!-- Length-->
@@ -113,7 +100,7 @@
                                 <image class="center-img" src="images/ruler.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnLength" class="center btn btn-primary">Length</button>
+                                <button id="btnLength" class="center custom-button-general">Length</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="length_state_icon" class=" center-img" src="images/x.png">
@@ -127,7 +114,7 @@
                                 <image class="center-img" src="images/adjust.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnBrightness" class="center btn btn-primary">Brightness</button>
+                                <button id="btnBrightness" class="center custom-button-general">Brightness</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="brightness_state_icon" class="center-img"
@@ -141,7 +128,7 @@
                                 <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnMode_1_CH1" class="center btn btn-primary">Mode 1</button>
+                                <button id="btnMode_1_CH1" class="center custom-button-general">Mode 1</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="mode1_state_icon_ch1" class="center-img" src="images/x.png">
@@ -155,7 +142,7 @@
                                 <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnMode_2_CH1" class="center btn btn-primary">Mode 2</button>
+                                <button id="btnMode_2_CH1" class="center custom-button-general">Mode 2</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="mode2_state_icon_ch1" class="center-img" src="images/x.png">
@@ -169,7 +156,7 @@
                                 <image class="center-img" src="images/save.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnSave" class="center btn btn-secondary">Save all</button>
+                                <button id="btnSave" class="center custom-button-default">Save all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image class="center-img" src="images/x.png"></image>
@@ -182,18 +169,18 @@
                                 <image class="center-img" src="images/fileupload.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnLoad" class="center btn btn-secondary"
+                                <button id="btnLoad" class="center custom-button-default"
                                     title="Read ROM and RAM data of flash">Read all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
-                        <!-- Channel 2-->
+                        <!--LED Band 2 / Channel 2-->
                         <div id="connect_div_2" class="row "
                             style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px;">
                             <div style="width: 100%; padding:0%;  margin: 0%;">
-                                <button id="btnChannel_2" class="center btn btn-primary disabled">Channel 2</button>
+                                <button id="btnChannel_2" class="center custom-button-general disabled">Channel 2</button>
                             </div>
                         </div>
                         <!-- Length-->
@@ -203,7 +190,7 @@
                                 <image class="center-img" src="images/ruler.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnLength_2" class="center btn btn-primary">Length</button>
+                                <button id="btnLength_2" class="center custom-button-general">Length</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="length_state_icon_2" class="center-img" src="images/x.png">
@@ -217,7 +204,7 @@
                                 <image class="center-img" src="images/adjust.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnBrightness_2" class="center btn btn-primary">Brightness</button>
+                                <button id="btnBrightness_2" class="center custom-button-general">Brightness</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="brightness_state_icon_2" class="center-img"
@@ -231,7 +218,7 @@
                                 <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnMode_1_CH2" class="center btn btn-primary">Mode 1</button>
+                                <button id="btnMode_1_CH2" class="center custom-button-general">Mode 1</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="mode1_state_icon_ch2" class="center-img" src="images/x.png">
@@ -245,7 +232,7 @@
                                 <image class="center-img" src="images/toolbox.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnMode_2_CH2" class="center btn btn-primary">Mode 2</button>
+                                <button id="btnMode_2_CH2" class="center custom-button-general">Mode 2</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image id="mode2_state_icon_ch2" class="center-img" src="images/x.png">
@@ -259,7 +246,7 @@
                                 <image class="center-img" src="images/save.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnSave_2" class="center btn btn-secondary">Save all</button>
+                                <button id="btnSave_2" class="center custom-button-default">Save all</button> <!-- center btn btn-secondary  -->
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image class="center-img" src="images/x.png"></image>
@@ -272,29 +259,29 @@
                                 <image class="center-img" src="images/fileupload.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button id="btnLoad_2" class="center btn btn-secondary"
+                                <button id="btnLoad_2" class="center custom-button-default"
                                     title="Read ROM and RAM data of flash">Read all</button>
                             </div>
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
-                        <!-- Local Configdata -->
+                        <!-- Local Configdata-->
                         <div id="local_config_div" class="row "
                             style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px;">
                             <div style="width: 100%; padding:0%;  margin: 0%;">
-                                <button id="btnLocal_config" class="center btn btn-primary disabled">Local
+                                <button id="btnLocal_config" class="center custom-button-general disabled">Local
                                     Configdata</button>
                             </div>
                         </div>
-                        <!-- Save Local Configdata -->
+                        <!-- Save Local Configdata-->
                         <div id="local_save_div" class="row" title="Save settings to file"
                             style="padding: 0%; margin: 0%; border-style: none;  border-color: #424242; background-color: #424242; border-radius: 0px; display: none;">                           
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image class="center-img" src="images/save.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <button class="custom-button" style="width: 100%;">
+                                <button class="custom-button-default" style="width: 100%;">
                                     <a id="btnSavesettings" style="color: white;" target="_blank"
                                         download="file.txt"></a>
                                 </button>
@@ -303,14 +290,14 @@
                                 <image id="saveSettings_img" class="center-img" src="images/x.png"></image>
                             </div>
                         </div>
-                        <!-- Load Local Configdata -->
+                        <!-- Load Local Configdata-->
                         <div id="local_load_div" class="row" title="Load settings from file"
                             style="padding: 0%; margin: 0%; border-style: solid; border-color: #424242; border-radius: 10px; display:none;">
                             <div style="width: 10%; padding:0%;  margin: 0%; position: relative;">
                                 <image class="center-img" src="images/fileupload.png"></image>
                             </div>
                             <div style="width: 80%; padding:0%;  margin: 0%;">
-                                <label id="btnLoadsettings" for="files" class="custom-button"
+                                <label id="btnLoadsettings" for="files" class="custom-button-default"
                                     style="width: 100%;">Einstellungen Laden</label>
                                 <input type="file" id="files" style="display: none;" />
                             </div>
@@ -323,7 +310,6 @@
 
 
                 <div class="container-fluid" style="width: 75%;  padding: 0%; ">
-                    <!-- class="col-9 side-menu flex-wrapper" style="background-color: darkgray; width: 100%;" -->
                     <iframe class="flex-wrapper" style="width: 100%; " id="frame" src="/html/connect.html"
                         frameborder="0" scrolling="no" allowfullscreen></iframe>
 
@@ -349,7 +335,6 @@
     <script src="src/index.js"></script>
     <script src="js/XBee3.js"></script>
     <script src="js/language.js"></script>
-
 
 
 </body>

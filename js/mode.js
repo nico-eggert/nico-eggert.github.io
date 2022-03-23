@@ -2,8 +2,6 @@ const btn_green = document.getElementById('btn_green');
 const btn_red = document.getElementById('btn_red');
 const btn_runninglight = document.getElementById('btn_runninglight');
 const btnSAVE = document.getElementById('btn_save');
-
-
 const marker_1_width_input = document.getElementById('marker_1_width_input');
 const marker_1_position_input = document.getElementById('marker_1_pos_input');
 
@@ -22,8 +20,8 @@ var col_red = document.getElementById('btn_red_col');
 var col_runninglight = document.getElementById('btn_runninglight_col');
 
 var marker = document.getElementById('Marker');
-var min_value = 0; // min value of starting position or width for markers
-var max_value = 1870; // min value of starting position or width for markers
+var min_value_marker_1 = 0; // min value of starting position or width for markers
+var max_value_marker_1 = Number(localStorage.getItem('selected_length').replace(' mm', ''));
 //marker 1
 var markerrow1 = document.getElementById('Marker_1_Row');
 var marker_1 = document.getElementById('Marker_1');
@@ -1641,9 +1639,9 @@ function clickSave() {
             }
         }
         //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn.classList.contains('btn-danger')) {
-            sidemenu_save_btn.classList.remove('btn-danger');
-            sidemenu_save_btn.classList.add('btn-secondary');
+        if (sidemenu_save_btn.classList.contains('custom-button-save')) {
+            sidemenu_save_btn.classList.remove('custom-button-save');
+            sidemenu_save_btn.classList.add('custom-button-default');
         }
     }
     else { // Channel 2
@@ -1730,9 +1728,9 @@ function clickSave() {
             }
         }
         //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn_2.classList.contains('btn-danger')) {
-            sidemenu_save_btn_2.classList.remove('btn-danger');
-            sidemenu_save_btn_2.classList.add('btn-secondary');
+        if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
+            sidemenu_save_btn_2.classList.remove('custom-button-save');
+            sidemenu_save_btn_2.classList.add('custom-button-default');
         }
     }
 }
@@ -1743,22 +1741,22 @@ function clickSave() {
 function highlightSaveBtns() {
     btnSAVE.style.visibility = "visible";
     if (btnSAVE.classList.contains('active')) {
-        //do nothing
+        // do nothing
     } else {
         btnSAVE.classList.add('active');
     }
 
     if (localStorage.getItem('selected_channel') == '1') {
-        if (sidemenu_save_btn.classList.contains('btn-secondary')) {
-            sidemenu_save_btn.classList.remove("btn-secondary");
-            sidemenu_save_btn.classList.add("btn-danger");
+        if (sidemenu_save_btn.classList.contains('custom-button-default')) {
+            sidemenu_save_btn.classList.remove("custom-button-default");
+            sidemenu_save_btn.classList.add("custom-button-save");
             sidemenu_save_btn.classList.add("active");
         }
     }
     if (localStorage.getItem('selected_channel') == '2') {
-        if (sidemenu_save_btn_2.classList.contains('btn-secondary')) {
-            sidemenu_save_btn_2.classList.remove("btn-secondary");
-            sidemenu_save_btn_2.classList.add("btn-danger");
+        if (sidemenu_save_btn_2.classList.contains('custom-button-default')) {
+            sidemenu_save_btn_2.classList.remove("custom-button-default");
+            sidemenu_save_btn_2.classList.add("custom-button-save");
             sidemenu_save_btn_2.classList.add("active");
         }
     }
@@ -2300,7 +2298,7 @@ $("#color_dropdown_menu_5 li").click(function () {
  * Hide/Show Marker Menu elements on click
  */
 $('#Mode').change(function () {
-    
+
 
     if (this.checked) {
         col_green.style.visibility = 'visible';
@@ -2445,10 +2443,12 @@ $('#Marker').change(function () {
     var col_runninglight = document.getElementById('btn_runninglight_col');
     if (this.checked) {
         markerrow1.style.visibility = 'visible';
+        /*
         markerrow2.style.visibility = 'visible';
         markerrow3.style.visibility = 'visible';
         markerrow4.style.visibility = 'visible';
         markerrow5.style.visibility = 'visible';
+        */
         col_green.style.visibility = 'hidden';
         col_red.style.visibility = 'hidden';
         col_runninglight.style.visibility = 'hidden';
@@ -2475,6 +2475,8 @@ $('#Marker_1').change(function () {
         marker_1_width_left.style.visibility = 'visible';
         marker_1_width.style.visibility = 'visible';
         marker_1_width_right.style.visibility = 'visible';
+
+        markerrow2.style.visibility = 'visible';
     }
     else {
         //reset marker color selection
@@ -2495,21 +2497,9 @@ $('#Marker_1').change(function () {
         marker_1_width_left.style.visibility = 'hidden';
         marker_1_width.style.visibility = 'hidden';
         marker_1_width_right.style.visibility = 'hidden';
-        // show save button
-        highlightSaveBtns();
-    }
-})
-$('#Marker_2').change(function () {
-    if (this.checked) {
-        marker_2_color.style.visibility = 'visible';
-        marker_2_position_left.style.visibility = 'visible';
-        marker_2_position.style.visibility = 'visible';
-        marker_2_position_right.style.visibility = 'visible';
-        marker_2_width_left.style.visibility = 'visible';
-        marker_2_width.style.visibility = 'visible';
-        marker_2_width_right.style.visibility = 'visible';
-    }
-    else {
+
+        markerrow2.style.visibility = 'hidden';
+        document.getElementById('Marker_2').checked = false;
         //reset marker color selection
         $('#color_dropdown_menu_2 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn2');
@@ -2518,7 +2508,7 @@ $('#Marker_2').change(function () {
         // reset local storage variable
         resetMarkerColor('2');
         // Send marker color = 'off' message
-        var JSONmsg = createJSONmsg('ram', '2','color', 'off');
+        var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
         // hide menu elements
         marker_2_color.style.visibility = 'hidden';
@@ -2530,19 +2520,43 @@ $('#Marker_2').change(function () {
         marker_2_width_right.style.visibility = 'hidden';
         // show save button
         highlightSaveBtns();
+        parent.updateLanguage();
     }
 })
-$('#Marker_3').change(function () {
+$('#Marker_2').change(function () {
     if (this.checked) {
-        marker_3_color.style.visibility = 'visible';
-        marker_3_position_left.style.visibility = 'visible';
-        marker_3_position.style.visibility = 'visible';
-        marker_3_position_right.style.visibility = 'visible';
-        marker_3_width_left.style.visibility = 'visible';
-        marker_3_width.style.visibility = 'visible';
-        marker_3_width_right.style.visibility = 'visible';
+        marker_2_color.style.visibility = 'visible';
+        marker_2_position_left.style.visibility = 'visible';
+        marker_2_position.style.visibility = 'visible';
+        marker_2_position_right.style.visibility = 'visible';
+        marker_2_width_left.style.visibility = 'visible';
+        marker_2_width.style.visibility = 'visible';
+        marker_2_width_right.style.visibility = 'visible';
+
+        markerrow3.style.visibility = 'visible';
     }
     else {
+        //reset marker color selection
+        $('#color_dropdown_menu_2 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn2');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('2');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_2_color.style.visibility = 'hidden';
+        marker_2_position_left.style.visibility = 'hidden';
+        marker_2_position.style.visibility = 'hidden';
+        marker_2_position_right.style.visibility = 'hidden';
+        marker_2_width_left.style.visibility = 'hidden';
+        marker_2_width.style.visibility = 'hidden';
+        marker_2_width_right.style.visibility = 'hidden';
+
+        markerrow3.style.visibility = 'hidden';
+        document.getElementById('Marker_3').checked = false;
         //reset marker color selection
         $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn3');
@@ -2563,19 +2577,43 @@ $('#Marker_3').change(function () {
         marker_3_width_right.style.visibility = 'hidden';
         // show save button
         highlightSaveBtns();
+        parent.updateLanguage();
     }
 })
-$('#Marker_4').change(function () {
+$('#Marker_3').change(function () {
     if (this.checked) {
-        marker_4_color.style.visibility = 'visible';
-        marker_4_position_left.style.visibility = 'visible';
-        marker_4_position.style.visibility = 'visible';
-        marker_4_position_right.style.visibility = 'visible';
-        marker_4_width_left.style.visibility = 'visible';
-        marker_4_width.style.visibility = 'visible';
-        marker_4_width_right.style.visibility = 'visible';
+        marker_3_color.style.visibility = 'visible';
+        marker_3_position_left.style.visibility = 'visible';
+        marker_3_position.style.visibility = 'visible';
+        marker_3_position_right.style.visibility = 'visible';
+        marker_3_width_left.style.visibility = 'visible';
+        marker_3_width.style.visibility = 'visible';
+        marker_3_width_right.style.visibility = 'visible';
+
+        markerrow4.style.visibility = 'visible';
     }
     else {
+        //reset marker color selection
+        $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn3');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('3');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_3_color.style.visibility = 'hidden';
+        marker_3_position_left.style.visibility = 'hidden';
+        marker_3_position.style.visibility = 'hidden';
+        marker_3_position_right.style.visibility = 'hidden';
+        marker_3_width_left.style.visibility = 'hidden';
+        marker_3_width.style.visibility = 'hidden';
+        marker_3_width_right.style.visibility = 'hidden';
+
+        markerrow4.style.visibility = 'hidden';
+        document.getElementById('Marker_4').checked = false;
         //reset marker color selection
         $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn4');
@@ -2596,6 +2634,64 @@ $('#Marker_4').change(function () {
         marker_4_width_right.style.visibility = 'hidden';
         // show save button
         highlightSaveBtns();
+        parent.updateLanguage();
+    }
+})
+$('#Marker_4').change(function () {
+    if (this.checked) {
+        marker_4_color.style.visibility = 'visible';
+        marker_4_position_left.style.visibility = 'visible';
+        marker_4_position.style.visibility = 'visible';
+        marker_4_position_right.style.visibility = 'visible';
+        marker_4_width_left.style.visibility = 'visible';
+        marker_4_width.style.visibility = 'visible';
+        marker_4_width_right.style.visibility = 'visible';
+
+        markerrow5.style.visibility = 'visible';
+    }
+    else {
+        //reset marker color selection
+        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn4');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('4');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_4_color.style.visibility = 'hidden';
+        marker_4_position_left.style.visibility = 'hidden';
+        marker_4_position.style.visibility = 'hidden';
+        marker_4_position_right.style.visibility = 'hidden';
+        marker_4_width_left.style.visibility = 'hidden';
+        marker_4_width.style.visibility = 'hidden';
+        marker_4_width_right.style.visibility = 'hidden';
+
+        markerrow5.style.visibility = 'hidden';
+        document.getElementById('Marker_5').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn5');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('5');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_5_color.style.visibility = 'hidden';
+        marker_5_position_left.style.visibility = 'hidden';
+        marker_5_position.style.visibility = 'hidden';
+        marker_5_position_right.style.visibility = 'hidden';
+        marker_5_width_left.style.visibility = 'hidden';
+        marker_5_width.style.visibility = 'hidden';
+        marker_5_width_right.style.visibility = 'hidden';
+        // show save button
+        highlightSaveBtns();
+        parent.updateLanguage();
     }
 })
 $('#Marker_5').change(function () {
@@ -2629,6 +2725,7 @@ $('#Marker_5').change(function () {
         marker_5_width_right.style.visibility = 'hidden';
         // show save button
         highlightSaveBtns();
+        parent.updateLanguage();
     }
 })
 
@@ -2638,8 +2735,8 @@ $('#Marker_5').change(function () {
 $('#marker_1_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_1_pos_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < min_value_marker_1) {
+        elem.value = min_value_marker_1;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -2650,8 +2747,8 @@ $('#marker_1_shift_pos_left').click(function () {
 $('#marker_1_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_1_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -2660,11 +2757,11 @@ $('#marker_1_shift_pos_right').click(function () {
 })
 $('#marker_1_pos_input').change(function () {
     var elem = document.getElementById('marker_1_pos_input');
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < min_value_marker_1) {
+        elem.value = min_value_marker_1;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -2678,37 +2775,63 @@ $('#marker_1_pos_input').change(function () {
 $('#marker_2_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('2', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('2', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
+
 })
 $('#marker_2_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('2', 'position', String(elem.value));
-    highlightSaveBtns();
+    var min_value = 1 + Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    if (elem.value < min_value) {
+        elem.value = min_value;
+    }
+    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('2', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_2_pos_input').change(function () {
     var elem = document.getElementById('marker_2_pos_input');
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('2', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '2', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('2', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
+
 })
 
 /**
@@ -2717,37 +2840,61 @@ $('#marker_2_pos_input').change(function () {
 $('#marker_3_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('3', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('3', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_3_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('3', 'position', String(elem.value));
-    highlightSaveBtns();
+    var min_value = 1 + Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    if (elem.value < min_value) {
+        elem.value = min_value;
+    }
+    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('3', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_3_pos_input').change(function () {
     var elem = document.getElementById('marker_3_pos_input');
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('3', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '3', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('3', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 /**
@@ -2756,37 +2903,61 @@ $('#marker_3_pos_input').change(function () {
 $('#marker_4_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('4', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('4', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_4_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('4', 'position', String(elem.value));
-    highlightSaveBtns();
+    var min_value = 1 + Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    if (elem.value < min_value) {
+        elem.value = min_value;
+    }
+    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('4', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_4_pos_input').change(function () {
     var elem = document.getElementById('marker_4_pos_input');
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('4', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '4', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('4', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 /**
@@ -2795,37 +2966,61 @@ $('#marker_4_pos_input').change(function () {
 $('#marker_5_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('5', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('5', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_5_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('5', 'position', String(elem.value));
-    highlightSaveBtns();
+    var min_value = 1 + Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    if (elem.value < min_value) {
+        elem.value = min_value;
+    }
+    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('5', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_5_pos_input').change(function () {
     var elem = document.getElementById('marker_5_pos_input');
-    if (elem.value > max_value){
-        elem.value = max_value;
+    if (elem.value > max_value_marker_1) {
+        elem.value = max_value_marker_1;
     }
-    if( elem.value < min_value){
+    var min_value = 1 + Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    if (elem.value < min_value) {
         elem.value = min_value;
     }
-    var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('5', 'position', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '5', 'position', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('5', 'position', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 /**
@@ -2835,8 +3030,8 @@ $('#marker_1_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_1_width_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -2847,7 +3042,8 @@ $('#marker_1_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_1_width_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
+    var max_value = Number(max_value_marker_1) - Number(document.getElementById('marker_1_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
@@ -2857,11 +3053,12 @@ $('#marker_1_shift_width_right').click(function () {
 })
 $('#marker_1_width_input').change(function () {
     var elem = document.getElementById('marker_1_width_input');
-    if (elem.value > max_value){
+    var max_value = Number(max_value_marker_1) - Number(document.getElementById('marker_1_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -2878,38 +3075,58 @@ $('#marker_2_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_2_width_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('2', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('2', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_2_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_2_width_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_2_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('2', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('2', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_2_width_input').change(function () {
     var elem = document.getElementById('marker_2_width_input');
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_2_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('2', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '2', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('2', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 /**
@@ -2919,38 +3136,58 @@ $('#marker_3_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_3_width_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('3', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('3', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_3_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_3_width_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_3_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('3', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('3', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_3_width_input').change(function () {
     var elem = document.getElementById('marker_3_width_input');
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_3_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('3', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '3', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('3', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 /**
@@ -2960,38 +3197,58 @@ $('#marker_4_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_4_width_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('4', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('4', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_4_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_4_width_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_4_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('4', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('4', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_4_width_input').change(function () {
     var elem = document.getElementById('marker_4_width_input');
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_4_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('4', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '4', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('4', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 /**
@@ -3001,38 +3258,58 @@ $('#marker_5_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_5_width_input');
     elem.value = Number(elem.value) - 1;
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('5', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('5', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_5_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_5_width_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_5_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('5', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('5', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 $('#marker_5_width_input').change(function () {
     var elem = document.getElementById('marker_5_width_input');
-    if (elem.value > max_value){
+    var max_value = max_value_marker_1 - Number(document.getElementById('marker_5_pos_input').value);
+    if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if( elem.value < min_value){
-        elem.value = min_value;
+    if (elem.value < 0) {
+        elem.value = 0;
     }
-    var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
-    parent.addtoSendQueue(JSONmsg);
-    setLocalStorageVariable('5', 'width', String(elem.value));
-    highlightSaveBtns();
+    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+        console.log('Previous Marker values not defined!');
+        elem.value = '';
+    }
+    else {
+        var JSONmsg = createJSONmsg('ram', '5', 'width', elem.value);
+        parent.addtoSendQueue(JSONmsg);
+        setLocalStorageVariable('5', 'width', String(elem.value));
+        highlightSaveBtns();
+    }
 })
 
 
@@ -3097,12 +3374,7 @@ function createJSONmsg(zielspeicher, markernumber, subparameter, wert) {
         }
     }
     subparameter = '"' + subparameter + '"';
-    if (subparameter == 'color') {
-        var wert = '"' + wert + '"';
-    }
-    else { // add mm
-        var wert = '"' + wert + ' mm"';
-    }
+    wert = '"' + wert + '"';
     var JSONmsg = '{' + speicherbereich + ':' + zielspeicher + ',' + produkt + ':{' + parameter + ':{' + subparameter + ':' + wert + '}}}';
     return JSONmsg;
 }
@@ -3463,7 +3735,7 @@ function showMarkerSettings(markernumber) {
 function deleteAllMarkerColors() {
     $('#color_dropdown_menu_1 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
     var elem = document.getElementById('color_dropdown_btn1');
-    elem.style.background = '#0275d8'; // btn primary blue
+    elem.style.background = '#0275d8';
     elem.style.color = 'white';
     $('#color_dropdown_menu_2 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
     elem = document.getElementById('color_dropdown_btn2');
