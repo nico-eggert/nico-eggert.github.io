@@ -2005,10 +2005,10 @@ $("#color_dropdown_menu_3 li").click(function () {
     }
     var parameter;
     if (localStorage.getItem('selected_mode') == '1') {
-        parameter = '"marker1#1"';
+        parameter = '"marker1#3"';
     }
     if (localStorage.getItem('selected_mode') == '2') {
-        parameter = '"marker2#1"';
+        parameter = '"marker2#3"';
     }
     var subparameter = '"color"';
     var wert; //selected in switch case
@@ -2107,10 +2107,10 @@ $("#color_dropdown_menu_4 li").click(function () {
     }
     var parameter;
     if (localStorage.getItem('selected_mode') == '1') {
-        parameter = '"marker1#1"';
+        parameter = '"marker1#4"';
     }
     if (localStorage.getItem('selected_mode') == '2') {
-        parameter = '"marker2#1"';
+        parameter = '"marker2#4"';
     }
     var subparameter = '"color"';
     var wert; //selected in switch case
@@ -2209,10 +2209,10 @@ $("#color_dropdown_menu_5 li").click(function () {
     }
     var parameter;
     if (localStorage.getItem('selected_mode') == '1') {
-        parameter = '"marker1#1"';
+        parameter = '"marker1#5"';
     }
     if (localStorage.getItem('selected_mode') == '2') {
-        parameter = '"marker2#1"';
+        parameter = '"marker2#5"';
     }
     var subparameter = '"color"';
     var wert; //selected in switch case
@@ -2775,11 +2775,11 @@ $('#marker_1_pos_input').change(function () {
 $('#marker_2_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value = 1 + Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    var min_value =  Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+    if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2797,11 +2797,11 @@ $('#marker_2_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    var min_value =  Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+    if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2817,11 +2817,11 @@ $('#marker_2_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    var min_value =  Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+    if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2840,11 +2840,11 @@ $('#marker_2_pos_input').change(function () {
 $('#marker_3_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value = 1 + Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    var min_value =  Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+    if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2861,11 +2861,11 @@ $('#marker_3_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    var min_value =  Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+    if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2881,11 +2881,11 @@ $('#marker_3_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    var min_value =  Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+    if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2903,11 +2903,11 @@ $('#marker_3_pos_input').change(function () {
 $('#marker_4_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value = 1 + Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    var min_value =  Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+    if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2924,11 +2924,11 @@ $('#marker_4_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    var min_value =  Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+    if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2944,11 +2944,11 @@ $('#marker_4_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    var min_value =  Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+    if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2966,11 +2966,11 @@ $('#marker_4_pos_input').change(function () {
 $('#marker_5_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value = 1 + Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    var min_value =  Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+    if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -2987,11 +2987,11 @@ $('#marker_5_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    var min_value =  Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+    if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3007,11 +3007,11 @@ $('#marker_5_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value = 1 + Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    var min_value =  Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
-    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+    if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3078,7 +3078,7 @@ $('#marker_2_shift_width_left').click(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+    if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3097,7 +3097,7 @@ $('#marker_2_shift_width_right').click(function () {
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+    if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3117,7 +3117,7 @@ $('#marker_2_width_input').change(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_1_pos_input').value) == '' || Number(document.getElementById('marker_1_width_input').value == '')) {
+    if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3139,7 +3139,7 @@ $('#marker_3_shift_width_left').click(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+    if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3158,7 +3158,7 @@ $('#marker_3_shift_width_right').click(function () {
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+    if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3178,7 +3178,7 @@ $('#marker_3_width_input').change(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_2_pos_input').value) == '' || Number(document.getElementById('marker_2_width_input').value == '')) {
+    if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3200,7 +3200,7 @@ $('#marker_4_shift_width_left').click(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+    if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3219,7 +3219,7 @@ $('#marker_4_shift_width_right').click(function () {
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+    if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3239,7 +3239,7 @@ $('#marker_4_width_input').change(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_3_pos_input').value) == '' || Number(document.getElementById('marker_3_width_input').value == '')) {
+    if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3261,7 +3261,7 @@ $('#marker_5_shift_width_left').click(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+    if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3280,7 +3280,7 @@ $('#marker_5_shift_width_right').click(function () {
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+    if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
@@ -3300,7 +3300,7 @@ $('#marker_5_width_input').change(function () {
     if (elem.value < 0) {
         elem.value = 0;
     }
-    if (Number(document.getElementById('marker_4_pos_input').value) == '' || Number(document.getElementById('marker_4_width_input').value == '')) {
+    if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
         elem.value = '';
     }
