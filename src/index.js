@@ -144,7 +144,6 @@ function cyclicConnectionCheck() {
   else {
     checkConnectionInterval = setInterval(checkconnection, 2500); // send message every cycle to check connection to device
   }
-
 }
 
 /**

@@ -1553,7 +1553,6 @@ function clickModeRUNNINGLIGHT() {
     highlightSaveBtns();
     updateSelection();
 }
-
 function clickSave() {
     if (localStorage.getItem('selected_channel') == '1') { // Channel 1
         if (localStorage.getItem('selected_mode') == '1') { // Mode 1
@@ -1576,25 +1575,8 @@ function clickSave() {
                 parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"marker1"}}');
                 btnSAVE.style.visibility = "hidden";
                 mode1_state_icon_ch1.src = "../images/M_transparent.png";
-                // if marker opertion mode is selected, save marker settings to ROM
-                // color
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#1":{"color":"' + localStorage.getItem('selected_color_marker1_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#2":{"color":"' + localStorage.getItem('selected_color_marker2_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#3":{"color":"' + localStorage.getItem('selected_color_marker3_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#4":{"color":"' + localStorage.getItem('selected_color_marker4_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#5":{"color":"' + localStorage.getItem('selected_color_marker5_CH1') + '"}}}');
-                // position
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#1":{"position":"' + localStorage.getItem('selected_position_marker1_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#2":{"position":"' + localStorage.getItem('selected_position_marker2_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#3":{"position":"' + localStorage.getItem('selected_position_marker3_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#4":{"position":"' + localStorage.getItem('selected_position_marker4_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#5":{"position":"' + localStorage.getItem('selected_position_marker5_CH1') + '"}}}');
-                // width
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#1":{"width":"' + localStorage.getItem('selected_width_marker1_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#2":{"width":"' + localStorage.getItem('selected_width_marker2_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#3":{"width":"' + localStorage.getItem('selected_width_marker3_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#4":{"width":"' + localStorage.getItem('selected_width_marker4_CH1') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1#5":{"width":"' + localStorage.getItem('selected_width_marker5_CH1') + '"}}}');
+                // save ram data of markers to rom
+                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1":"ram"}}');
             }
         }
         if (localStorage.getItem('selected_mode') == '2') { // Mode 2
@@ -1617,120 +1599,69 @@ function clickSave() {
                 parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"marker2"}}');
                 btnSAVE.style.visibility = "hidden";
                 mode2_state_icon_ch1.src = "../images/M_transparent.png";
-                // if marker opertion mode is selected, save marker settings to ROM
-                //color
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#1":{"color":"' + localStorage.getItem('selected_color_marker1_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#2":{"color":"' + localStorage.getItem('selected_color_marker2_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#3":{"color":"' + localStorage.getItem('selected_color_marker3_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#4":{"color":"' + localStorage.getItem('selected_color_marker4_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#5":{"color":"' + localStorage.getItem('selected_color_marker5_CH1_mode2') + '"}}}');
-                //position
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#1":{"position":"' + localStorage.getItem('selected_position_marker1_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#2":{"position":"' + localStorage.getItem('selected_position_marker2_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#3":{"position":"' + localStorage.getItem('selected_position_marker3_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#4":{"position":"' + localStorage.getItem('selected_position_marker4_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#5":{"position":"' + localStorage.getItem('selected_position_marker5_CH1_mode2') + '"}}}');
-                //width
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#1":{"width":"' + localStorage.getItem('selected_width_marker1_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#2":{"width":"' + localStorage.getItem('selected_width_marker2_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#3":{"width":"' + localStorage.getItem('selected_width_marker3_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#4":{"width":"' + localStorage.getItem('selected_width_marker4_CH1_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2#5":{"width":"' + localStorage.getItem('selected_width_marker5_CH1_mode2') + '"}}}');
+                // save ram data of marker to rom
+                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2":"ram"}}');
+            }
+            //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+            if (sidemenu_save_btn.classList.contains('custom-button-save')) {
+                sidemenu_save_btn.classList.remove('custom-button-save');
+                sidemenu_save_btn.classList.add('custom-button-default');
             }
         }
-        //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn.classList.contains('custom-button-save')) {
-            sidemenu_save_btn.classList.remove('custom-button-save');
-            sidemenu_save_btn.classList.add('custom-button-default');
-        }
-    }
-    else { // Channel 2
-        if (localStorage.getItem('selected_mode') == '1') { // Mode 1
-            if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all green"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/greenstripe.png";
+        else { // Channel 2
+            if (localStorage.getItem('selected_mode') == '1') { // Mode 1
+                if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all green"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/greenstripe.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all red"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/redstripe.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"runninglight"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/runninglight_1.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"marker1"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/M_transparent.png";
+                    // save ram data of marker to rom
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1":"ram"}}');
+                }
             }
-            if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all red"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/redstripe.png";
+            if (localStorage.getItem('selected_mode') == '2') { // Mode 2
+                if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all green"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/greenstripe.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all red"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/redstripe.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"runninglight"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/runninglight_1.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"marker2"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/M_transparent.png";
+                    // save ram data of marker to rom
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2":"ram"}}');
+                }
             }
-            if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"runninglight"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/runninglight_1.png";
+            //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+            if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
+                sidemenu_save_btn_2.classList.remove('custom-button-save');
+                sidemenu_save_btn_2.classList.add('custom-button-default');
             }
-            if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"marker1"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/M_transparent.png";
-                // if marker opertion mode is selected, save marker settings to ROM
-                //color
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#1":{"color":"' + localStorage.getItem('selected_color_marker1_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#2":{"color":"' + localStorage.getItem('selected_color_marker2_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#3":{"color":"' + localStorage.getItem('selected_color_marker3_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#4":{"color":"' + localStorage.getItem('selected_color_marker4_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#5":{"color":"' + localStorage.getItem('selected_color_marker5_CH2') + '"}}}');
-                //position
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#1":{"position":"' + localStorage.getItem('selected_position_marker1_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#2":{"position":"' + localStorage.getItem('selected_position_marker2_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#3":{"position":"' + localStorage.getItem('selected_position_marker3_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#4":{"position":"' + localStorage.getItem('selected_position_marker4_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#5":{"position":"' + localStorage.getItem('selected_position_marker5_CH2') + '"}}}');
-                //width
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#1":{"width":"' + localStorage.getItem('selected_width_marker1_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#2":{"width":"' + localStorage.getItem('selected_width_marker2_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#3":{"width":"' + localStorage.getItem('selected_width_marker3_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#4":{"width":"' + localStorage.getItem('selected_width_marker4_CH2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1#5":{"width":"' + localStorage.getItem('selected_width_marker5_CH2') + '"}}}');
-            }
-        }
-        if (localStorage.getItem('selected_mode') == '2') { // Mode 2
-            if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all green"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/greenstripe.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all red"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/redstripe.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"runninglight"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/runninglight_1.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"marker2"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/M_transparent.png";
-                // if marker opertion mode is selected, save marker settings to ROM
-                //color
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#1":{"color":"' + localStorage.getItem('selected_color_marker1_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#2":{"color":"' + localStorage.getItem('selected_color_marker2_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#3":{"color":"' + localStorage.getItem('selected_color_marker3_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#4":{"color":"' + localStorage.getItem('selected_color_marker4_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#5":{"color":"' + localStorage.getItem('selected_color_marker5_CH2_mode2') + '"}}}');
-                //position
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#1":{"position":"' + localStorage.getItem('selected_position_marker1_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#2":{"position":"' + localStorage.getItem('selected_position_marker2_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#3":{"position":"' + localStorage.getItem('selected_position_marker3_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#4":{"position":"' + localStorage.getItem('selected_position_marker4_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#5":{"position":"' + localStorage.getItem('selected_position_marker5_CH2_mode2') + '"}}}');
-                //width
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#1":{"width":"' + localStorage.getItem('selected_width_marker1_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#2":{"width":"' + localStorage.getItem('selected_width_marker2_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#3":{"width":"' + localStorage.getItem('selected_width_marker3_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#4":{"width":"' + localStorage.getItem('selected_width_marker4_CH2_mode2') + '"}}}');
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2#5":{"width":"' + localStorage.getItem('selected_width_marker5_CH2_mode2') + '"}}}');
-            }
-        }
-        //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
-            sidemenu_save_btn_2.classList.remove('custom-button-save');
-            sidemenu_save_btn_2.classList.add('custom-button-default');
         }
     }
 }
@@ -2518,6 +2449,70 @@ $('#Marker_1').change(function () {
         marker_2_width_left.style.visibility = 'hidden';
         marker_2_width.style.visibility = 'hidden';
         marker_2_width_right.style.visibility = 'hidden';
+
+        markerrow3.style.visibility = 'hidden';
+        document.getElementById('Marker_3').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn3');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('3');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_3_color.style.visibility = 'hidden';
+        marker_3_position_left.style.visibility = 'hidden';
+        marker_3_position.style.visibility = 'hidden';
+        marker_3_position_right.style.visibility = 'hidden';
+        marker_3_width_left.style.visibility = 'hidden';
+        marker_3_width.style.visibility = 'hidden';
+        marker_3_width_right.style.visibility = 'hidden';
+
+        markerrow4.style.visibility = 'hidden';
+        document.getElementById('Marker_4').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn4');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('4');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_4_color.style.visibility = 'hidden';
+        marker_4_position_left.style.visibility = 'hidden';
+        marker_4_position.style.visibility = 'hidden';
+        marker_4_position_right.style.visibility = 'hidden';
+        marker_4_width_left.style.visibility = 'hidden';
+        marker_4_width.style.visibility = 'hidden';
+        marker_4_width_right.style.visibility = 'hidden';
+
+        markerrow5.style.visibility = 'hidden';
+        document.getElementById('Marker_5').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn5');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('5');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_5_color.style.visibility = 'hidden';
+        marker_5_position_left.style.visibility = 'hidden';
+        marker_5_position.style.visibility = 'hidden';
+        marker_5_position_right.style.visibility = 'hidden';
+        marker_5_width_left.style.visibility = 'hidden';
+        marker_5_width.style.visibility = 'hidden';
+        marker_5_width_right.style.visibility = 'hidden';
+
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
@@ -2575,6 +2570,49 @@ $('#Marker_2').change(function () {
         marker_3_width_left.style.visibility = 'hidden';
         marker_3_width.style.visibility = 'hidden';
         marker_3_width_right.style.visibility = 'hidden';
+
+        markerrow4.style.visibility = 'hidden';
+        document.getElementById('Marker_4').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn4');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('4');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_4_color.style.visibility = 'hidden';
+        marker_4_position_left.style.visibility = 'hidden';
+        marker_4_position.style.visibility = 'hidden';
+        marker_4_position_right.style.visibility = 'hidden';
+        marker_4_width_left.style.visibility = 'hidden';
+        marker_4_width.style.visibility = 'hidden';
+        marker_4_width_right.style.visibility = 'hidden';
+
+        markerrow5.style.visibility = 'hidden';
+        document.getElementById('Marker_5').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn5');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('5');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_5_color.style.visibility = 'hidden';
+        marker_5_position_left.style.visibility = 'hidden';
+        marker_5_position.style.visibility = 'hidden';
+        marker_5_position_right.style.visibility = 'hidden';
+        marker_5_width_left.style.visibility = 'hidden';
+        marker_5_width.style.visibility = 'hidden';
+        marker_5_width_right.style.visibility = 'hidden';
+
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
@@ -2632,6 +2670,28 @@ $('#Marker_3').change(function () {
         marker_4_width_left.style.visibility = 'hidden';
         marker_4_width.style.visibility = 'hidden';
         marker_4_width_right.style.visibility = 'hidden';
+
+        markerrow5.style.visibility = 'hidden';
+        document.getElementById('Marker_5').checked = false;
+        //reset marker color selection
+        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+        var elem = document.getElementById('color_dropdown_btn5');
+        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.color = 'white';
+        // reset local storage variable
+        resetMarkerColor('5');
+        // Send marker color = 'off' message
+        var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
+        parent.addtoSendQueue(JSONmsg);
+        // hide menu elements
+        marker_5_color.style.visibility = 'hidden';
+        marker_5_position_left.style.visibility = 'hidden';
+        marker_5_position.style.visibility = 'hidden';
+        marker_5_position_right.style.visibility = 'hidden';
+        marker_5_width_left.style.visibility = 'hidden';
+        marker_5_width.style.visibility = 'hidden';
+        marker_5_width_right.style.visibility = 'hidden';
+
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
@@ -2689,6 +2749,7 @@ $('#Marker_4').change(function () {
         marker_5_width_left.style.visibility = 'hidden';
         marker_5_width.style.visibility = 'hidden';
         marker_5_width_right.style.visibility = 'hidden';
+
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
@@ -2775,7 +2836,7 @@ $('#marker_1_pos_input').change(function () {
 $('#marker_2_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value =  Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    var min_value = Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2797,7 +2858,7 @@ $('#marker_2_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    var min_value = Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2817,7 +2878,7 @@ $('#marker_2_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
+    var min_value = Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2840,7 +2901,7 @@ $('#marker_2_pos_input').change(function () {
 $('#marker_3_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value =  Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    var min_value = Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2861,7 +2922,7 @@ $('#marker_3_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    var min_value = Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2881,7 +2942,7 @@ $('#marker_3_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
+    var min_value = Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2903,7 +2964,7 @@ $('#marker_3_pos_input').change(function () {
 $('#marker_4_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value =  Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    var min_value = Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2924,7 +2985,7 @@ $('#marker_4_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    var min_value = Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2944,7 +3005,7 @@ $('#marker_4_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
+    var min_value = Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2966,7 +3027,7 @@ $('#marker_4_pos_input').change(function () {
 $('#marker_5_shift_pos_left').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) - 1;
-    var min_value =  Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    var min_value = Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -2987,7 +3048,7 @@ $('#marker_5_shift_pos_right').click(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    var min_value = Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }
@@ -3007,7 +3068,7 @@ $('#marker_5_pos_input').change(function () {
     if (elem.value > max_value_marker_1) {
         elem.value = max_value_marker_1;
     }
-    var min_value =  Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
+    var min_value = Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
         elem.value = min_value;
     }

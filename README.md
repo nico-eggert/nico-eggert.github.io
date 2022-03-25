@@ -16,7 +16,7 @@ Modus 1 ist der Standardbetriebsmodus. Auf Modus 2 kann später über ein Funksi
 Einstellungenoptionen Flash Steuerung:
 1. Länge: 335 mm , 636 mm , 935 mm, (1870 mm, implementiert aber in der ersten Fassung nicht als Standard festgelegt!) 
 2. Helligkeit: Eco, Medium, Max. 3 fest von uns vordenfinierte Helligkeitsstufen, wobei Max nicht zwangsläufig der maximalen Einstellung entspricht (Bsp.: Max: 66 %).
-3. Mode 1: Feste Operationsmodi Grün, Rot, Lauflicht (Rot/Weiß) oder bis zu 5 Marker in 7 Farben (Grün,Rot,Blau,Gelb,Weiß,Türkis,Magenta). Die Start Position und die Markerbreite wird in mm angegeben.
+3. Mode 1: Feste Operationsmodi Grün, Rot, Lauflicht (Rot/Weiß) oder bis zu 5 Marker in 7 Farben (Grün,Rot,Blau,Gelb,Weiß,Türkis,Magenta). Die Start Position und die Markerbreite wird in mm angegeben. Der erste Marker muss an erster Stelle im Laufband liegen bezogen auf die Zuleitung des LED-Bandes. Der zweite Marker ist an zweiter Stelle usw.
 4. Mode 2: Gleiche Opertationsmodi wie für Mode 1.
 
 Einstellungen können sowohl als Text-File gespeichert, als auch aus einem Text-File mit gleicher Formatierung geladen werden.
@@ -37,7 +37,7 @@ Für das Übernehmen der Einstellungen muss immer "Save all" betätigt werden, d
 - Schnittstelle Zigbee-Protokoll als Klasse implementieren                                                                              [✓]
 - Optimierung des Ladeverhaltens der PWA im Offline Mode (White Sites on load)                                                          [ ]
 - Deutsche Sprachausgabe                                                                                                                [✓]
-- fontawesome entfernen, da internetverbindung notwendig                                                                                [ ]
+- fontawesome entfernen, da internetverbindung notwendig                                                                                [✓]
 - Version auf Github-Homepage Laden                                                                                                     [✓]
 - Kiosk Mode testen                                                                                                                     [ ]
 - Serielle Schnittstelle an Handy testen                                                                                                [ ] 
@@ -47,7 +47,7 @@ Für das Übernehmen der Einstellungen muss immer "Save all" betätigt werden, d
 Erweiterung als Schnittstelle für Konfigurationseinstellungen anderer SmartFork-Komponenten.
 
 # Anmerkungen:
-Installation der PWA erfolgt über Google Chrome Browser. Die Installation über `Microsoft Edge` Browser ist möglich, da hier keine automatische Löschung des Chache möglich ist `muss` hier der `Cache` für neuste Version `von Hand gelöscht werden`.
+`Installation` der PWA erfolgt `über Google Chrome oder Microsoft Edge Browser`. Beim `Microsoft Edge` Browser ist ein `Neustart` des Browsers bzw. der PWA für das `Versionsupdate` `nötig`.
 
 # Anleitung Website Update https://nico-eggert.github.io/
 Soll aus dem Github Verzeichnis ConfigPWA ein update auf die Website geladen werden, müssen folgende Schritte durchgeführt werden:
