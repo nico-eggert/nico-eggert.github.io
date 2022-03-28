@@ -2920,8 +2920,8 @@ async function getNextDataFromQueue() {
     }
 
     data_count = XBee3.RxQueue.getLength(); // update remaining number of messages in FIFO
-    if (data_count > 100) {
-      alert('Error: Message overflow. 100+ messages in FIFO!');
+    if (data_count > 500) {
+      alert('Error: Message overflow. 500+ messages in FIFO!');
     }
   }
 }
