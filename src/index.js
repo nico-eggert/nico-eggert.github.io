@@ -1275,6 +1275,366 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_mode2_CH1', 'marker2');
           }
         }
+        // marker 1  mode 1 settings 
+        if (RXData.JSONDocument["flash#1"]["marker1#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH1') = RXData.JSONDocument["flash#1"]["marker1#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH1') = RXData.JSONDocument["flash#1"]["marker1#1"]["width"];
+          }
+        }
+        // marker 2  mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH1') = RXData.JSONDocument["flash#1"]["marker1#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH1') = RXData.JSONDocument["flash#1"]["marker1#2"]["width"];
+          }
+        }
+        // marker 3 mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH1') = RXData.JSONDocument["flash#1"]["marker1#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH1') = RXData.JSONDocument["flash#1"]["marker1#3"]["width"];
+          }
+        }
+        // marker 4  mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH1') = RXData.JSONDocument["flash#1"]["marker1#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH1') = RXData.JSONDocument["flash#1"]["marker1#4"]["width"];
+          }
+        }
+        // marker 5 mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH1') = RXData.JSONDocument["flash#1"]["marker1#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH1') = RXData.JSONDocument["flash#1"]["marker1#5"]["width"];
+          }
+        }
+        // marker 1  mode 2 settings 
+        if (RXData.JSONDocument["flash#1"]["marker2#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#1"]["width"];
+          }
+        }
+        // marker 2  mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#2"]["width"];
+          }
+        }
+        // marker 3 mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#3"]["width"];
+          }
+        }
+        // marker 4  mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#4"]["width"];
+          }
+        }
+        // marker 5 mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#5"]["width"];
+          }
+        }
       }
       // Set sidemenu icons to ROM settings
       if (RXData.JSONDocument["memory"] == "rom") {
@@ -1323,11 +1683,6 @@ async function getNextDataFromQueue() {
           if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'marker1') {
             document.getElementById('mode1_state_icon_ch1').src = "../images/M_transparent.png";
           }
-          /*
-          if (RXData.JSONDocument["flash#1"]["operation mode#1"] == 'marker2') {
-            document.getElementById('mode1_state_icon_ch1').src = "../images/M_transparent.png";
-          }
-          */
         }
         // operation mode 2 channel 1
         if (RXData.JSONDocument["flash#1"]["operation mode#2"]) {
@@ -1343,13 +1698,368 @@ async function getNextDataFromQueue() {
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'runninglight') {
             document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_1.png";
           }
-          /*
-          if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'marker1') {
-            document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
-          }
-          */
           if (RXData.JSONDocument["flash#1"]["operation mode#2"] == 'marker2') {
             document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
+          }
+        }
+        // marker 1  mode 1 settings 
+        if (RXData.JSONDocument["flash#1"]["marker1#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH1') = RXData.JSONDocument["flash#1"]["marker1#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH1') = RXData.JSONDocument["flash#1"]["marker1#1"]["width"];
+          }
+        }
+        // marker 2  mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH1') = RXData.JSONDocument["flash#1"]["marker1#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH1') = RXData.JSONDocument["flash#1"]["marker1#2"]["width"];
+          }
+        }
+        // marker 3 mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH1') = RXData.JSONDocument["flash#1"]["marker1#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH1') = RXData.JSONDocument["flash#1"]["marker1#3"]["width"];
+          }
+        }
+        // marker 4  mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH1') = RXData.JSONDocument["flash#1"]["marker1#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH1') = RXData.JSONDocument["flash#1"]["marker1#4"]["width"];
+          }
+        }
+        // marker 5 mode 1 settings
+        if (RXData.JSONDocument["flash#1"]["marker1#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH1') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH1') = RXData.JSONDocument["flash#1"]["marker1#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH1') = RXData.JSONDocument["flash#1"]["marker1#5"]["width"];
+          }
+        }
+        // marker 1  mode 2 settings 
+        if (RXData.JSONDocument["flash#1"]["marker2#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#1"]["width"];
+          }
+        }
+        // marker 2  mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#2"]["width"];
+          }
+        }
+        // marker 3 mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#3"]["width"];
+          }
+        }
+        // marker 4  mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#4"]["width"];
+          }
+        }
+        // marker 5 mode 2 settings
+        if (RXData.JSONDocument["flash#1"]["marker2#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH1_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH1_mode2') = RXData.JSONDocument["flash#1"]["marker2#5"]["width"];
           }
         }
       }
@@ -1417,6 +2127,367 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_mode2_CH2', 'marker2');
           }
         }
+        // marker 1  mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH2') = RXData.JSONDocument["flash#2"]["marker1#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH2') = RXData.JSONDocument["flash#2"]["marker1#1"]["width"];
+          }
+        }
+        // marker 2  mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH2') = RXData.JSONDocument["flash#2"]["marker1#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH2') = RXData.JSONDocument["flash#2"]["marker1#2"]["width"];
+          }
+        }
+        // marker 3 mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH2') = RXData.JSONDocument["flash#2"]["marker1#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH2') = RXData.JSONDocument["flash#2"]["marker1#3"]["width"];
+          }
+        }
+        // marker 4 mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH2') = RXData.JSONDocument["flash#2"]["marker1#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH2') = RXData.JSONDocument["flash#2"]["marker1#4"]["width"];
+          }
+        }
+        // marker 5 mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH2') = RXData.JSONDocument["flash#2"]["marker1#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH2') = RXData.JSONDocument["flash#2"]["marker1#5"]["width"];
+          }
+        }
+
+        // marker 1  mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#1"]["width"];
+          }
+        }
+        // marker 2  mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#2"]["width"];
+          }
+        }
+        // marker 3 mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#3"]["width"];
+          }
+        }
+        // marker 4 mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#4"]["width"];
+          }
+        }
+        // marker 5 mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#5"]["width"];
+          }
+        }
       }
       // Set sidemenu icons to ROM settings
       if (RXData.JSONDocument["memory"] == "rom") {
@@ -1465,11 +2536,6 @@ async function getNextDataFromQueue() {
           if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'marker1') {
             document.getElementById('mode1_state_icon_ch2').src = "../images/M_transparent.png";
           }
-          /*
-          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'marker2') {
-            document.getElementById('mode1_state_icon_ch2').src = "../images/M_transparent.png";
-          }
-          */
         }
         // operation mode 2 channel 2
         if (RXData.JSONDocument["flash#2"]["operation mode#2"]) {
@@ -1485,21 +2551,377 @@ async function getNextDataFromQueue() {
           if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'runninglight') {
             document.getElementById('mode2_state_icon_ch2').src = "../images/runninglight_1.png";
           }
-          /*
-          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker1') {
-            document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
-          }
-          */
           if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker2') {
             document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
+          }
+        }
+        // marker 1  mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH2') = RXData.JSONDocument["flash#2"]["marker1#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH2') = RXData.JSONDocument["flash#2"]["marker1#1"]["width"];
+          }
+        }
+        // marker 2  mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH2') = RXData.JSONDocument["flash#2"]["marker1#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH2') = RXData.JSONDocument["flash#2"]["marker1#2"]["width"];
+          }
+        }
+        // marker 3 mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH2') = RXData.JSONDocument["flash#2"]["marker1#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH2') = RXData.JSONDocument["flash#2"]["marker1#3"]["width"];
+          }
+        }
+        // marker 4 mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH2') = RXData.JSONDocument["flash#2"]["marker1#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH2') = RXData.JSONDocument["flash#2"]["marker1#4"]["width"];
+          }
+        }
+        // marker 5 mode 1 settings
+        if (RXData.JSONDocument["flash#2"]["marker1#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH2') = RXData.JSONDocument["flash#2"]["marker1#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH2') = RXData.JSONDocument["flash#2"]["marker1#5"]["width"];
+          }
+        }
+
+        // marker 1  mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#1"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker1_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["position"]){
+            localStorage.setItem('selected_position_marker1_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#1"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["width"]){
+            localStorage.setItem('selected_width_marker1_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#1"]["width"];
+          }
+        }
+        // marker 2  mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#2"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker2_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["position"]){
+            localStorage.setItem('selected_position_marker2_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#2"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["width"]){
+            localStorage.setItem('selected_width_marker2_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#2"]["width"];
+          }
+        }
+        // marker 3 mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#3"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker3_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["position"]){
+            localStorage.setItem('selected_position_marker3_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#3"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["width"]){
+            localStorage.setItem('selected_width_marker3_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#3"]["width"];
+          }
+        }
+        // marker 4 mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#4"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker4_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["position"]){
+            localStorage.setItem('selected_position_marker4_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#4"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["width"]){
+            localStorage.setItem('selected_width_marker4_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#4"]["width"];
+          }
+        }
+        // marker 5 mode 2 settings
+        if (RXData.JSONDocument["flash#2"]["marker2#5"]) {
+          // color
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'off'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'off';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'green'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'green';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'red'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'red';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'blue'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'blue';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'yellow'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'yellow';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'white'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'white';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'cyan'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'cyan';
+          }
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["color"] == 'magenta'){
+            localStorage.setItem('selected_color_marker5_CH2_mode2') = 'magenta';
+          }
+          // position
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["position"]){
+            localStorage.setItem('selected_position_marker5_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#5"]["position"];
+          }
+          // width
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["width"]){
+            localStorage.setItem('selected_width_marker5_CH2_mode2') = RXData.JSONDocument["flash#2"]["marker2#5"]["width"];
           }
         }
       }
     }
 
     data_count = XBee3.RxQueue.getLength(); // update remaining number of messages in FIFO
-    if (data_count > 50) {
-      alert('Error: Message overflow. 50+ messages in FIFO!');
+    if (data_count > 100) {
+      alert('Error: Message overflow. 100+ messages in FIFO!');
     }
   }
 }

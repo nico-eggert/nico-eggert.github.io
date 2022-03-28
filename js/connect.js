@@ -71,9 +71,7 @@ function animateProgressbar() {
     }
   }
   if (pbcount == 60) {
-    parent.addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}');
     parent.addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}');
-    parent.addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}');
     parent.addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}');
     if (localStorage.getItem('selected_language') == 'en') {
       $("#txt_progressbarstep").text("Get data from SF-Flash");
