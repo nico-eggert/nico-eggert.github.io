@@ -52,6 +52,7 @@ function animateProgressbar() {
     pbcount = pbcount + 1;
     $(".progress-bar").css("width", pbcount + "%").text(pbcount + "%");
   }
+  /*
   if (pbcount == 20) {
     //TODO: Add function call usb-connection
     if (localStorage.getItem('selected_language') == 'en') {
@@ -70,23 +71,26 @@ function animateProgressbar() {
       $("#txt_progressbarstep").text("SF-Flash Verbindung erfolgreich");
     }
   }
-  if (pbcount == 60) {
+  */
+  if (pbcount == 10) {
     parent.addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}');
     parent.addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}');
     if (localStorage.getItem('selected_language') == 'en') {
-      $("#txt_progressbarstep").text("Get data from SF-Flash");
+      $("#txt_progressbarstep").text("Request ROM data from SF-Flash");
     }
     if (localStorage.getItem('selected_language') == 'de') {
       $("#txt_progressbarstep").text("Anfragen der SF-Flash Daten");
     }
   }
-  if (pbcount == 80) {
+  if (pbcount == 50) {
+    parent.addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}');
+    parent.addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}');
     setTimeout(function () { parent.getNextDataFromQueue() }, 200);
     if (localStorage.getItem('selected_language') == 'en') {
-      $("#txt_progressbarstep").text("Reading data from SF-Flash");
+      $("#txt_progressbarstep").text("Request RAM data from SF-Flash");
     }
     if (localStorage.getItem('selected_language') == 'de') {
-      $("#txt_progressbarstep").text("Auslesen der SF-Flash Daten");
+      $("#txt_progressbarstep").text("Anfragen der SF-Flash  RAM-Daten");
     }
   }
   if (pbcount == 100) {

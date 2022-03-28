@@ -1303,7 +1303,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#1"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["position"] || RXData.JSONDocument["flash#1"]["marker1#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH1', RXData.JSONDocument["flash#1"]["marker1#1"]["position"]);
           }
           // width
@@ -1483,7 +1483,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#1"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["position"] || RXData.JSONDocument["flash#1"]["marker2#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#1"]["position"]);
           }
           // width
@@ -1730,7 +1730,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#1"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["position"] || RXData.JSONDocument["flash#1"]["marker1#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH1', RXData.JSONDocument["flash#1"]["marker1#1"]["position"]);
           }
           // width
@@ -1910,7 +1910,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#1"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["position"] || RXData.JSONDocument["flash#1"]["marker2#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#1"]["position"]);
           }
           // width
@@ -2155,7 +2155,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#1"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["position"] || RXData.JSONDocument["flash#2"]["marker1#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH2', RXData.JSONDocument["flash#2"]["marker1#1"]["position"]);
           }
           // width
@@ -2336,7 +2336,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#1"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["position"] || RXData.JSONDocument["flash#2"]["marker2#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#1"]["position"]);
           }
           // width
@@ -2556,7 +2556,7 @@ async function getNextDataFromQueue() {
           }
         }
         // marker 1  mode 1 settings
-        if (RXData.JSONDocument["flash#2"]["marker1#1"]) {
+        if (RXData.JSONDocument["flash#2"]["marker1#1"] ) {
           // color
           if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'off') {
             localStorage.setItem('selected_color_marker1_CH2', 'off');
@@ -2583,7 +2583,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#1"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["position"] || RXData.JSONDocument["flash#2"]["marker1#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH2', RXData.JSONDocument["flash#2"]["marker1#1"]["position"]);
           }
           // width
@@ -2764,7 +2764,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker1_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#1"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["position"] || RXData.JSONDocument["flash#2"]["marker2#1"]["position"] === 0) {
             localStorage.setItem('selected_position_marker1_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#1"]["position"]);
           }
           // width
