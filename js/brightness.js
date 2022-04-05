@@ -167,12 +167,12 @@ function clickSave() {
             btnSAVE.style.visibility = "hidden";
             //brightness_state_icon.src = "../images/bulb_eco_transparent.png";
         }
-        if (localStorage.getItem('selected_brightness') == 'med') {
+        if (localStorage.getItem('selected_brightness_2') == 'med') {
             parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"medium"}}');
             btnSAVE.style.visibility = "hidden";
             //brightness_state_icon.src = "../images/bulb_med_transparent.png";
         }
-        if (localStorage.getItem('selected_brightness') == 'max') {
+        if (localStorage.getItem('selected_brightness_2') == 'max') {
             parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"max"}}');
             btnSAVE.style.visibility = "hidden";
             //brightness_state_icon.src = "../images/bulb_max_transparent.png";

@@ -261,36 +261,34 @@ function clickSave() {
             sidemenu_save_btn.classList.remove('custom-butten-save');
             sidemenu_save_btn.classList.add('custom-button-default');
         }
-        console.log('before set Timeout getROMBrightness');
         setTimeout(getROMLength("1"), 200);
     }
-    else { // TODO: Channel 2
+    else { // Channel 2
         if (localStorage.getItem('selected_length_2') == '335 mm') {
             parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"335 mm"}}');
             btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/335mm_transparent.png";
+            length_state_icon_2.src = "../images/335mm_transparent.png";
         }
         if (localStorage.getItem('selected_length_2') == '635 mm') {
             parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"635 mm"}}');
             btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/635mm_transparent.png";
+            length_state_icon_2.src = "../images/635mm_transparent.png";
         }
         if (localStorage.getItem('selected_length_2') == '935 mm') {
             parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"935 mm"}}');
             btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/935mm_transparent.png";
+            length_state_icon_2.src = "../images/935mm_transparent.png";
         }
         if (localStorage.getItem('selected_length_2') == '1870 mm') {
             parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"1870 mm"}}');
             btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/1870mm_transparent.png";
+            length_state_icon_2.src = "../images/1870mm_transparent.png";
         }
         //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
         if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
             sidemenu_save_btn_2.classList.remove('custom-button-save');
             sidemenu_save_btn_2.classList.add('custom-button-default');
         }
-        console.log('before set Timeout getROMBrightness');
         setTimeout(getROMLength("2"), 200);
     }
 }
@@ -300,15 +298,14 @@ function clickSave() {
  * Sends command to read data from ROM. 
  * Updates the state icon in the Sidemenu of the index.html.
  * @param {*channel} channel number of selected LED channel 
- * TODO: auf ROM ändern!!!!
  */
 function getROMLength(channel) {
     console.log("getROMBrightness")
     if (channel == '1') {
-        parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"get"}}');
+        parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"get"}}');
     }
     else {
-        parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"get"}}')
+        parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"get"}}')
     }
     setTimeout(setStateIcon(), 100);
 }
@@ -318,8 +315,6 @@ function getROMLength(channel) {
  * Then updates the state icons.
  */
 function setStateIcon() {
-    console.log('setStateIcon');
     parent.getNextDataFromQueue();
-    console.log('before update Selection');
     updateSelection();
 }

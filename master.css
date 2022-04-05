@@ -1,73 +1,81 @@
 .navbar-brand-center {
-    transform: translateX(-50%);
-    left: 50%;
-    position: absolute;
-    color: white;
-  }
-  .header {
-    position: relative;
-    width: 100%;
-    top:0;
-  }
-  .main {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-image: url("images/Logo/hintergrund_1520x720px.png");
-    background-size: cover;
-  }
-  .hidden {
-    display:none;
-  }
-  .footer {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    bottom: 0;
-    background-color: lightgrey;
-  }
-  .backgroundcolor {
-    background-color: rgb(42, 42, 42);
-  }
-body {
-    width: 100%;
-    margin: 0 auto;
-    background-size: cover;
-    background-attachment: fixed;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  color: white;
 }
 
-input{
+.header {
+  position: relative;
+  width: 100%;
+  top: 0;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/Logo/hintergrund_1520x720px.png");
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  background-color: lightgrey;
+}
+
+.backgroundcolor {
+  background-color: rgb(42, 42, 42);
+}
+
+body {
+  width: 100%;
+  margin: 0 auto;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+input {
   text-align: center;
 }
 
-.flex-wrapper{
+.flex-wrapper {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.page-title{
-  background-color: #424242;
-  color:white;
-  
-}
-.side-menu{
+.page-title {
   background-color: #424242;
   color: white;
-  width: 100%;;
+
+}
+
+.side-menu {
+  background-color: #424242;
+  color: white;
+  width: 100%;
+  ;
 }
 
 .center {
 
-  display:inline-block;
+  display: inline-block;
   width: 100%;
   text-align: center;
   vertical-align: bottom;
 
 }
 
-.center-img{
+.center-img {
   max-height: 90%;
   max-width: 90%;
   width: auto;
@@ -77,12 +85,12 @@ input{
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto; 
+  margin: auto;
 }
 
 .custom-button-general {
   background-color: #0072dd;
-  
+
   border-radius: 0px;
   border-style: solid;
   border-width: 2px;
@@ -97,9 +105,11 @@ input{
   cursor: pointer;
   transition: background-color 0.4s;
 }
+
 .custom-button-general:hover {
   background-color: #164194;
 }
+
 .custom-button-general:active {
   box-shadow: 0px 0px 3px 3px #5c5c5c;
 }
@@ -117,17 +127,19 @@ input{
   margin: 0px 0px;
   cursor: pointer;
   transition: background-color 0.4s;
-  
+
 }
+
 .custom-button-save:hover {
   background-color: #941616;
 }
+
 .custom-button-save:active {
   box-shadow: 0px 0px 3px 3px #5c5c5c;
 }
 
-.active{
-box-shadow: 0px 0px 3px 3px #383838;
+.active {
+  box-shadow: 0px 0px 3px 3px #383838;
 }
 
 .custom-button-default {
@@ -143,38 +155,60 @@ box-shadow: 0px 0px 3px 3px #383838;
   margin: 0px 0px;
   cursor: pointer;
   transition: background-color 0.4s;
-  
+
 }
+
 .custom-button-default:hover {
   background-color: #575757;
 }
+
 .custom-button-default:active {
   box-shadow: 0px 0px 3px 3px #5c5c5c;
 }
 
-.mytooltipclass{
+.mytooltipclass {
   height: 3em;
   width: 10em;
   background: gray;
 }
+
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
-  /*margin:auto;
-  right:50%;
-  top:0;
-  bottom:0; 
-  position:absolute;
-  left: 46% ; *//* 50 % of body width minus half of .loader size… */
+  /**/
+  margin: auto;
+  align-self: center;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes colorchange {
+  0% {
+    border-top: 16px solid #3498db;
+    transform: rotate (0deg);
+  }
+  50% {
+    border-top: 16px solid #3fcc3a;
+    transform: rotate(180deg);
+  }
+  100% {
+    border-top: 16px solid #3498db;
+    transform: rotate(360deg);
+  }
 }
 
 .container {
@@ -192,4 +226,15 @@ box-shadow: 0px 0px 3px 3px #383838;
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+
+.templateCard {
+  width: 136px;
+  height: 200px;
+  display: inline-flex;
+  /*border: 1px solid #000;*/
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 10px;
 }

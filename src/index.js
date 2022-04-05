@@ -1,5 +1,7 @@
 const stringdata_array = []; // array to save all string commands in a queue
 
+var functionlock = false; // variable gets set in function call by clicking sidemenu buttons, resets to false on finish of function
+
 // button constants
 const BTNSAVESETTINGS = document.getElementById('btnSavesettings');
 const BTNCHANNEL = document.getElementById('btnChannel');
@@ -126,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-var checkConnectionInterval; // interval return variable, can be cleared to reset the interval call of connection check
+var checkConnectionInterval = -1; // interval return variable, can be cleared to reset the interval call of connection check, is equal to timer id
 var constate; // connectionstate to devicename macadress
 var nomsgcounter = 0; // counts the number of FIFO read commands without any new data
 
@@ -142,7 +144,10 @@ function cyclicConnectionCheck() {
     // do nothing
   }
   else {
-    checkConnectionInterval = setInterval(checkconnection, 2500); // send message every cycle to check connection to device
+    if (checkConnectionInterval == -1) {
+      checkConnectionInterval = setInterval(checkconnection, 2500); // send message every cycle to check connection to device
+      console.log('----------------------checkConnectionInterval:', checkConnectionInterval);
+    }
   }
 }
 
@@ -206,6 +211,18 @@ function showChannel2Sidemenu() {
 }
 
 /**
+ * Hides the channel 2 sidemenu buttons
+ */
+function hideChannel2Sidemenu() {
+  $("#length_div_2").hide();
+  $("#brightness_div_2").hide();
+  $("#mode1_div_CH2").hide();
+  $("#mode2_div_CH2").hide();
+  $("#save_div_2").hide();
+  $("#load_div_2").hide();
+}
+
+/**
  * Hides or shows localconfig sidemenu buttons
  */
 function toggleLocalCongigSidemenu() {
@@ -221,17 +238,7 @@ function toggleLocalCongigSidemenu() {
   }
 }
 
-/**
- * Hides the channel 2 sidemenu buttons
- */
-function hideChannel2Sidemenu() {
-  $("#length_div_2").hide();
-  $("#brightness_div_2").hide();
-  $("#mode1_div_CH2").hide();
-  $("#mode2_div_CH2").hide();
-  $("#save_div_2").hide();
-  $("#load_div_2").hide();
-}
+
 
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -279,6 +286,7 @@ function handleFileSelect(evt) {
         else {
           FRAME.src = "/html/load.html";
           clearInterval(checkConnectionInterval); // deactivate connection check
+          checkConnectionInterval = -1;
           constate = false; // reset connection state variable of connection check
           localStorage.setItem('loadingdata', 'true');
           for (var k = 0; k < count_entries; k++) {
@@ -626,7 +634,8 @@ function handleFileSelect(evt) {
               JSONmsg = '{"memory":"ram","flash#2":{"marker2#5":{"width":"' + value + '"}}}';
               addtoSendQueue(JSONmsg);
 
-              addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');// send to trigger cyclic connection check again
+              addtoSendQueue('{"MEMS_B":{"out":"get"}}');// send to trigger cyclic connection check again
+              //addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');// send to trigger cyclic connection check again
               setTimeout(getNextDataFromQueue, 500); //read answer of get power command to trigger cyclic connection check
 
               // open both channels to show user that the loaded data is not saved yet
@@ -764,68 +773,110 @@ function saveSettingstoFile() {
  * Load the selected page into the frame and highlight the corresponding sidemenu for Channel 1.
  */
 function loadConnectpage() {
-  FRAME.src = "/html/connect.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('connect_div').style.backgroundColor = "darkgray";
-  updateLanguage();
-  localStorage.setItem('selected_channel', '1');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "/html/connect.html";
+    reset_sidemenu_bgcolor();
+    document.getElementById('connect_div').style.backgroundColor = "darkgray";
+    updateLanguage();
+    localStorage.setItem('selected_channel', '1');
+    setTimeout(function () { functionlock = false }, 1000);
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
 }
 function loadLengthpage_CH1() {
-  FRAME.src = "/html/length.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('length_div').style.backgroundColor = "darkgray";
-  updateLanguage();
-  localStorage.setItem('selected_channel', '1');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "/html/length.html";
+    reset_sidemenu_bgcolor();
+    document.getElementById('length_div').style.backgroundColor = "darkgray";
+    updateLanguage();
+    localStorage.setItem('selected_channel', '1');
+    setTimeout(function () { functionlock = false }, 1000);
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
 }
 function loadBrightnesspage_CH1() {
-  FRAME.src = "/html/brightness.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('brightness_div').style.backgroundColor = "darkgray";
-  updateLanguage();
-  localStorage.setItem('selected_channel', '1');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "/html/brightness.html";
+    reset_sidemenu_bgcolor();
+    document.getElementById('brightness_div').style.backgroundColor = "darkgray";
+    updateLanguage();
+    localStorage.setItem('selected_channel', '1');
+    setTimeout(function () { functionlock = false }, 1000);
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
 }
 function loadMode1page_CH1() {
-  localStorage.setItem('selected_channel', '1');
-  localStorage.setItem('selected_mode', '1');
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode1_div_CH1').style.backgroundColor = "darkgray";
-  FRAME.src = "/html/mode.html";
-  updateLanguage();
+  if (functionlock == false) {
+    functionlock = true;
+    localStorage.setItem('selected_channel', '1');
+    localStorage.setItem('selected_mode', '1');
+    reset_sidemenu_bgcolor();
+    document.getElementById('mode1_div_CH1').style.backgroundColor = "darkgray";
+    FRAME.src = "/html/mode.html";
+    console.log('pre Timeout');
+    setTimeout(function () { functionlock = false }, 1000);
+    console.log('post Timeout');
+    updateLanguage();
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
 }
 function loadMode2page_CH1() {
-  localStorage.setItem('selected_channel', '1');
-  localStorage.setItem('selected_mode', '2');
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode2_div_CH1').style.backgroundColor = "darkgray";
-  FRAME.src = "/html/mode.html";
-  updateLanguage();
+  if (functionlock == false) {
+    functionlock = true;
+    localStorage.setItem('selected_channel', '1');
+    localStorage.setItem('selected_mode', '2');
+    reset_sidemenu_bgcolor();
+    document.getElementById('mode2_div_CH1').style.backgroundColor = "darkgray";
+    FRAME.src = "/html/mode.html";
+    setTimeout(function () { functionlock = false }, 1000);
+    updateLanguage();
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
 }
 // Sends msg to save all local storage variables to rom
 // then read the ROM settings to update the sidemenu icons
 function saveSettings_CH1() {
-  FRAME.src = "";
-  reset_sidemenu_bgcolor();
-  document.getElementById('save_div').style.backgroundColor = "darkgray";
-  localStorage.setItem('selected_channel', '1');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "";
+    reset_sidemenu_bgcolor();
+    document.getElementById('save_div').style.backgroundColor = "darkgray";
+    localStorage.setItem('selected_channel', '1');
 
-  if (BTNSAVE.classList.contains('custom-button-save')) {
-    BTNSAVE.classList.remove("custom-button-save");
-    BTNSAVE.classList.add("custom-button-default");
-    console.log('save all settings');
+    if (BTNSAVE.classList.contains('custom-button-save')) {
+      BTNSAVE.classList.remove("custom-button-save");
+      BTNSAVE.classList.add("custom-button-default");
+      console.log('save all settings');
+    }
+    if (BTNSAVE.classList.contains('active')) {
+      BTNSAVE.classList.remove("active");
+    }
+
+    //TODO: Nach testphase einfügen
+
+    addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
+    console.log('send read all rom in 3,5s ....');
+    setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
+    console.log('read FIFO after 4 s ....');
+    setTimeout(getNextDataFromQueue, 4000); //  
+    setTimeout(function () { functionlock = false }, 4000);
   }
-  if (BTNSAVE.classList.contains('active')) {
-    BTNSAVE.classList.remove("active");
+  else {
+    console.log('functionlock:', functionlock);
   }
-
-  //TODO: Nach testphase einfügen
-
-  addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
-  console.log('send read all rom in 3,5s ....');
-  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
-  console.log('read FIFO after 4 s ....');
-  setTimeout(getNextDataFromQueue, 4000); //  
-
-
   //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
   /*
   if (localStorage.getItem('selected_length') == '335 mm') {
@@ -878,71 +929,103 @@ function saveSettings_CH1() {
 }
 
 function loadLoadpage_CH1() {
-  reset_sidemenu_bgcolor();
-  document.getElementById('load_div').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Load Settings";
-  localStorage.setItem('selected_channel', '1');
-  setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}') }, 50);
-  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}') }, 250);
-  //nur für test TODO: nach test auskommentieren!
-  var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
+  if (functionlock == false) {
+    functionlock = true;
+    reset_sidemenu_bgcolor();
+    document.getElementById('load_div').style.backgroundColor = "darkgray";
+    document.getElementById('menu_header').textContent = "Load Settings";
+    localStorage.setItem('selected_channel', '1');
+    if (localStorage.getItem('loadingdata') == 'false') {
+      localStorage.setItem('loadingdata', 'true');
+      FRAME.src = "/html/load.html";
+      setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}') }, 50);
+      setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}') }, 250);
+      //nur für test TODO: nach test auskommentieren!
+      var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
+      setTimeout(resetLoadingvariable, 7000);
+      setTimeout(function () { functionlock = false }, 7000);
+    }
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
+
 }
 /**
  * Load the selected page into the frame and highlight the corresponding sidemenu for Channel 2
  */
 function loadLengthpage_CH2() {
-  FRAME.src = "/html/length.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('length_div_2').style.backgroundColor = "darkgray";
-  updateLanguage();
-  localStorage.setItem('selected_channel', '2');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "/html/length.html";
+    reset_sidemenu_bgcolor();
+    document.getElementById('length_div_2').style.backgroundColor = "darkgray";
+    updateLanguage();
+    localStorage.setItem('selected_channel', '2');
+    setTimeout(function () { functionlock = false }, 1000);
+  }
 }
 function loadBrightnesspage_CH2() {
-  FRAME.src = "/html/brightness.html";
-  reset_sidemenu_bgcolor();
-  document.getElementById('brightness_div_2').style.backgroundColor = "darkgray";
-  updateLanguage();
-  localStorage.setItem('selected_channel', '2');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "/html/brightness.html";
+    reset_sidemenu_bgcolor();
+    document.getElementById('brightness_div_2').style.backgroundColor = "darkgray";
+    updateLanguage();
+    localStorage.setItem('selected_channel', '2');
+    setTimeout(function () { functionlock = false }, 1000);
+  }
 }
 function loadMode1page_CH2() {
-  localStorage.setItem('selected_channel', '2');
-  localStorage.setItem('selected_mode', '1');
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode1_div_CH2').style.backgroundColor = "darkgray";
-  FRAME.src = "/html/mode.html";
-  updateLanguage();
+  if (functionlock == false) {
+    functionlock = true;
+    localStorage.setItem('selected_channel', '2');
+    localStorage.setItem('selected_mode', '1');
+    reset_sidemenu_bgcolor();
+    document.getElementById('mode1_div_CH2').style.backgroundColor = "darkgray";
+    FRAME.src = "/html/mode.html";
+    updateLanguage();
+    setTimeout(function () { functionlock = false }, 1000);
+  }
 }
 function loadMode2page_CH2() {
-  localStorage.setItem('selected_channel', '2');
-  localStorage.setItem('selected_mode', '2');
-  reset_sidemenu_bgcolor();
-  document.getElementById('mode2_div_CH2').style.backgroundColor = "darkgray";
-  FRAME.src = "/html/mode.html";
-  updateLanguage();
+  if (functionlock == false) {
+    functionlock = true;
+    localStorage.setItem('selected_channel', '2');
+    localStorage.setItem('selected_mode', '2');
+    reset_sidemenu_bgcolor();
+    document.getElementById('mode2_div_CH2').style.backgroundColor = "darkgray";
+    FRAME.src = "/html/mode.html";
+    updateLanguage();
+    setTimeout(function () { functionlock = false }, 1000);
+  }
 }
 function saveSettings_CH2() {
-  FRAME.src = "";
-  reset_sidemenu_bgcolor();
-  document.getElementById('save_div_2').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Save Settings";
-  localStorage.setItem('selected_channel', '2');
+  if (functionlock == false) {
+    functionlock = true;
+    FRAME.src = "";
+    reset_sidemenu_bgcolor();
+    document.getElementById('save_div_2').style.backgroundColor = "darkgray";
+    document.getElementById('menu_header').textContent = "Save Settings";
+    localStorage.setItem('selected_channel', '2');
 
-  if (BTNSAVE_2.classList.contains('custom-button-save')) {
-    BTNSAVE_2.classList.remove("custom-button-save");
-    BTNSAVE_2.classList.add("custom-button-default");
-    console.log('save all settings');
+    if (BTNSAVE_2.classList.contains('custom-button-save')) {
+      BTNSAVE_2.classList.remove("custom-button-save");
+      BTNSAVE_2.classList.add("custom-button-default");
+      console.log('save all settings');
+    }
+    if (BTNSAVE_2.classList.contains('active')) {
+      BTNSAVE_2.classList.remove("active");
+    }
+
+    addtoSendQueue('{"memory":"rom","flash#2":{"all":"ram"}}'); //write all RAM data to ROM
+    console.log('send read all rom in 3,5s ....');
+    setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 70x50 ms = 3500 ms
+    console.log('read FIFO after 4 s ....');
+    setTimeout(getNextDataFromQueue, 4000);
+
+    setTimeout(function () { functionlock = false }, 4000);
   }
-  if (BTNSAVE_2.classList.contains('active')) {
-    BTNSAVE_2.classList.remove("active");
-  }
-
-  //TODO: Nach testphase einfügen
-
-  addtoSendQueue('{"memory":"rom","flash#2":{"all":"ram"}}'); //write all RAM data to ROM
-  console.log('send read all rom in 3,5s ....');
-  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 70x50 ms = 3500 ms
-  console.log('read FIFO after 4 s ....');
-  setTimeout(getNextDataFromQueue, 4000); //  
 
 
   //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
@@ -997,14 +1080,24 @@ function saveSettings_CH2() {
   */
 }
 function loadLoadpage_CH2() {
-  reset_sidemenu_bgcolor();
-  document.getElementById('load_div_2').style.backgroundColor = "darkgray";
-  document.getElementById('menu_header').textContent = "Load Settings";
-  localStorage.setItem('selected_channel', '2');
-  setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}') }, 50);
-  setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}') }, 200);
-  //nur für test
-  var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
+  if (functionlock == false) {
+    functionlock = true;
+    reset_sidemenu_bgcolor();
+    document.getElementById('load_div_2').style.backgroundColor = "darkgray";
+    document.getElementById('menu_header').textContent = "Load Settings";
+    localStorage.setItem('selected_channel', '2');
+    if (localStorage.getItem('loadingdata') == 'false') {
+      localStorage.setItem('loadingdata', 'true');
+      FRAME.src = "/html/load.html";
+      setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#2":{"all":"get"}}') }, 50);
+      setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#2":{"all":"get"}}') }, 200);
+      //nur für test
+      var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
+      setTimeout(resetLoadingvariable, 7000);
+      setTimeout(function () { functionlock = false }, 7000);
+    }
+
+  }
 }
 /**
  * Reset the backgroundcolor of the side menu to the standard color
@@ -1120,14 +1213,15 @@ async function connectSerial() {
  */
 async function checkconnection() {
   var state;
-  addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');
+  addtoSendQueue('{"MEMS_B":{"out":"get"}}');
+  //addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');
   let delayres = await delay(500);
   getNextDataFromQueue(); // read Fifo data, changes constate variable
   delayres = await delay(500);
   state = constate;
 
 
-  state = true;//TODO: wieder löschen nach test, nur um verbindung immer aufrecht zu halten in testphase
+  state = true;//TODO: wieder löschen nach test, nur um Verbindung immer aufrecht zu halten in testphase
 
   if (state) {
     return state;
@@ -1199,15 +1293,48 @@ async function getNextDataFromQueue() {
     if (RXData.JSONDocument["flash"]) {
       if (RXData.JSONDocument["flash"]["power"]) {
         if (RXData.JSONDocument["flash"]["power"] == 'on') {
+          /*
+          if (constate == false) {
+            console.log('constate in init false -> start cyclicConnectionCheck');
+            cyclicConnectionCheck(); // start connection check
+          }
+          constate = true;
+          */
+          console.log('Power: on');
+        }
+        if (RXData.JSONDocument["flash"]["power"] == 'off') {
+          /*
+          constate = false;
+          clearInterval(checkConnectionInterval); // resetIntervalTimer
+          checkConnectionInterval = -1;
+          */
+          console.log.apply('Power: off');
+        }
+      }
+    }
+
+    // MEMS-B Hall Sensor -> Connection trigger
+    if (RXData.JSONDocument["MEMS_B"]) {
+      if (RXData.JSONDocument["MEMS_B"]["out"]) {
+        if (RXData.JSONDocument["MEMS_B"]["out"] == '1') {
+
+          if (localStorage.getItem('deviceaddress') == '') {
+            if (RXData.MACAddress.getMsb() == '13a200') { // check if this is a xbee device
+              var MAC = '0013a200' + RXData.MACAddress.getLsb();
+              localStorage.setItem('deviceaddress', MAC);
+            }
+          }
           if (constate == false) {
             console.log('constate in init false -> start cyclicConnectionCheck');
             cyclicConnectionCheck(); // start connection check
           }
           constate = true;
         }
-        if (RXData.JSONDocument["flash"]["power"] == 'off') {
+        if (RXData.JSONDocument["MEMS_B"]["out"] == '0') {
+          console.log('MEMS_B:out:0');
           constate = false;
           clearInterval(checkConnectionInterval); // resetIntervalTimer
+          checkConnectionInterval = -1;
         }
       }
     }
@@ -2108,7 +2235,7 @@ async function getNextDataFromQueue() {
           if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'runninglight') {
             localStorage.setItem('selected_mode1_CH2', 'runninglight');
           }
-          if (RXData.JSONDocument["flash#2"]["operation mode#2"] == 'marker1') {
+          if (RXData.JSONDocument["flash#2"]["operation mode#1"] == 'marker1') {
             localStorage.setItem('selected_mode1_CH2', 'marker1');
           }
         }
@@ -2556,7 +2683,7 @@ async function getNextDataFromQueue() {
           }
         }
         // marker 1  mode 1 settings
-        if (RXData.JSONDocument["flash#2"]["marker1#1"] ) {
+        if (RXData.JSONDocument["flash#2"]["marker1#1"]) {
           // color
           if (RXData.JSONDocument["flash#2"]["marker1#1"]["color"] == 'off') {
             localStorage.setItem('selected_color_marker1_CH2', 'off');
