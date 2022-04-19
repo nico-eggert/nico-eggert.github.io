@@ -1,14 +1,12 @@
-var pbcount = 0; //Counter for connection process 0-100.
+var pbcount = 0; //Counter for connection process 0-100. (historic from progress bar)
 var functionlock = false; // while functionlock gets set to true by one of the functions, all ohter functions cant start.
 
 /**
  * Setup for button click event of connection buttons
  */
 const btnDeviceConnect = document.getElementById('btnDeviceConnect');
-//const btnDeviceConnect = document.getElementById('btnDeviceConnect');
 if (btnDeviceConnect != null) {
   btnDeviceConnect.addEventListener('click', clickSerialConnect);
-  //btnDeviceConnect.addEventListener('click', clickConnect);
 }
 
 
@@ -26,17 +24,14 @@ async function clickSerialConnect() {
       setTimeout(function () { parent.getNextDataFromQueue() }, 200);
       $("#txt_progressbarstep").text('Suche Gerät');
       delayres = await parent.delay(1000);
+      $("#txt_progressbarstep").text('');
+      delayres = await parent.delay(1000);
+      //TODO: Nach test wieder auskommentieren!!!!!
+      localStorage.setItem('deviceaddress','0013A20041DB4A02');
     }
     console.log('DEVICE ADDRESS IS:', localStorage.getItem('deviceaddress'));
     // display device address
     document.getElementById('devicename').value = localStorage.getItem('deviceaddress');
-    // Enable device connection
-    /*
-    var elem = document.getElementById('btnDeviceConnect');
-    if (elem.classList.contains('disabled')) {
-      elem.classList.remove('disabled');
-    }
-    */
     // set local storage variable
     localStorage.setItem('usb_connected', 'true');
     $("#txt_progressbarstep").text('');
@@ -54,9 +49,7 @@ async function clickSerialConnect() {
 async function clickConnect() {
   var connectionstate = false;
   connectionstate = parent.checkconnection();
-  console.log('timeout start progressbar');
   var delayres = await parent.delay(1500);
-  console.log('check connectionstate before animation: ', connectionstate);
   document.getElementById('spinner').style.animation = "colorchange 2s linear infinite";
   connectionstate.then(dataLoading());
 }
@@ -71,7 +64,6 @@ async function clickConnect() {
 function dataLoading() {
   if (pbcount < 100) {
     pbcount = pbcount + 1;
-    //$(".progress-bar").css("width", pbcount + "%").text(pbcount + "%");
   }
   if (pbcount == 10) {
     parent.addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}');
@@ -95,7 +87,7 @@ function dataLoading() {
     }
   }
   if (pbcount == 100) {
-    parent.cyclicConnectionCheck();
+    //parent.cyclicConnectionCheck();
     if (localStorage.getItem('selected_language') == 'en') {
       $("#txt_progressbarstep").text("Success");
     }

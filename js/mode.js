@@ -21,8 +21,8 @@ var col_runninglight = document.getElementById('btn_runninglight_col');
 
 var marker = document.getElementById('Marker');
 var min_value_marker_1 = 0; // min value of starting position or width for markers
-var max_value_marker_1 = Number(localStorage.getItem('selected_length').replace(' mm', ''));
-//marker 1
+var max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+// marker 1
 var markerrow1 = document.getElementById('Marker_1_Row');
 var marker_1 = document.getElementById('Marker_1');
 var marker_1_color = document.getElementById('Marker_1_Color');
@@ -1151,7 +1151,14 @@ function updateSelection() {
             console.log('selected_mode: 2');
 
             if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
+                mode.checked = true;
+                // display mode buttons
+                col_green.style.visibility = 'visible';
+                col_red.style.visibility = 'visible';
+                col_runninglight.style.visibility = 'visible';
+                // activate green button
                 btn_green.classList.add("active");
+                // deactivate others
                 if (btn_red.classList.contains("active")) {
                     btn_red.classList.remove("active");
                 }
@@ -1161,20 +1168,36 @@ function updateSelection() {
                 }
             }
             if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
+                mode.checked = true;
+                // display mode buttons
+                col_green.style.visibility = 'visible';
+                col_red.style.visibility = 'visible';
+                col_runninglight.style.visibility = 'visible';
+                // activate green button
                 btn_red.classList.add("active");
+                // deactivate others
                 if (btn_green.classList.contains("active")) {
                     btn_green.classList.remove("active");
                 }
                 if (btn_runninglight.classList.contains("active")) {
+                    ;
                     btn_runninglight.classList.remove("active");
                 }
             }
             if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
+                mode.checked = true;
+                // display mode buttons
+                col_green.style.visibility = 'visible';
+                col_red.style.visibility = 'visible';
+                col_runninglight.style.visibility = 'visible';
+                // activate green button
                 btn_runninglight.classList.add("active");
+                // deactivate others
                 if (btn_green.classList.contains("active")) {
                     btn_green.classList.remove("active");
                 }
                 if (btn_red.classList.contains("active")) {
+                    ;
                     btn_red.classList.remove("active");
                 }
             }
@@ -1481,188 +1504,208 @@ function updateSelection() {
 
 
 function clickModeGREEN() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            console.log('channel 1 mode 1');
-            localStorage.setItem('selected_mode1_CH1', 'all green');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"all green"}}');
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') {
+            if (localStorage.getItem('selected_mode') == '1') {
+                console.log('channel 1 mode 1');
+                localStorage.setItem('selected_mode1_CH1', 'all green');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"all green"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH1', 'all green');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"all green"}}');
+            }
         }
-        else {
-            localStorage.setItem('selected_mode2_CH1', 'all green');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"all green"}}');
+        if (localStorage.getItem('selected_channel') == '2') {
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH2', 'all green');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"all green"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH2', 'all green');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"all green"}}');
+            }
         }
+        highlightSaveBtns();
+        updateSelection();
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
-    if (localStorage.getItem('selected_channel') == '2') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH2', 'all green');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"all green"}}');
-        }
-        else {
-            localStorage.setItem('selected_mode2_CH2', 'all green');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"all green"}}');
-        }
-    }
-    highlightSaveBtns();
-    updateSelection();
 }
 function clickModeRED() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH1', 'all red');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"all red"}}');
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') {
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH1', 'all red');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"all red"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH1', 'all red');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"all red"}}');
+            }
         }
-        else {
-            localStorage.setItem('selected_mode2_CH1', 'all red');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"all red"}}');
+        if (localStorage.getItem('selected_channel') == '2') {
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH2', 'all red');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"all red"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH2', 'all red');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"all red"}}');
+            }
         }
+        highlightSaveBtns();
+        updateSelection();
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
-    if (localStorage.getItem('selected_channel') == '2') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH2', 'all red');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"all red"}}');
-        }
-        else {
-            localStorage.setItem('selected_mode2_CH2', 'all red');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"all red"}}');
-        }
-    }
-    highlightSaveBtns();
-    updateSelection();
 }
 function clickModeRUNNINGLIGHT() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH1', 'runninglight');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"runninglight"}}');
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') {
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH1', 'runninglight');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"runninglight"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH1', 'runninglight');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"runninglight"}}');
+            }
         }
-        else {
-            localStorage.setItem('selected_mode2_CH1', 'runninglight');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"runninglight"}}');
+        if (localStorage.getItem('selected_channel') == '2') {
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH2', 'runninglight');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"runninglight"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH2', 'runninglight');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"runninglight"}}');
+            }
         }
+        highlightSaveBtns();
+        updateSelection();
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
-    if (localStorage.getItem('selected_channel') == '2') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH2', 'runninglight');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"runninglight"}}');
-        }
-        else {
-            localStorage.setItem('selected_mode2_CH2', 'runninglight');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"runninglight"}}');
-        }
-    }
-    highlightSaveBtns();
-    updateSelection();
 }
 function clickSave() {
-    if (localStorage.getItem('selected_channel') == '1') { // Channel 1
-        if (localStorage.getItem('selected_mode') == '1') { // Mode 1
-            if (localStorage.getItem('selected_mode1_CH1') == 'all green') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"all green"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch1.src = "../images/greenstripe.png";
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') { // Channel 1
+            if (localStorage.getItem('selected_mode') == '1') { // Mode 1
+                if (localStorage.getItem('selected_mode1_CH1') == 'all green') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"all green"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch1.src = "../images/greenstripe.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH1') == 'all red') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"all red"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch1.src = "../images/redstripe.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH1') == 'runninglight') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"runninglight"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch1.src = "../images/runninglight_1.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH1') == 'marker1') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"marker1"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch1.src = "../images/M_transparent.png";
+                    // save ram data of markers to rom
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1":"ram"}}');
+                }
             }
-            if (localStorage.getItem('selected_mode1_CH1') == 'all red') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"all red"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch1.src = "../images/redstripe.png";
-            }
-            if (localStorage.getItem('selected_mode1_CH1') == 'runninglight') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"runninglight"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch1.src = "../images/runninglight_1.png";
-            }
-            if (localStorage.getItem('selected_mode1_CH1') == 'marker1') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"marker1"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch1.src = "../images/M_transparent.png";
-                // save ram data of markers to rom
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1":"ram"}}');
+            if (localStorage.getItem('selected_mode') == '2') { // Mode 2
+                if (localStorage.getItem('selected_mode2_CH1') == 'all green') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"all green"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch1.src = "../images/greenstripe.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH1') == 'all red') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"all red"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch1.src = "../images/redstripe.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH1') == 'runninglight') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"runninglight"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch1.src = "../images/runninglight_1.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH1') == 'marker2') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"marker2"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch1.src = "../images/M_transparent.png";
+                    // save ram data of marker to rom
+                    parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2":"ram"}}');
+                }
+                //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+                if (sidemenu_save_btn.classList.contains('custom-button-save')) {
+                    sidemenu_save_btn.classList.remove('custom-button-save');
+                    sidemenu_save_btn.classList.add('custom-button-default');
+                }
             }
         }
-        if (localStorage.getItem('selected_mode') == '2') { // Mode 2
-            if (localStorage.getItem('selected_mode2_CH1') == 'all green') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"all green"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch1.src = "../images/greenstripe.png";
+        else { // Channel 2
+            if (localStorage.getItem('selected_mode') == '1') { // Mode 1
+                if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all green"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/greenstripe.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all red"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/redstripe.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"runninglight"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/runninglight_1.png";
+                }
+                if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"marker1"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode1_state_icon_ch2.src = "../images/M_transparent.png";
+                    // save ram data of marker to rom
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1":"ram"}}');
+                }
             }
-            if (localStorage.getItem('selected_mode2_CH1') == 'all red') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"all red"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch1.src = "../images/redstripe.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH1') == 'runninglight') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"runninglight"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch1.src = "../images/runninglight_1.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH1') == 'marker2') {
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"marker2"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch1.src = "../images/M_transparent.png";
-                // save ram data of marker to rom
-                parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2":"ram"}}');
+            if (localStorage.getItem('selected_mode') == '2') { // Mode 2
+                if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all green"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/greenstripe.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all red"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/redstripe.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"runninglight"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/runninglight_1.png";
+                }
+                if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"marker2"}}');
+                    btnSAVE.style.visibility = "hidden";
+                    mode2_state_icon_ch2.src = "../images/M_transparent.png";
+                    // save ram data of marker to rom
+                    parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2":"ram"}}');
+                }
             }
             //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-            if (sidemenu_save_btn.classList.contains('custom-button-save')) {
-                sidemenu_save_btn.classList.remove('custom-button-save');
-                sidemenu_save_btn.classList.add('custom-button-default');
+            if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
+                sidemenu_save_btn_2.classList.remove('custom-button-save');
+                sidemenu_save_btn_2.classList.add('custom-button-default');
             }
         }
-    }
-    else { // Channel 2
-        if (localStorage.getItem('selected_mode') == '1') { // Mode 1
-            if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all green"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/greenstripe.png";
-            }
-            if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all red"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/redstripe.png";
-            }
-            if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"runninglight"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/runninglight_1.png";
-            }
-            if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"marker1"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode1_state_icon_ch2.src = "../images/M_transparent.png";
-                // save ram data of marker to rom
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1":"ram"}}');
-            }
-        }
-        if (localStorage.getItem('selected_mode') == '2') { // Mode 2
-            if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all green"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/greenstripe.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all red"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/redstripe.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"runninglight"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/runninglight_1.png";
-            }
-            if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"marker2"}}');
-                btnSAVE.style.visibility = "hidden";
-                mode2_state_icon_ch2.src = "../images/M_transparent.png";
-                // save ram data of marker to rom
-                parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2":"ram"}}');
-            }
-        }
-        //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
-            sidemenu_save_btn_2.classList.remove('custom-button-save');
-            sidemenu_save_btn_2.classList.add('custom-button-default');
-        }
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
 }
 
@@ -2397,7 +2440,7 @@ $('#Marker').change(function () {
     updateSelection(); // to get marker settings loaded
 })
 
-// visibility changes of markers on change, reset marker color selections
+// visibility changes of markers on change, reset marker local storage variables and update selection
 $('#Marker_1').change(function () {
     if (this.checked) {
         marker_1_color.style.visibility = 'visible';
@@ -2416,11 +2459,17 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn1');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('1');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '1', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '1', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '1', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('1', 'color', 'off');
+        setLocalStorageVariable('1', 'position', '');
+        setLocalStorageVariable('1', 'width', '');
         // hide menu elements
         marker_1_color.style.visibility = 'hidden';
         marker_1_position_left.style.visibility = 'hidden';
@@ -2437,11 +2486,17 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn2');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('2');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '2', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '2', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variabels
+        setLocalStorageVariable('2', 'color', 'off');
+        setLocalStorageVariable('2', 'position', '');
+        setLocalStorageVariable('2', 'width', '');
         // hide menu elements
         marker_2_color.style.visibility = 'hidden';
         marker_2_position_left.style.visibility = 'hidden';
@@ -2458,11 +2513,17 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn3');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('3');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '3', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '3', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('3', 'color', 'off');
+        setLocalStorageVariable('3', 'position', '');
+        setLocalStorageVariable('3', 'width', '');
         // hide menu elements
         marker_3_color.style.visibility = 'hidden';
         marker_3_position_left.style.visibility = 'hidden';
@@ -2479,11 +2540,17 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('4');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('4', 'color', 'off');
+        setLocalStorageVariable('4', 'position', '');
+        setLocalStorageVariable('4', 'width', '');
         // hide menu elements
         marker_4_color.style.visibility = 'hidden';
         marker_4_position_left.style.visibility = 'hidden';
@@ -2500,11 +2567,17 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('5');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('5', 'color', 'off');
+        setLocalStorageVariable('5', 'position', '');
+        setLocalStorageVariable('5', 'width', '');
         // hide menu elements
         marker_5_color.style.visibility = 'hidden';
         marker_5_position_left.style.visibility = 'hidden';
@@ -2517,6 +2590,7 @@ $('#Marker_1').change(function () {
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
+        updateSelection();
     }
 })
 $('#Marker_2').change(function () {
@@ -2537,11 +2611,17 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn2');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('2');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '2', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '2', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('2', 'color', 'off');
+        setLocalStorageVariable('2', 'position', '');
+        setLocalStorageVariable('2', 'width', '');
         // hide menu elements
         marker_2_color.style.visibility = 'hidden';
         marker_2_position_left.style.visibility = 'hidden';
@@ -2558,11 +2638,17 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn3');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('3');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '3', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '3', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('3', 'color', 'off');
+        setLocalStorageVariable('3', 'position', '');
+        setLocalStorageVariable('3', 'width', '');
         // hide menu elements
         marker_3_color.style.visibility = 'hidden';
         marker_3_position_left.style.visibility = 'hidden';
@@ -2579,11 +2665,17 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('4');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('4', 'color', 'off');
+        setLocalStorageVariable('4', 'position', '');
+        setLocalStorageVariable('4', 'width', '');
         // hide menu elements
         marker_4_color.style.visibility = 'hidden';
         marker_4_position_left.style.visibility = 'hidden';
@@ -2600,11 +2692,17 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('5');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('5', 'color', 'off');
+        setLocalStorageVariable('5', 'position', '');
+        setLocalStorageVariable('5', 'width', '');
         // hide menu elements
         marker_5_color.style.visibility = 'hidden';
         marker_5_position_left.style.visibility = 'hidden';
@@ -2617,6 +2715,7 @@ $('#Marker_2').change(function () {
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
+        updateSelection();
     }
 })
 $('#Marker_3').change(function () {
@@ -2642,6 +2741,14 @@ $('#Marker_3').change(function () {
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '3', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '3', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('3', 'color', 'off');
+        setLocalStorageVariable('3', 'position', '');
+        setLocalStorageVariable('3', 'width', '');
         // hide menu elements
         marker_3_color.style.visibility = 'hidden';
         marker_3_position_left.style.visibility = 'hidden';
@@ -2658,11 +2765,17 @@ $('#Marker_3').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('4');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('4', 'color', 'off');
+        setLocalStorageVariable('4', 'position', '');
+        setLocalStorageVariable('4', 'width', '');
         // hide menu elements
         marker_4_color.style.visibility = 'hidden';
         marker_4_position_left.style.visibility = 'hidden';
@@ -2679,11 +2792,17 @@ $('#Marker_3').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#0275d8'; // btn primary blue
         elem.style.color = 'white';
-        // reset local storage variable
-        resetMarkerColor('5');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('5', 'color', 'off');
+        setLocalStorageVariable('5', 'position', '');
+        setLocalStorageVariable('5', 'width', '');
         // hide menu elements
         marker_5_color.style.visibility = 'hidden';
         marker_5_position_left.style.visibility = 'hidden';
@@ -2696,6 +2815,7 @@ $('#Marker_3').change(function () {
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
+        updateSelection();
     }
 })
 $('#Marker_4').change(function () {
@@ -2721,6 +2841,14 @@ $('#Marker_4').change(function () {
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '4', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables
+        setLocalStorageVariable('4', 'color', 'off');
+        setLocalStorageVariable('4', 'position', '');
+        setLocalStorageVariable('4', 'width', '');
         // hide menu elements
         marker_4_color.style.visibility = 'hidden';
         marker_4_position_left.style.visibility = 'hidden';
@@ -2739,9 +2867,17 @@ $('#Marker_4').change(function () {
         elem.style.color = 'white';
         // reset local storage variable
         resetMarkerColor('5');
-        // Send marker color = 'off' message
+        // reset Marker 5 parameters
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset local storage variables of marker 5
+        setLocalStorageVariable('5', 'color', 'off');
+        setLocalStorageVariable('5', 'position', '');
+        setLocalStorageVariable('5', 'width', '');
         // hide menu elements
         marker_5_color.style.visibility = 'hidden';
         marker_5_position_left.style.visibility = 'hidden';
@@ -2754,6 +2890,7 @@ $('#Marker_4').change(function () {
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
+        updateSelection();
     }
 })
 $('#Marker_5').change(function () {
@@ -2777,6 +2914,14 @@ $('#Marker_5').change(function () {
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'position', '');
+        parent.addtoSendQueue(JSONmsg);
+        JSONmsg = createJSONmsg('ram', '5', 'width', '');
+        parent.addtoSendQueue(JSONmsg);
+        // reset localstorage variables
+        setLocalStorageVariable('5', 'color', 'off');
+        setLocalStorageVariable('5', 'position', '');
+        setLocalStorageVariable('5', 'width', '');
         // hide menu elements
         marker_5_color.style.visibility = 'hidden';
         marker_5_position_left.style.visibility = 'hidden';
@@ -2788,6 +2933,7 @@ $('#Marker_5').change(function () {
         // show save button
         highlightSaveBtns();
         parent.updateLanguage();
+        updateSelection();
     }
 })
 
@@ -2804,13 +2950,23 @@ $('#marker_1_shift_pos_left').click(function () {
     parent.addtoSendQueue(JSONmsg);
     setLocalStorageVariable('1', 'position', String(elem.value));
     highlightSaveBtns();
-
 })
 $('#marker_1_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_1_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_2_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_2_pos_input').value - document.getElementById('marker_1_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'position', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -2819,8 +2975,19 @@ $('#marker_1_shift_pos_right').click(function () {
 })
 $('#marker_1_pos_input').change(function () {
     var elem = document.getElementById('marker_1_pos_input');
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_2_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_2_pos_input').value - document.getElementById('marker_1_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     if (elem.value < min_value_marker_1) {
         elem.value = min_value_marker_1;
@@ -2856,8 +3023,19 @@ $('#marker_2_shift_pos_left').click(function () {
 $('#marker_2_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_2_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_3_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_3_pos_input').value - document.getElementById('marker_2_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
@@ -2876,8 +3054,19 @@ $('#marker_2_shift_pos_right').click(function () {
 })
 $('#marker_2_pos_input').change(function () {
     var elem = document.getElementById('marker_2_pos_input');
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_3_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_3_pos_input').value - document.getElementById('marker_2_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_1_pos_input').value) + Number(document.getElementById('marker_1_width_input').value);
     if (elem.value < min_value) {
@@ -2920,8 +3109,19 @@ $('#marker_3_shift_pos_left').click(function () {
 $('#marker_3_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_3_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_4_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_4_pos_input').value - document.getElementById('marker_3_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
@@ -2940,8 +3140,19 @@ $('#marker_3_shift_pos_right').click(function () {
 })
 $('#marker_3_pos_input').change(function () {
     var elem = document.getElementById('marker_3_pos_input');
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_4_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_4_pos_input').value - document.getElementById('marker_3_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_2_pos_input').value) + Number(document.getElementById('marker_2_width_input').value);
     if (elem.value < min_value) {
@@ -2983,8 +3194,19 @@ $('#marker_4_shift_pos_left').click(function () {
 $('#marker_4_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_4_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_5_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_5_pos_input').value - document.getElementById('marker_4_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
@@ -3003,8 +3225,19 @@ $('#marker_4_shift_pos_right').click(function () {
 })
 $('#marker_4_pos_input').change(function () {
     var elem = document.getElementById('marker_4_pos_input');
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (document.getElementById('marker_5_pos_input').value != 0) {
+        max_value_marker = document.getElementById('marker_5_pos_input').value - document.getElementById('marker_4_width_input').value;
+    }
+    else {
+        if (localStorage.getItem('selected_channel') == 1) {
+            max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+        }
+        if (localStorage.getItem('selected_channel') == 2) {
+            max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+        }
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_3_pos_input').value) + Number(document.getElementById('marker_3_width_input').value);
     if (elem.value < min_value) {
@@ -3046,8 +3279,14 @@ $('#marker_5_shift_pos_left').click(function () {
 $('#marker_5_shift_pos_right').click(function () {
     var elem = document.getElementById('marker_5_pos_input');
     elem.value = Number(elem.value) + 1;
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
@@ -3066,8 +3305,14 @@ $('#marker_5_shift_pos_right').click(function () {
 })
 $('#marker_5_pos_input').change(function () {
     var elem = document.getElementById('marker_5_pos_input');
-    if (elem.value > max_value_marker_1) {
-        elem.value = max_value_marker_1;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value_marker = Number(localStorage.getItem('selected_length').replace(' mm', ''));
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value_marker = Number(localStorage.getItem('selected_length_2').replace(' mm', ''));
+    }
+    if (elem.value >= max_value_marker) {
+        elem.value = max_value_marker;
     }
     var min_value = Number(document.getElementById('marker_4_pos_input').value) + Number(document.getElementById('marker_4_width_input').value);
     if (elem.value < min_value) {
@@ -3092,8 +3337,8 @@ $('#marker_1_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_1_width_input');
     elem.value = Number(elem.value) - 1;
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -3104,7 +3349,20 @@ $('#marker_1_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_1_width_input');
     elem.value = Number(elem.value) + 1;
-    var max_value = Number(max_value_marker_1) - Number(document.getElementById('marker_1_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_1_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_1_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_2').checked) {
+        var next_marker_positon = document.getElementById('marker_2_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_1_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
@@ -3115,12 +3373,25 @@ $('#marker_1_shift_width_right').click(function () {
 })
 $('#marker_1_width_input').change(function () {
     var elem = document.getElementById('marker_1_width_input');
-    var max_value = Number(max_value_marker_1) - Number(document.getElementById('marker_1_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_1_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_1_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_2').checked) {
+        next_marker_positon = document.getElementById('marker_2_pos_input');
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_1_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     var JSONmsg = createJSONmsg('ram', '1', 'width', elem.value);
     parent.addtoSendQueue(JSONmsg);
@@ -3137,8 +3408,8 @@ $('#marker_2_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_2_width_input');
     elem.value = Number(elem.value) - 1;
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3155,7 +3426,20 @@ $('#marker_2_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_2_width_input');
     elem.value = Number(elem.value) + 1;
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_2_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_2_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_2_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_3').checked) {
+        next_marker_positon = document.getElementById('marker_3_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_2_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
@@ -3172,12 +3456,25 @@ $('#marker_2_shift_width_right').click(function () {
 })
 $('#marker_2_width_input').change(function () {
     var elem = document.getElementById('marker_2_width_input');
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_2_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_2_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_2_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_3').checked) {
+        next_marker_positon = document.getElementById('marker_3_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_2_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_1_pos_input').value) === '' || Number(document.getElementById('marker_1_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3198,8 +3495,8 @@ $('#marker_3_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_3_width_input');
     elem.value = Number(elem.value) - 1;
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3216,7 +3513,20 @@ $('#marker_3_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_3_width_input');
     elem.value = Number(elem.value) + 1;
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_3_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_3_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_3_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_4').checked) {
+        next_marker_positon = document.getElementById('marker_4_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_3_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
@@ -3233,12 +3543,25 @@ $('#marker_3_shift_width_right').click(function () {
 })
 $('#marker_3_width_input').change(function () {
     var elem = document.getElementById('marker_3_width_input');
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_3_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_3_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_3_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_4').checked) {
+        next_marker_positon = document.getElementById('marker_4_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_3_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_2_pos_input').value) === '' || Number(document.getElementById('marker_2_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3259,8 +3582,8 @@ $('#marker_4_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_4_width_input');
     elem.value = Number(elem.value) - 1;
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3277,7 +3600,21 @@ $('#marker_4_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_4_width_input');
     elem.value = Number(elem.value) + 1;
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_4_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_4_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_4_pos_input').value);
+    }
+    var next_marker_positon = 0;
+
+    if (document.getElementById('Marker_5').checked) {
+        next_marker_positon = document.getElementById('marker_5_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_4_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
@@ -3294,12 +3631,25 @@ $('#marker_4_shift_width_right').click(function () {
 })
 $('#marker_4_width_input').change(function () {
     var elem = document.getElementById('marker_4_width_input');
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_4_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_4_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_4_pos_input').value);
+    }
+    var next_marker_positon = 0;
+    if (document.getElementById('Marker_5').checked) {
+        next_marker_positon = document.getElementById('marker_5_pos_input').value;
+    }
+    if (next_marker_positon != 0 && max_value > next_marker_positon) {
+        max_value = next_marker_positon - document.getElementById('marker_4_pos_input').value;
+    }
     if (elem.value > max_value) {
         elem.value = max_value;
     }
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_3_pos_input').value) === '' || Number(document.getElementById('marker_3_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3320,8 +3670,8 @@ $('#marker_5_shift_width_left').click(function () {
     // Decrease shown input value
     var elem = document.getElementById('marker_5_width_input');
     elem.value = Number(elem.value) - 1;
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3338,9 +3688,18 @@ $('#marker_5_shift_width_right').click(function () {
     // Increase shown input value
     var elem = document.getElementById('marker_5_width_input');
     elem.value = Number(elem.value) + 1;
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_5_pos_input').value);
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_5_pos_input').value);
+    }
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_5_pos_input').value);
+    }
     if (elem.value > max_value) {
-        elem.value = max_value;
+        elem.value = max_value - document.getElementById('marker_5_pos_input').value;
+        if (elem.value < 0) {
+            elem.value = 0;
+        }
     }
     if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3355,12 +3714,18 @@ $('#marker_5_shift_width_right').click(function () {
 })
 $('#marker_5_width_input').change(function () {
     var elem = document.getElementById('marker_5_width_input');
-    var max_value = max_value_marker_1 - Number(document.getElementById('marker_5_pos_input').value);
-    if (elem.value > max_value) {
-        elem.value = max_value;
+    var max_value;
+    if (localStorage.getItem('selected_channel') == 1) {
+        max_value = Number(localStorage.getItem('selected_length').replace(' mm', '')) - Number(document.getElementById('marker_5_pos_input').value);
     }
-    if (elem.value < 0) {
-        elem.value = 0;
+    if (localStorage.getItem('selected_channel') == 2) {
+        max_value = Number(localStorage.getItem('selected_length_2').replace(' mm', '')) - Number(document.getElementById('marker_5_pos_input').value);
+    }
+    if (elem.value > max_value) {
+        elem.value = max_value - document.getElementById('marker_5_pos_input').value;
+    }
+    if (elem.value < 1) {
+        elem.value = 1;
     }
     if (Number(document.getElementById('marker_4_pos_input').value) === '' || Number(document.getElementById('marker_4_width_input').value === '')) {
         console.log('Previous Marker values not defined!');
@@ -3489,6 +3854,7 @@ function setLocalStorageVariable(markernumber, subparameter, wert) {
                         break;
                     case '5':
                         localStorage.setItem('selected_position_marker5_CH1', wert);
+                        break;
                     default:
                         console.log('error: markernumber');
                         break;
@@ -3510,6 +3876,7 @@ function setLocalStorageVariable(markernumber, subparameter, wert) {
                         break;
                     case '5':
                         localStorage.setItem('selected_width_marker5_CH1', wert);
+                        break;
                     default:
                         console.log('error: markernumber');
                         break;
@@ -3576,6 +3943,7 @@ function setLocalStorageVariable(markernumber, subparameter, wert) {
                         break;
                     case '5':
                         localStorage.setItem('selected_width_marker5_CH1_mode2', wert);
+                        break;
                     default:
                         console.log('error: markernumber');
                         break;
@@ -3669,6 +4037,7 @@ function setLocalStorageVariable(markernumber, subparameter, wert) {
                         break;
                     case '5':
                         localStorage.setItem('selected_color_marker5_CH2_mode2', wert);
+                        break;
                     default:
                         console.log('error: markernumber');
                         break;
@@ -3690,6 +4059,7 @@ function setLocalStorageVariable(markernumber, subparameter, wert) {
                         break;
                     case '5':
                         localStorage.setItem('selected_position_marker5_CH2_mode2', wert);
+                        break;
                     default:
                         console.log('error: markernumber');
                         break;

@@ -1,5 +1,4 @@
 const stringdata_array = []; // array to save all string commands in a queue
-
 var functionlock = false; // variable gets set in function call by clicking sidemenu buttons, resets to false on finish of function
 
 // button constants
@@ -129,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 var checkConnectionInterval = -1; // interval return variable, can be cleared to reset the interval call of connection check, is equal to timer id
-var constate; // connectionstate to devicename macadress
+var constate = false; // connectionstate to devicename macadress
 var nomsgcounter = 0; // counts the number of FIFO read commands without any new data
 
 
@@ -678,99 +677,109 @@ function resetLoadingvariable() {
  * Save settings from localstorage variables to file
  */
 function saveSettingstoFile() {
-  reset_sidemenu_bgcolor();
-  var file;
-  var data = [];
-  data.push("Channel 1: \n");
-  data.push("Length:" + localStorage.getItem('selected_length') + "\n");
-  data.push("Brightness:" + localStorage.getItem('selected_brightness') + "\n");
-  data.push("Mode1_CH1:" + localStorage.getItem('selected_mode1_CH1') + "\n");
-  data.push("Mode2_CH2:" + localStorage.getItem('selected_mode2_CH1') + "\n");
-  data.push("Marker1#1_color:" + localStorage.getItem('selected_color_marker1_CH1') + "\n");
-  data.push("Marker1#1_position:" + localStorage.getItem('selected_position_marker1_CH1') + "\n");
-  data.push("Marker1#1_width:" + localStorage.getItem('selected_width_marker1_CH1') + "\n");
-  data.push("Marker1#2_color:" + localStorage.getItem('selected_color_marker2_CH1') + "\n");
-  data.push("Marker1#2_position:" + localStorage.getItem('selected_position_marker2_CH1') + "\n");
-  data.push("Marker1#2_width:" + localStorage.getItem('selected_width_marker2_CH1') + "\n");
-  data.push("Marker1#3_color:" + localStorage.getItem('selected_color_marker3_CH1') + "\n");
-  data.push("Marker1#3_position:" + localStorage.getItem('selected_position_marker3_CH1') + "\n");
-  data.push("Marker1#3_width:" + localStorage.getItem('selected_width_marker3_CH1') + "\n");
-  data.push("Marker1#4_color:" + localStorage.getItem('selected_color_marker4_CH1') + "\n");
-  data.push("Marker1#4_position:" + localStorage.getItem('selected_position_marker4_CH1') + "\n");
-  data.push("Marker1#4_width:" + localStorage.getItem('selected_width_marker4_CH1') + "\n");
-  data.push("Marker1#5_color:" + localStorage.getItem('selected_color_marker5_CH1') + "\n");
-  data.push("Marker1#5_position:" + localStorage.getItem('selected_position_marker5_CH1') + "\n");
-  data.push("Marker1#5_width:" + localStorage.getItem('selected_width_marker5_CH1') + "\n");
-  data.push("Marker2#1_color:" + localStorage.getItem('selected_color_marker1_CH1_mode2') + "\n");
-  data.push("Marker2#1_position:" + localStorage.getItem('selected_position_marker1_CH1_mode2') + "\n");
-  data.push("Marker2#1_width:" + localStorage.getItem('selected_width_marker1_CH1_mode2') + "\n");
-  data.push("Marker2#2_color:" + localStorage.getItem('selected_color_marker2_CH1_mode2') + "\n");
-  data.push("Marker2#2_position:" + localStorage.getItem('selected_position_marker2_CH1_mode2') + "\n");
-  data.push("Marker2#2_width:" + localStorage.getItem('selected_width_marker2_CH1_mode2') + "\n");
-  data.push("Marker2#3_color:" + localStorage.getItem('selected_color_marker3_CH1_mode2') + "\n");
-  data.push("Marker2#3_position:" + localStorage.getItem('selected_position_marker3_CH1_mode2') + "\n");
-  data.push("Marker2#3_width:" + localStorage.getItem('selected_width_marker3_CH1_mode2') + "\n");
-  data.push("Marker2#4_color:" + localStorage.getItem('selected_color_marker4_CH1_mode2') + "\n");
-  data.push("Marker2#4_position:" + localStorage.getItem('selected_position_marker4_CH1_mode2') + "\n");
-  data.push("Marker2#4_width:" + localStorage.getItem('selected_width_marker4_CH1_mode2') + "\n");
-  data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH1_mode2') + "\n");
-  data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH1_mode2') + "\n");
-  data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH1_mode2') + "\n\n");
-  data.push("Channel 2: \n");
-  data.push("Length:" + localStorage.getItem('selected_length_2') + "\n");
-  data.push("Brightness:" + localStorage.getItem('selected_brightness_2') + "\n");
-  data.push("Mode1_CH2:" + localStorage.getItem('selected_mode1_CH2') + "\n");
-  data.push("Mode2_CH2:" + localStorage.getItem('selected_mode2_CH2') + "\n");
-  data.push("Marker1#1_color:" + localStorage.getItem('selected_color_marker1_CH2') + "\n");
-  data.push("Marker1#1_position:" + localStorage.getItem('selected_position_marker1_CH2') + "\n");
-  data.push("Marker1#1_width:" + localStorage.getItem('selected_width_marker1_CH2') + "\n");
-  data.push("Marker1#2_color:" + localStorage.getItem('selected_color_marker2_CH2') + "\n");
-  data.push("Marker1#2_position:" + localStorage.getItem('selected_position_marker2_CH2') + "\n");
-  data.push("Marker1#2_width:" + localStorage.getItem('selected_width_marker2_CH2') + "\n");
-  data.push("Marker1#3_color:" + localStorage.getItem('selected_color_marker3_CH2') + "\n");
-  data.push("Marker1#3_position:" + localStorage.getItem('selected_position_marker3_CH2') + "\n");
-  data.push("Marker1#3_width:" + localStorage.getItem('selected_width_marker3_CH2') + "\n");
-  data.push("Marker1#4_color:" + localStorage.getItem('selected_color_marker4_CH2') + "\n");
-  data.push("Marker1#4_position:" + localStorage.getItem('selected_position_marker4_CH2') + "\n");
-  data.push("Marker1#4_width:" + localStorage.getItem('selected_width_marker4_CH2') + "\n");
-  data.push("Marker1#5_color:" + localStorage.getItem('selected_color_marker5_CH2') + "\n");
-  data.push("Marker1#5_position:" + localStorage.getItem('selected_position_marker5_CH2') + "\n");
-  data.push("Marker1#5_width:" + localStorage.getItem('selected_width_marker5_CH2') + "\n");
-  data.push("Marker2#1_color:" + localStorage.getItem('selected_color_marker1_CH2_mode2') + "\n");
-  data.push("Marker2#1_position:" + localStorage.getItem('selected_position_marker1_CH2_mode2') + "\n");
-  data.push("Marker2#1_width:" + localStorage.getItem('selected_width_marker1_CH2_mode2') + "\n");
-  data.push("Marker2#2_color:" + localStorage.getItem('selected_color_marker2_CH2_mode2') + "\n");
-  data.push("Marker2#2_position:" + localStorage.getItem('selected_position_marker2_CH2_mode2') + "\n");
-  data.push("Marker2#2_width:" + localStorage.getItem('selected_width_marker2_CH2_mode2') + "\n");
-  data.push("Marker2#3_color:" + localStorage.getItem('selected_color_marker3_CH2_mode2') + "\n");
-  data.push("Marker2#3_position:" + localStorage.getItem('selected_position_marker3_CH2_mode2') + "\n");
-  data.push("Marker2#3_width:" + localStorage.getItem('selected_width_marker3_CH2_mode2') + "\n");
-  data.push("Marker2#4_color:" + localStorage.getItem('selected_color_marker4_CH2_mode2') + "\n");
-  data.push("Marker2#4_position:" + localStorage.getItem('selected_position_marker4_CH2_mode2') + "\n");
-  data.push("Marker2#4_width:" + localStorage.getItem('selected_width_marker4_CH2_mode2') + "\n");
-  data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH2_mode2') + "\n");
-  data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH2_mode2') + "\n");
-  data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH2_mode2') + "\n\n");
-  var properties = { type: 'text/plain' }; // Specify the file's mime-type.
-  try {
-    // Specify the filename using the File constructor, but ...
-    console.log('file');
-    file = new File(data, "sf-flash-config.txt", properties);
-  } catch (e) {
-    // ... fall back to the Blob constructor if that isn't supported. Note: File name can not be specified!
-    console.log('blob');
-    file = new Blob(data, properties);
-  }
-  var url = URL.createObjectURL(file);
-  console.log(url);
-  document.getElementById('btnSavesettings').href = url;
-  document.getElementById('saveSettings_img').src = "../images/check.png";
-  BTNSAVESETTINGS.removeAttribute('href');
+  if (functionlock == false) {
+    functionlock = true;
 
+    reset_sidemenu_bgcolor();
+    var file;
+    var data = [];
+    data.push("Channel 1: \n");
+    data.push("Length:" + localStorage.getItem('selected_length') + "\n");
+    data.push("Brightness:" + localStorage.getItem('selected_brightness') + "\n");
+    data.push("Mode1_CH1:" + localStorage.getItem('selected_mode1_CH1') + "\n");
+    data.push("Mode2_CH2:" + localStorage.getItem('selected_mode2_CH1') + "\n");
+    data.push("Marker1#1_color:" + localStorage.getItem('selected_color_marker1_CH1') + "\n");
+    data.push("Marker1#1_position:" + localStorage.getItem('selected_position_marker1_CH1') + "\n");
+    data.push("Marker1#1_width:" + localStorage.getItem('selected_width_marker1_CH1') + "\n");
+    data.push("Marker1#2_color:" + localStorage.getItem('selected_color_marker2_CH1') + "\n");
+    data.push("Marker1#2_position:" + localStorage.getItem('selected_position_marker2_CH1') + "\n");
+    data.push("Marker1#2_width:" + localStorage.getItem('selected_width_marker2_CH1') + "\n");
+    data.push("Marker1#3_color:" + localStorage.getItem('selected_color_marker3_CH1') + "\n");
+    data.push("Marker1#3_position:" + localStorage.getItem('selected_position_marker3_CH1') + "\n");
+    data.push("Marker1#3_width:" + localStorage.getItem('selected_width_marker3_CH1') + "\n");
+    data.push("Marker1#4_color:" + localStorage.getItem('selected_color_marker4_CH1') + "\n");
+    data.push("Marker1#4_position:" + localStorage.getItem('selected_position_marker4_CH1') + "\n");
+    data.push("Marker1#4_width:" + localStorage.getItem('selected_width_marker4_CH1') + "\n");
+    data.push("Marker1#5_color:" + localStorage.getItem('selected_color_marker5_CH1') + "\n");
+    data.push("Marker1#5_position:" + localStorage.getItem('selected_position_marker5_CH1') + "\n");
+    data.push("Marker1#5_width:" + localStorage.getItem('selected_width_marker5_CH1') + "\n");
+    data.push("Marker2#1_color:" + localStorage.getItem('selected_color_marker1_CH1_mode2') + "\n");
+    data.push("Marker2#1_position:" + localStorage.getItem('selected_position_marker1_CH1_mode2') + "\n");
+    data.push("Marker2#1_width:" + localStorage.getItem('selected_width_marker1_CH1_mode2') + "\n");
+    data.push("Marker2#2_color:" + localStorage.getItem('selected_color_marker2_CH1_mode2') + "\n");
+    data.push("Marker2#2_position:" + localStorage.getItem('selected_position_marker2_CH1_mode2') + "\n");
+    data.push("Marker2#2_width:" + localStorage.getItem('selected_width_marker2_CH1_mode2') + "\n");
+    data.push("Marker2#3_color:" + localStorage.getItem('selected_color_marker3_CH1_mode2') + "\n");
+    data.push("Marker2#3_position:" + localStorage.getItem('selected_position_marker3_CH1_mode2') + "\n");
+    data.push("Marker2#3_width:" + localStorage.getItem('selected_width_marker3_CH1_mode2') + "\n");
+    data.push("Marker2#4_color:" + localStorage.getItem('selected_color_marker4_CH1_mode2') + "\n");
+    data.push("Marker2#4_position:" + localStorage.getItem('selected_position_marker4_CH1_mode2') + "\n");
+    data.push("Marker2#4_width:" + localStorage.getItem('selected_width_marker4_CH1_mode2') + "\n");
+    data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH1_mode2') + "\n");
+    data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH1_mode2') + "\n");
+    data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH1_mode2') + "\n\n");
+    data.push("Channel 2: \n");
+    data.push("Length:" + localStorage.getItem('selected_length_2') + "\n");
+    data.push("Brightness:" + localStorage.getItem('selected_brightness_2') + "\n");
+    data.push("Mode1_CH2:" + localStorage.getItem('selected_mode1_CH2') + "\n");
+    data.push("Mode2_CH2:" + localStorage.getItem('selected_mode2_CH2') + "\n");
+    data.push("Marker1#1_color:" + localStorage.getItem('selected_color_marker1_CH2') + "\n");
+    data.push("Marker1#1_position:" + localStorage.getItem('selected_position_marker1_CH2') + "\n");
+    data.push("Marker1#1_width:" + localStorage.getItem('selected_width_marker1_CH2') + "\n");
+    data.push("Marker1#2_color:" + localStorage.getItem('selected_color_marker2_CH2') + "\n");
+    data.push("Marker1#2_position:" + localStorage.getItem('selected_position_marker2_CH2') + "\n");
+    data.push("Marker1#2_width:" + localStorage.getItem('selected_width_marker2_CH2') + "\n");
+    data.push("Marker1#3_color:" + localStorage.getItem('selected_color_marker3_CH2') + "\n");
+    data.push("Marker1#3_position:" + localStorage.getItem('selected_position_marker3_CH2') + "\n");
+    data.push("Marker1#3_width:" + localStorage.getItem('selected_width_marker3_CH2') + "\n");
+    data.push("Marker1#4_color:" + localStorage.getItem('selected_color_marker4_CH2') + "\n");
+    data.push("Marker1#4_position:" + localStorage.getItem('selected_position_marker4_CH2') + "\n");
+    data.push("Marker1#4_width:" + localStorage.getItem('selected_width_marker4_CH2') + "\n");
+    data.push("Marker1#5_color:" + localStorage.getItem('selected_color_marker5_CH2') + "\n");
+    data.push("Marker1#5_position:" + localStorage.getItem('selected_position_marker5_CH2') + "\n");
+    data.push("Marker1#5_width:" + localStorage.getItem('selected_width_marker5_CH2') + "\n");
+    data.push("Marker2#1_color:" + localStorage.getItem('selected_color_marker1_CH2_mode2') + "\n");
+    data.push("Marker2#1_position:" + localStorage.getItem('selected_position_marker1_CH2_mode2') + "\n");
+    data.push("Marker2#1_width:" + localStorage.getItem('selected_width_marker1_CH2_mode2') + "\n");
+    data.push("Marker2#2_color:" + localStorage.getItem('selected_color_marker2_CH2_mode2') + "\n");
+    data.push("Marker2#2_position:" + localStorage.getItem('selected_position_marker2_CH2_mode2') + "\n");
+    data.push("Marker2#2_width:" + localStorage.getItem('selected_width_marker2_CH2_mode2') + "\n");
+    data.push("Marker2#3_color:" + localStorage.getItem('selected_color_marker3_CH2_mode2') + "\n");
+    data.push("Marker2#3_position:" + localStorage.getItem('selected_position_marker3_CH2_mode2') + "\n");
+    data.push("Marker2#3_width:" + localStorage.getItem('selected_width_marker3_CH2_mode2') + "\n");
+    data.push("Marker2#4_color:" + localStorage.getItem('selected_color_marker4_CH2_mode2') + "\n");
+    data.push("Marker2#4_position:" + localStorage.getItem('selected_position_marker4_CH2_mode2') + "\n");
+    data.push("Marker2#4_width:" + localStorage.getItem('selected_width_marker4_CH2_mode2') + "\n");
+    data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH2_mode2') + "\n");
+    data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH2_mode2') + "\n");
+    data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH2_mode2') + "\n\n");
+    console.log('data: ', data);
+    var properties = { type: 'text/plain' }; // Specify the file's mime-type.
+    try {
+      // Specify the filename using the File constructor, but ...
+      console.log('create file');
+      file = new File(data, "sf-flash-config.txt", properties);
+    } catch (e) {
+      // ... fall back to the Blob constructor if that isn't supported. Note: File name can not be specified!
+      console.log('create blob');
+      file = new Blob(data, properties);
+    }
+    var url = URL.createObjectURL(file);
+    console.log(url);
+    BTNSAVESETTINGS.href = url;
+    document.getElementById('saveSettings_img').src = "../images/check.png";
+    setTimeout(function () { BTNSAVESETTINGS.removeAttribute('href') }, 900); // deletetion dealyed to let save to file finish first
+    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { document.getElementById('saveSettings_img').src = "../images/x.png" }, 1100);
+  }
+  else {
+    console.log('functionlock:', functionlock);
+  }
 }
 
 /**
  * Load the selected page into the frame and highlight the corresponding sidemenu for Channel 1.
+ * The language elements get updated on page load.
  */
 function loadConnectpage() {
   if (functionlock == false) {
@@ -822,10 +831,8 @@ function loadMode1page_CH1() {
     reset_sidemenu_bgcolor();
     document.getElementById('mode1_div_CH1').style.backgroundColor = "darkgray";
     FRAME.src = "/html/mode.html";
-    console.log('pre Timeout');
-    setTimeout(function () { functionlock = false }, 1000);
-    console.log('post Timeout');
     updateLanguage();
+    setTimeout(function () { functionlock = false }, 1000);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -839,8 +846,8 @@ function loadMode2page_CH1() {
     reset_sidemenu_bgcolor();
     document.getElementById('mode2_div_CH1').style.backgroundColor = "darkgray";
     FRAME.src = "/html/mode.html";
-    setTimeout(function () { functionlock = false }, 1000);
     updateLanguage();
+    setTimeout(function () { functionlock = false }, 1000);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -865,8 +872,6 @@ function saveSettings_CH1() {
       BTNSAVE.classList.remove("active");
     }
 
-    //TODO: Nach testphase einfügen
-
     addtoSendQueue('{"memory":"rom","flash#1":{"all":"ram"}}'); //write all RAM data to ROM
     console.log('send read all rom in 3,5s ....');
     setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}'); }, 3500); // TODO: Zeit prüfen, annahme etwa 50 ms pro befehl 40x50 ms = 2000 ms
@@ -877,55 +882,6 @@ function saveSettings_CH1() {
   else {
     console.log('functionlock:', functionlock);
   }
-  //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
-  /*
-  if (localStorage.getItem('selected_length') == '335 mm') {
-    document.getElementById('length_state_icon').src = "../images/335mm_transparent.png";
-  }
-  if (localStorage.getItem('selected_length') == '635 mm') {
-    document.getElementById('length_state_icon').src = "../images/635mm_transparent.png";
-  }
-  if (localStorage.getItem('selected_length') == '935 mm') {
-    document.getElementById('length_state_icon').src = "../images/935mm_transparent.png";
-  }
-  if (localStorage.getItem('selected_length') == '1870 mm') {
-    document.getElementById('length_state_icon').src = "../images/1870mm_transparent.png";
-  }
-
-  if (localStorage.getItem('selected_brightness') == 'eco') {
-    document.getElementById('brightness_state_icon').src = "../images/bulb_eco_transparent.png";
-  }
-  if (localStorage.getItem('selected_brightness') == 'med') {
-    document.getElementById('brightness_state_icon').src = "../images/bulb_med_transparent.png";
-  }
-  if (localStorage.getItem('selected_brightness') == 'max') {
-    document.getElementById('brightness_state_icon').src = "../images/bulb_max_transparent.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH1') == 'all green') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/greenstripe.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH1') == 'all red') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/redstripe.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH1') == 'runninglight') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/runninglight_1.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH1') == 'marker1') {
-    document.getElementById('mode1_state_icon_ch1').src = "../images/M_transparent.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH1') == 'all green') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/greenstripe.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH1') == 'all red') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/redstripe.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH1') == 'runninglight') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/runninglight_1.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH1') == 'marker2') {
-    document.getElementById('mode2_state_icon_ch1').src = "../images/M_transparent.png";
-  }
-  */
 }
 
 function loadLoadpage_CH1() {
@@ -940,8 +896,7 @@ function loadLoadpage_CH1() {
       FRAME.src = "/html/load.html";
       setTimeout(function () { addtoSendQueue('{"memory":"ram","flash#1":{"all":"get"}}') }, 50);
       setTimeout(function () { addtoSendQueue('{"memory":"rom","flash#1":{"all":"get"}}') }, 250);
-      //nur für test TODO: nach test auskommentieren!
-      var RXdata = setTimeout(function () { getNextDataFromQueue() }, 400);
+      setTimeout(function () { getNextDataFromQueue() }, 400);
       setTimeout(resetLoadingvariable, 7000);
       setTimeout(function () { functionlock = false }, 7000);
     }
@@ -1026,58 +981,6 @@ function saveSettings_CH2() {
 
     setTimeout(function () { functionlock = false }, 4000);
   }
-
-
-  //TODO: Nach Testphase löschen! change state icons corresponding to local storage variables
-  /*
-  if (localStorage.getItem('selected_length_2') == '335 mm') {
-    document.getElementById('length_state_icon_2').src = "../images/335mm_transparent.png";
-  }
-  if (localStorage.getItem('selected_length_2') == '635 mm') {
-    document.getElementById('length_state_icon_2').src = "../images/635mm_transparent.png";
-  }
-  if (localStorage.getItem('selected_length_2') == '935 mm') {
-    document.getElementById('length_state_icon_2').src = "../images/935mm_transparent.png";
-  }
-  if (localStorage.getItem('selected_length_2') == '1870 mm') {
-    document.getElementById('length_state_icon_2').src = "../images/1870mm_transparent.png";
-  }
-
-  if (localStorage.getItem('selected_brightness_2') == 'eco') {
-    document.getElementById('brightness_state_icon_2').src = "../images/bulb_eco_transparent.png";
-  }
-  if (localStorage.getItem('selected_brightness_2') == 'med') {
-    document.getElementById('brightness_state_icon_2').src = "../images/bulb_med_transparent.png";
-  }
-  if (localStorage.getItem('selected_brightness_2') == 'max') {
-    document.getElementById('brightness_state_icon_2').src = "../images/bulb_max_transparent.png";
-  }
-
-  if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
-    document.getElementById('mode1_state_icon_ch2').src = "../images/greenstripe.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
-    document.getElementById('mode1_state_icon_ch2').src = "../images/redstripe.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
-    document.getElementById('mode1_state_icon_ch2').src = "../images/runninglight_1.png";
-  }
-  if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
-    document.getElementById('mode1_state_icon_ch2').src = "../images/M_transparent.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
-    document.getElementById('mode2_state_icon_ch2').src = "../images/greenstripe.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
-    document.getElementById('mode2_state_icon_ch2').src = "../images/redstripe.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
-    document.getElementById('mode2_state_icon_ch2').src = "../images/runninglight_1.png";
-  }
-  if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
-    document.getElementById('mode2_state_icon_ch2').src = "../images/M_transparent.png";
-  }
-  */
 }
 function loadLoadpage_CH2() {
   if (functionlock == false) {
@@ -1179,7 +1082,7 @@ async function connectionstateUSB() {
  */
 async function webserverstate() {
   $.ajax({
-    url: "http://127.0.0.1:8887/", //server url localhost: http://127.0.0.1:8887/ or http://nico-eggert.github.io/
+    url: "http://127.0.0.1:8887/", //server url localhost: http://127.0.0.1:8887/ or https://nico-eggert.github.io/
     cache: false,
     async: false,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -1215,9 +1118,9 @@ async function checkconnection() {
   var state;
   addtoSendQueue('{"MEMS_B":{"out":"get"}}');
   //addtoSendQueue('{"memory":"ram","flash":{"power":"get"}}');
-  let delayres = await delay(500);
+  let delayres = await delay(250);
   getNextDataFromQueue(); // read Fifo data, changes constate variable
-  delayres = await delay(500);
+  delayres = await delay(250);
   state = constate;
 
 
@@ -1243,7 +1146,8 @@ async function checkconnection() {
 }
 
 /**
- * Set a delay time until follwing code gets executed.
+ * Set a delay time until follwing code gets executed. 
+ * Only available in async functions.
  * @param {number} delayInms 
  * @returns 
  */
@@ -1265,8 +1169,6 @@ async function delay(delayInms) {
  */
 //TODO: add channel 2 functions
 async function getNextDataFromQueue() {
-  //console.log('getDatafromQueue');
-
   var RXData = new XBeeData();
   var data_count = XBee3.RxQueue.getLength();
   if (data_count == 0) {
@@ -1281,8 +1183,8 @@ async function getNextDataFromQueue() {
   while (data_count > 0) {
     nomsgcounter = 0; // reset no message counter
     if (data_count) {
-      console.log('number of data in FIFO:', data_count); // 3
-      RXData = XBee3.RxQueue.shift(); // 0, 1, 2
+      console.log('number of data in FIFO:', data_count);
+      RXData = XBee3.RxQueue.shift(); // get next element from queue
     }
     else {
       RXData = 0;
@@ -1293,21 +1195,9 @@ async function getNextDataFromQueue() {
     if (RXData.JSONDocument["flash"]) {
       if (RXData.JSONDocument["flash"]["power"]) {
         if (RXData.JSONDocument["flash"]["power"] == 'on') {
-          /*
-          if (constate == false) {
-            console.log('constate in init false -> start cyclicConnectionCheck');
-            cyclicConnectionCheck(); // start connection check
-          }
-          constate = true;
-          */
           console.log('Power: on');
         }
         if (RXData.JSONDocument["flash"]["power"] == 'off') {
-          /*
-          constate = false;
-          clearInterval(checkConnectionInterval); // resetIntervalTimer
-          checkConnectionInterval = -1;
-          */
           console.log.apply('Power: off');
         }
       }
@@ -1434,7 +1324,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH1', RXData.JSONDocument["flash#1"]["marker1#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#1"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["width"] || RXData.JSONDocument["flash#1"]["marker1#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH1', RXData.JSONDocument["flash#1"]["marker1#1"]["width"]);
           }
         }
@@ -1466,11 +1356,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#2"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["position"] || RXData.JSONDocument["flash#1"]["marker1#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH1', RXData.JSONDocument["flash#1"]["marker1#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#2"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["width"] || RXData.JSONDocument["flash#1"]["marker1#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH1', RXData.JSONDocument["flash#1"]["marker1#2"]["width"]);
           }
         }
@@ -1502,11 +1392,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#3"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["position"] || RXData.JSONDocument["flash#1"]["marker1#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH1', RXData.JSONDocument["flash#1"]["marker1#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#3"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["width"] || RXData.JSONDocument["flash#1"]["marker1#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH1', RXData.JSONDocument["flash#1"]["marker1#3"]["width"]);
           }
         }
@@ -1538,11 +1428,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#4"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["position"] || RXData.JSONDocument["flash#1"]["marker1#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH1', RXData.JSONDocument["flash#1"]["marker1#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#4"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["width"] || RXData.JSONDocument["flash#1"]["marker1#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH1', RXData.JSONDocument["flash#1"]["marker1#4"]["width"]);
           }
         }
@@ -1574,11 +1464,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#5"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["position"] || RXData.JSONDocument["flash#1"]["marker1#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH1', RXData.JSONDocument["flash#1"]["marker1#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#5"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["width"] || RXData.JSONDocument["flash#1"]["marker1#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH1', RXData.JSONDocument["flash#1"]["marker1#5"]["width"]);
           }
         }
@@ -1614,7 +1504,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#1"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["width"] || RXData.JSONDocument["flash#1"]["marker2#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#1"]["width"]);
           }
         }
@@ -1646,11 +1536,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#2"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["position"] || RXData.JSONDocument["flash#1"]["marker2#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#2"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["width"] || RXData.JSONDocument["flash#1"]["marker2#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#2"]["width"]);
           }
         }
@@ -1682,11 +1572,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#3"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["position"] || RXData.JSONDocument["flash#1"]["marker2#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#3"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["width"] || RXData.JSONDocument["flash#1"]["marker2#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#3"]["width"]);
           }
         }
@@ -1718,11 +1608,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#4"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["position"] || RXData.JSONDocument["flash#1"]["marker2#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#4"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["width"] || RXData.JSONDocument["flash#1"]["marker2#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#4"]["width"]);
           }
         }
@@ -1754,11 +1644,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#5"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["position"] || RXData.JSONDocument["flash#1"]["marker2#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#5"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["width"] || RXData.JSONDocument["flash#1"]["marker2#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#5"]["width"]);
           }
         }
@@ -1861,7 +1751,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH1', RXData.JSONDocument["flash#1"]["marker1#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#1"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#1"]["width"] || RXData.JSONDocument["flash#1"]["marker1#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH1', RXData.JSONDocument["flash#1"]["marker1#1"]["width"]);
           }
         }
@@ -1893,11 +1783,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#2"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["position"] || RXData.JSONDocument["flash#1"]["marker1#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH1', RXData.JSONDocument["flash#1"]["marker1#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#2"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#2"]["width"] || RXData.JSONDocument["flash#1"]["marker1#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH1', RXData.JSONDocument["flash#1"]["marker1#2"]["width"]);
           }
         }
@@ -1929,11 +1819,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#3"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["position"]|| RXData.JSONDocument["flash#1"]["marker1#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH1', RXData.JSONDocument["flash#1"]["marker1#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#3"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#3"]["width"] || RXData.JSONDocument["flash#1"]["marker1#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH1', RXData.JSONDocument["flash#1"]["marker1#3"]["width"]);
           }
         }
@@ -1965,11 +1855,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#4"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["position"] || RXData.JSONDocument["flash#1"]["marker1#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH1', RXData.JSONDocument["flash#1"]["marker1#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#4"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#4"]["width"] || RXData.JSONDocument["flash#1"]["marker1#4"]["position"] === 0) {
             localStorage.setItem('selected_width_marker4_CH1', RXData.JSONDocument["flash#1"]["marker1#4"]["width"]);
           }
         }
@@ -2001,11 +1891,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH1', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker1#5"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["position"] || RXData.JSONDocument["flash#1"]["marker1#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH1', RXData.JSONDocument["flash#1"]["marker1#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker1#5"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker1#5"]["width"] || RXData.JSONDocument["flash#1"]["marker1#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH1', RXData.JSONDocument["flash#1"]["marker1#5"]["width"]);
           }
         }
@@ -2041,7 +1931,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#1"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#1"]["width"] || RXData.JSONDocument["flash#1"]["marker2#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#1"]["width"]);
           }
         }
@@ -2073,11 +1963,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#2"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["position"] || RXData.JSONDocument["flash#1"]["marker2#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#2"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#2"]["width"] || RXData.JSONDocument["flash#1"]["marker2#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#2"]["width"]);
           }
         }
@@ -2109,11 +1999,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#3"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["position"] || RXData.JSONDocument["flash#1"]["marker2#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#3"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#3"]["width"] || RXData.JSONDocument["flash#1"]["marker2#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#3"]["width"]);
           }
         }
@@ -2145,11 +2035,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#4"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["position"] || RXData.JSONDocument["flash#1"]["marker2#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#4"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#4"]["width"] || RXData.JSONDocument["flash#1"]["marker2#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#4"]["width"]);
           }
         }
@@ -2181,11 +2071,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH1_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#1"]["marker2#5"]["position"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["position"] || RXData.JSONDocument["flash#1"]["marker2#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#1"]["marker2#5"]["width"]) {
+          if (RXData.JSONDocument["flash#1"]["marker2#5"]["width"] || RXData.JSONDocument["flash#1"]["marker2#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH1_mode2', RXData.JSONDocument["flash#1"]["marker2#5"]["width"]);
           }
         }
@@ -2286,7 +2176,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH2', RXData.JSONDocument["flash#2"]["marker1#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#1"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["width"] || RXData.JSONDocument["flash#2"]["marker1#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH2', RXData.JSONDocument["flash#2"]["marker1#1"]["width"]);
           }
         }
@@ -2318,11 +2208,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#2"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["position"] || RXData.JSONDocument["flash#2"]["marker1#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH2', RXData.JSONDocument["flash#2"]["marker1#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#2"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["width"] || RXData.JSONDocument["flash#2"]["marker1#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH2', RXData.JSONDocument["flash#2"]["marker1#2"]["width"]);
           }
         }
@@ -2354,11 +2244,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#3"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["position"] || RXData.JSONDocument["flash#2"]["marker1#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH2', RXData.JSONDocument["flash#2"]["marker1#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#3"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["width"] || RXData.JSONDocument["flash#2"]["marker1#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH2', RXData.JSONDocument["flash#2"]["marker1#3"]["width"]);
           }
         }
@@ -2390,11 +2280,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#4"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["position"] || RXData.JSONDocument["flash#2"]["marker1#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH2', RXData.JSONDocument["flash#2"]["marker1#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#4"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["width"] || RXData.JSONDocument["flash#2"]["marker1#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH2', RXData.JSONDocument["flash#2"]["marker1#4"]["width"]);
           }
         }
@@ -2426,11 +2316,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#5"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["position"] || RXData.JSONDocument["flash#2"]["marker1#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH2', RXData.JSONDocument["flash#2"]["marker1#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#5"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["width"] || RXData.JSONDocument["flash#2"]["marker1#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH2', RXData.JSONDocument["flash#2"]["marker1#5"]["width"]);
           }
         }
@@ -2467,7 +2357,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#1"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["width"] || RXData.JSONDocument["flash#2"]["marker2#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#1"]["width"]);
           }
         }
@@ -2499,11 +2389,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#2"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["position"] || RXData.JSONDocument["flash#2"]["marker2#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#2"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["width"] || RXData.JSONDocument["flash#2"]["marker2#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#2"]["width"]);
           }
         }
@@ -2535,11 +2425,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#3"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["position"] || RXData.JSONDocument["flash#2"]["marker2#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#3"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["width"] || RXData.JSONDocument["flash#2"]["marker2#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#3"]["width"]);
           }
         }
@@ -2571,11 +2461,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#4"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["position"] || RXData.JSONDocument["flash#2"]["marker2#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#4"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["width"] || RXData.JSONDocument["flash#2"]["marker2#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#4"]["width"]);
           }
         }
@@ -2607,11 +2497,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#5"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["position"] || RXData.JSONDocument["flash#2"]["marker2#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#5"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["width"] || RXData.JSONDocument["flash#2"]["marker2#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#5"]["width"]);
           }
         }
@@ -2714,7 +2604,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH2', RXData.JSONDocument["flash#2"]["marker1#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#1"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#1"]["width"] || RXData.JSONDocument["flash#2"]["marker1#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH2', RXData.JSONDocument["flash#2"]["marker1#1"]["width"]);
           }
         }
@@ -2746,11 +2636,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#2"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["position"] || RXData.JSONDocument["flash#2"]["marker1#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH2', RXData.JSONDocument["flash#2"]["marker1#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#2"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#2"]["width"] || RXData.JSONDocument["flash#2"]["marker1#2"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH2', RXData.JSONDocument["flash#2"]["marker1#2"]["width"]);
           }
         }
@@ -2782,11 +2672,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#3"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["position"] || RXData.JSONDocument["flash#2"]["marker1#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH2', RXData.JSONDocument["flash#2"]["marker1#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#3"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#3"]["width"] || RXData.JSONDocument["flash#2"]["marker1#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH2', RXData.JSONDocument["flash#2"]["marker1#3"]["width"]);
           }
         }
@@ -2818,11 +2708,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#4"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["position"] || RXData.JSONDocument["flash#2"]["marker1#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH2', RXData.JSONDocument["flash#2"]["marker1#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#4"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#4"]["width"] || RXData.JSONDocument["flash#2"]["marker1#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH2', RXData.JSONDocument["flash#2"]["marker1#4"]["width"]);
           }
         }
@@ -2854,11 +2744,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker1#5"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["position"] || RXData.JSONDocument["flash#2"]["marker1#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH2', RXData.JSONDocument["flash#2"]["marker1#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker1#5"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker1#5"]["width"] || RXData.JSONDocument["flash#2"]["marker1#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH2', RXData.JSONDocument["flash#2"]["marker1#5"]["width"]);
           }
         }
@@ -2895,7 +2785,7 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_position_marker1_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#1"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#1"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#1"]["width"] || RXData.JSONDocument["flash#2"]["marker2#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker1_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#1"]["width"]);
           }
         }
@@ -2927,11 +2817,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker2_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#2"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["position"] || RXData.JSONDocument["flash#2"]["marker2#2"]["position"] === 0) {
             localStorage.setItem('selected_position_marker2_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#2"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#2"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#2"]["width"] || RXData.JSONDocument["flash#2"]["marker2#1"]["width"] === 0) {
             localStorage.setItem('selected_width_marker2_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#2"]["width"]);
           }
         }
@@ -2963,11 +2853,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker3_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#3"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["position"] || RXData.JSONDocument["flash#2"]["marker2#3"]["position"] === 0) {
             localStorage.setItem('selected_position_marker3_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#3"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#3"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#3"]["width"] || RXData.JSONDocument["flash#2"]["marker2#3"]["width"] === 0) {
             localStorage.setItem('selected_width_marker3_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#3"]["width"]);
           }
         }
@@ -2999,11 +2889,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker4_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#4"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["position"] || RXData.JSONDocument["flash#2"]["marker2#4"]["position"] === 0) {
             localStorage.setItem('selected_position_marker4_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#4"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#4"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#4"]["width"] || RXData.JSONDocument["flash#2"]["marker2#4"]["width"] === 0) {
             localStorage.setItem('selected_width_marker4_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#4"]["width"]);
           }
         }
@@ -3035,11 +2925,11 @@ async function getNextDataFromQueue() {
             localStorage.setItem('selected_color_marker5_CH2_mode2', 'magenta');
           }
           // position
-          if (RXData.JSONDocument["flash#2"]["marker2#5"]["position"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["position"] || RXData.JSONDocument["flash#2"]["marker2#5"]["position"] === 0) {
             localStorage.setItem('selected_position_marker5_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#5"]["position"]);
           }
           // width
-          if (RXData.JSONDocument["flash#2"]["marker2#5"]["width"]) {
+          if (RXData.JSONDocument["flash#2"]["marker2#5"]["width"] || RXData.JSONDocument["flash#2"]["marker2#5"]["width"] === 0) {
             localStorage.setItem('selected_width_marker5_CH2_mode2', RXData.JSONDocument["flash#2"]["marker2#5"]["width"]);
           }
         }
@@ -3048,7 +2938,7 @@ async function getNextDataFromQueue() {
 
     data_count = XBee3.RxQueue.getLength(); // update remaining number of messages in FIFO
     if (data_count > 500) {
-      alert('Error: Message overflow. 500+ messages in FIFO!');
+      console.log('Error: Message overflow. 500+ messages in FIFO!');
     }
   }
 }

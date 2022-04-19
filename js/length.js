@@ -151,49 +151,67 @@ function updateSelection() {
 }
 
 function clickSizeS() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        //length_state_icon.src = "../images/335mm_transparent.png";
-        localStorage.setItem('selected_length', '335 mm');
-        parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"335 mm"}}')
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
 
+        if (localStorage.getItem('selected_channel') == '1') {
+            //length_state_icon.src = "../images/335mm_transparent.png";
+            localStorage.setItem('selected_length', '335 mm');
+            parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"335 mm"}}')
+
+        }
+        else { // Channel 2
+            //length_state_icon_2.src = "../images/335mm_transparent.png";
+            localStorage.setItem('selected_length_2', '335 mm');
+            parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"335 mm"}}')
+        }
+        updateSelection();
+        highlightSaveBtns();
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
-    else { // Channel 2
-        //length_state_icon_2.src = "../images/335mm_transparent.png";
-        localStorage.setItem('selected_length_2', '335 mm');
-        parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"335 mm"}}')
-    }
-    updateSelection();
-    highlightSaveBtns();
 }
 function clickSizeM() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        //length_state_icon.src = "../images/635mm_transparent.png";
-        localStorage.setItem('selected_length', '635 mm');
-        parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"635 mm"}}')
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') {
+            //length_state_icon.src = "../images/635mm_transparent.png";
+            localStorage.setItem('selected_length', '635 mm');
+            parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"635 mm"}}')
+        }
+        else { // Channel 2
+            //length_state_icon_2.src = "../images/635mm_transparent.png";
+            localStorage.setItem('selected_length_2', '635 mm');
+            parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"635 mm"}}')
+        }
+        updateSelection();
+        highlightSaveBtns();
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
-    else { // Channel 2
-        //length_state_icon_2.src = "../images/635mm_transparent.png";
-        localStorage.setItem('selected_length_2', '635 mm');
-        parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"635 mm"}}')
-    }
-    updateSelection();
-    highlightSaveBtns();
 }
 function clickSizeL() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        //length_state_icon.src = "../images/935mm_transparent.png";
-        localStorage.setItem('selected_length', '935 mm');
-        parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"935 mm"}}')
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') {
+            //length_state_icon.src = "../images/935mm_transparent.png";
+            localStorage.setItem('selected_length', '935 mm');
+            parent.addtoSendQueue('{"memory":"ram","flash#1":{"length":"935 mm"}}')
+        }
+        else { // Channel 2
+            //length_state_icon_2.src = "../images/935mm_transparent.png";
+            localStorage.setItem('selected_length_2', '935 mm');
+            parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"935 mm"}}')
+        }
+        updateSelection();
+        highlightSaveBtns();
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
-    else { // Channel 2
-        //length_state_icon_2.src = "../images/935mm_transparent.png";
-        localStorage.setItem('selected_length_2', '935 mm');
-        parent.addtoSendQueue('{"memory":"ram","flash#2":{"length":"935 mm"}}')
-    }
-    updateSelection();
-    highlightSaveBtns();
 }
 function clickSizeXL() {
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+    }
     if (localStorage.getItem('selected_channel') == '1') {
         //length_state_icon.src = "../images/1870mm_transparent.png";
         localStorage.setItem('selected_length', '1870 mm');
@@ -206,6 +224,7 @@ function clickSizeXL() {
     }
     updateSelection();
     highlightSaveBtns();
+    setTimeout(function () { parent.functionlock = false; }, 500);
 }
 
 /**
@@ -235,61 +254,66 @@ function highlightSaveBtns() {
 }
 
 function clickSave() {
-    if (localStorage.getItem('selected_channel') == '1') {
-        if (localStorage.getItem('selected_length') == '335 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"335 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/335mm_transparent.png";
+    if (parent.functionlock == false) {
+        parent.functionlock = true;
+
+        if (localStorage.getItem('selected_channel') == '1') {
+            if (localStorage.getItem('selected_length') == '335 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"335 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                //length_state_icon.src = "../images/335mm_transparent.png";
+            }
+            if (localStorage.getItem('selected_length') == '635 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"635 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                //length_state_icon.src = "../images/635mm_transparent.png";
+            }
+            if (localStorage.getItem('selected_length') == '935 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"935 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                //length_state_icon.src = "../images/935mm_transparent.png";
+            }
+            if (localStorage.getItem('selected_length') == '1870 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"1870 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                //length_state_icon.src = "../images/1870mm_transparent.png";
+            }
+            //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+            if (sidemenu_save_btn.classList.contains('custom-button-save')) {
+                sidemenu_save_btn.classList.remove('custom-butten-save');
+                sidemenu_save_btn.classList.add('custom-button-default');
+            }
+            setTimeout(getROMLength("1"), 200);
         }
-        if (localStorage.getItem('selected_length') == '635 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"635 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/635mm_transparent.png";
+        else { // Channel 2
+            if (localStorage.getItem('selected_length_2') == '335 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"335 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                length_state_icon_2.src = "../images/335mm_transparent.png";
+            }
+            if (localStorage.getItem('selected_length_2') == '635 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"635 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                length_state_icon_2.src = "../images/635mm_transparent.png";
+            }
+            if (localStorage.getItem('selected_length_2') == '935 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"935 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                length_state_icon_2.src = "../images/935mm_transparent.png";
+            }
+            if (localStorage.getItem('selected_length_2') == '1870 mm') {
+                parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"1870 mm"}}');
+                btnSAVE.style.visibility = "hidden";
+                length_state_icon_2.src = "../images/1870mm_transparent.png";
+            }
+            //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+            if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
+                sidemenu_save_btn_2.classList.remove('custom-button-save');
+                sidemenu_save_btn_2.classList.add('custom-button-default');
+            }
+            setTimeout(getROMLength("2"), 200);
         }
-        if (localStorage.getItem('selected_length') == '935 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"935 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/935mm_transparent.png";
-        }
-        if (localStorage.getItem('selected_length') == '1870 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"1870 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon.src = "../images/1870mm_transparent.png";
-        }
-        //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn.classList.contains('custom-button-save')) {
-            sidemenu_save_btn.classList.remove('custom-butten-save');
-            sidemenu_save_btn.classList.add('custom-button-default');
-        }
-        setTimeout(getROMLength("1"), 200);
-    }
-    else { // Channel 2
-        if (localStorage.getItem('selected_length_2') == '335 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"335 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon_2.src = "../images/335mm_transparent.png";
-        }
-        if (localStorage.getItem('selected_length_2') == '635 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"635 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon_2.src = "../images/635mm_transparent.png";
-        }
-        if (localStorage.getItem('selected_length_2') == '935 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"935 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon_2.src = "../images/935mm_transparent.png";
-        }
-        if (localStorage.getItem('selected_length_2') == '1870 mm') {
-            parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"1870 mm"}}');
-            btnSAVE.style.visibility = "hidden";
-            length_state_icon_2.src = "../images/1870mm_transparent.png";
-        }
-        //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-        if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
-            sidemenu_save_btn_2.classList.remove('custom-button-save');
-            sidemenu_save_btn_2.classList.add('custom-button-default');
-        }
-        setTimeout(getROMLength("2"), 200);
+        setTimeout(function () { parent.functionlock = false; }, 500);
     }
 }
 
