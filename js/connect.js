@@ -27,7 +27,7 @@ async function clickSerialConnect() {
       $("#txt_progressbarstep").text('');
       delayres = await parent.delay(1000);
       //TODO: Nach test wieder auskommentieren!!!!!
-      localStorage.setItem('deviceaddress','0013A20041DB4A02');
+      //localStorage.setItem('deviceaddress','0013A20041DB4A02');
     }
     console.log('DEVICE ADDRESS IS:', localStorage.getItem('deviceaddress'));
     // display device address
