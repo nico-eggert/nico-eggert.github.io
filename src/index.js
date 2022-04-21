@@ -1,5 +1,6 @@
 const stringdata_array = []; // array to save all string commands in a queue
 var functionlock = false; // variable gets set in function call by clicking sidemenu buttons, resets to false on finish of function
+const functionlocktime = 500; // for all functionlocks exept click-save(4s) and -load(7s)
 
 // button constants
 const BTNSAVESETTINGS = document.getElementById('btnSavesettings');
@@ -289,7 +290,6 @@ function handleFileSelect(evt) {
           constate = false; // reset connection state variable of connection check
           localStorage.setItem('loadingdata', 'true');
           for (var k = 0; k < count_entries; k++) {
-            //console.log(stringarray[k]);
             let position = stringarray[k].search(":"); //delimiter position
             let value = stringarray[k].substring(position + 1, stringarray[k].length);
             // every parameters has a fixed position in the stringarray corresponding to k
@@ -753,7 +753,6 @@ function saveSettingstoFile() {
     data.push("Marker2#5_color:" + localStorage.getItem('selected_color_marker5_CH2_mode2') + "\n");
     data.push("Marker2#5_position:" + localStorage.getItem('selected_position_marker5_CH2_mode2') + "\n");
     data.push("Marker2#5_width:" + localStorage.getItem('selected_width_marker5_CH2_mode2') + "\n\n");
-    console.log('data: ', data);
     var properties = { type: 'text/plain' }; // Specify the file's mime-type.
     try {
       // Specify the filename using the File constructor, but ...
@@ -765,11 +764,10 @@ function saveSettingstoFile() {
       file = new Blob(data, properties);
     }
     var url = URL.createObjectURL(file);
-    console.log(url);
     BTNSAVESETTINGS.href = url;
     document.getElementById('saveSettings_img').src = "../images/check.png";
     setTimeout(function () { BTNSAVESETTINGS.removeAttribute('href') }, 900); // deletetion dealyed to let save to file finish first
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
     setTimeout(function () { document.getElementById('saveSettings_img').src = "../images/x.png" }, 1100);
   }
   else {
@@ -789,7 +787,7 @@ function loadConnectpage() {
     document.getElementById('connect_div').style.backgroundColor = "darkgray";
     updateLanguage();
     localStorage.setItem('selected_channel', '1');
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -803,7 +801,7 @@ function loadLengthpage_CH1() {
     document.getElementById('length_div').style.backgroundColor = "darkgray";
     updateLanguage();
     localStorage.setItem('selected_channel', '1');
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -817,7 +815,7 @@ function loadBrightnesspage_CH1() {
     document.getElementById('brightness_div').style.backgroundColor = "darkgray";
     updateLanguage();
     localStorage.setItem('selected_channel', '1');
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -832,7 +830,7 @@ function loadMode1page_CH1() {
     document.getElementById('mode1_div_CH1').style.backgroundColor = "darkgray";
     FRAME.src = "/html/mode.html";
     updateLanguage();
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -847,7 +845,7 @@ function loadMode2page_CH1() {
     document.getElementById('mode2_div_CH1').style.backgroundColor = "darkgray";
     FRAME.src = "/html/mode.html";
     updateLanguage();
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
   else {
     console.log('functionlock:', functionlock);
@@ -917,7 +915,7 @@ function loadLengthpage_CH2() {
     document.getElementById('length_div_2').style.backgroundColor = "darkgray";
     updateLanguage();
     localStorage.setItem('selected_channel', '2');
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
 }
 function loadBrightnesspage_CH2() {
@@ -928,7 +926,7 @@ function loadBrightnesspage_CH2() {
     document.getElementById('brightness_div_2').style.backgroundColor = "darkgray";
     updateLanguage();
     localStorage.setItem('selected_channel', '2');
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
 }
 function loadMode1page_CH2() {
@@ -940,7 +938,7 @@ function loadMode1page_CH2() {
     document.getElementById('mode1_div_CH2').style.backgroundColor = "darkgray";
     FRAME.src = "/html/mode.html";
     updateLanguage();
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
 }
 function loadMode2page_CH2() {
@@ -952,7 +950,7 @@ function loadMode2page_CH2() {
     document.getElementById('mode2_div_CH2').style.backgroundColor = "darkgray";
     FRAME.src = "/html/mode.html";
     updateLanguage();
-    setTimeout(function () { functionlock = false }, 1000);
+    setTimeout(function () { functionlock = false }, functionlocktime);
   }
 }
 function saveSettings_CH2() {
@@ -1082,7 +1080,7 @@ async function connectionstateUSB() {
  */
 async function webserverstate() {
   $.ajax({
-    url: "http://127.0.0.1:8887/", //server url localhost: http://127.0.0.1:8887/ or https://nico-eggert.github.io/
+    url: "http://127.0.0.1:8887/", //server url localhost: http://127.0.0.1:8887/ or http://nico-eggert.github.io/
     cache: false,
     async: false,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -1195,10 +1193,8 @@ async function getNextDataFromQueue() {
     if (RXData.JSONDocument["flash"]) {
       if (RXData.JSONDocument["flash"]["power"]) {
         if (RXData.JSONDocument["flash"]["power"] == 'on') {
-          console.log('Power: on');
         }
         if (RXData.JSONDocument["flash"]["power"] == 'off') {
-          console.log.apply('Power: off');
         }
       }
     }
@@ -2963,11 +2959,9 @@ async function sendXBeeData() {
       TXData.MACAddress.set(address);
       console.log('Send Data String: ', stringdata_array[0]);
       TXData.JSONDocument = JSON.parse(stringdata_array[0]); // use first entry
-      //console.log('Send Data: ', TXData);
       XBee3.writeJSONDocument(TXData);
       stringdata_array.shift(); // remove first entry
       messages = stringdata_array.length; // update message count
-      //console.log('messages in SEND queue: ', messages);
     }
   }
 }

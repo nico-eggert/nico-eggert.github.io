@@ -75,7 +75,6 @@ var marker_5_width_right = document.getElementById('Marker_5_Width_Right');
 
 updateSelection();
 
-
 document.addEventListener('DOMContentLoaded', () => {
     btn_green.addEventListener('click', clickModeGREEN);
     btn_red.addEventListener('click', clickModeRED);
@@ -90,10 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function updateSelection() {
     // CHANNEL 1
     if (localStorage.getItem('selected_channel') == '1') { // channel 1
-        console.log('channel 1');
         if (localStorage.getItem('selected_mode') == '1') { // mode 1
             // set buttons of mode colors active
-            console.log(localStorage.getItem('selected_mode1_CH1'));
             if (localStorage.getItem('selected_mode1_CH1') == 'all green') {
                 mode.checked = true;
                 // display mode buttons
@@ -441,8 +438,6 @@ function updateSelection() {
             }
         }
         if (localStorage.getItem('selected_mode') == "2") { // mode 2
-
-            console.log(localStorage.getItem('selected_mode2_CH1'));
             if (localStorage.getItem('selected_mode2_CH1') == 'all green') {
                 mode.checked = true;
                 // display mode buttons
@@ -795,11 +790,7 @@ function updateSelection() {
     }
     // CHANNEL 2
     if (localStorage.getItem('selected_channel') == '2') { // channel 2
-        console.log('channel 2');
-        console.log(localStorage.getItem('selected_mode1_CH2'));
         if (localStorage.getItem('selected_mode') == '1') { // mode 1
-            console.log('selected_mode: 1');
-
             if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
                 mode.checked = true;
                 // display mode buttons
@@ -1148,8 +1139,6 @@ function updateSelection() {
             }
         }
         if (localStorage.getItem('selected_mode') == '2') { // mode 2
-            console.log('selected_mode: 2');
-
             if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
                 mode.checked = true;
                 // display mode buttons
@@ -1509,7 +1498,6 @@ function clickModeGREEN() {
 
         if (localStorage.getItem('selected_channel') == '1') {
             if (localStorage.getItem('selected_mode') == '1') {
-                console.log('channel 1 mode 1');
                 localStorage.setItem('selected_mode1_CH1', 'all green');
                 parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"all green"}}');
             }
@@ -1530,7 +1518,7 @@ function clickModeGREEN() {
         }
         highlightSaveBtns();
         updateSelection();
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 function clickModeRED() {
@@ -1559,7 +1547,7 @@ function clickModeRED() {
         }
         highlightSaveBtns();
         updateSelection();
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 function clickModeRUNNINGLIGHT() {
@@ -1588,7 +1576,7 @@ function clickModeRUNNINGLIGHT() {
         }
         highlightSaveBtns();
         updateSelection();
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 function clickSave() {
@@ -1600,104 +1588,109 @@ function clickSave() {
                 if (localStorage.getItem('selected_mode1_CH1') == 'all green') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"all green"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch1.src = "../images/greenstripe.png";
+                    //mode1_state_icon_ch1.src = "../images/greenstripe.png";
                 }
                 if (localStorage.getItem('selected_mode1_CH1') == 'all red') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"all red"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch1.src = "../images/redstripe.png";
+                    //mode1_state_icon_ch1.src = "../images/redstripe.png";
                 }
                 if (localStorage.getItem('selected_mode1_CH1') == 'runninglight') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"runninglight"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch1.src = "../images/runninglight_1.png";
+                    //mode1_state_icon_ch1.src = "../images/runninglight_1.png";
                 }
                 if (localStorage.getItem('selected_mode1_CH1') == 'marker1') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"marker1"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch1.src = "../images/M_transparent.png";
+                    //mode1_state_icon_ch1.src = "../images/M_transparent.png";
                     // save ram data of markers to rom
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker1":"ram"}}');
                 }
+                setTimeout(getROMMode("1", "1"), 200);
             }
             if (localStorage.getItem('selected_mode') == '2') { // Mode 2
                 if (localStorage.getItem('selected_mode2_CH1') == 'all green') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"all green"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch1.src = "../images/greenstripe.png";
+                    //mode2_state_icon_ch1.src = "../images/greenstripe.png";
                 }
                 if (localStorage.getItem('selected_mode2_CH1') == 'all red') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"all red"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch1.src = "../images/redstripe.png";
+                    //mode2_state_icon_ch1.src = "../images/redstripe.png";
                 }
                 if (localStorage.getItem('selected_mode2_CH1') == 'runninglight') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"runninglight"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch1.src = "../images/runninglight_1.png";
+                    //mode2_state_icon_ch1.src = "../images/runninglight_1.png";
                 }
                 if (localStorage.getItem('selected_mode2_CH1') == 'marker2') {
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"marker2"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch1.src = "../images/M_transparent.png";
+                    //mode2_state_icon_ch1.src = "../images/M_transparent.png";
                     // save ram data of marker to rom
                     parent.addtoSendQueue('{"memory":"rom","flash#1":{"marker2":"ram"}}');
                 }
-                //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
-                if (sidemenu_save_btn.classList.contains('custom-button-save')) {
-                    sidemenu_save_btn.classList.remove('custom-button-save');
-                    sidemenu_save_btn.classList.add('custom-button-default');
-                }
+                setTimeout(getROMMode("1", "2"), 200);
             }
+            //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
+            if (sidemenu_save_btn.classList.contains('custom-button-save')) {
+                sidemenu_save_btn.classList.remove('custom-button-save');
+                sidemenu_save_btn.classList.add('custom-button-default');
+            }
+
         }
         else { // Channel 2
             if (localStorage.getItem('selected_mode') == '1') { // Mode 1
                 if (localStorage.getItem('selected_mode1_CH2') == 'all green') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all green"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch2.src = "../images/greenstripe.png";
+                    //mode1_state_icon_ch2.src = "../images/greenstripe.png";
                 }
                 if (localStorage.getItem('selected_mode1_CH2') == 'all red') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"all red"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch2.src = "../images/redstripe.png";
+                    //mode1_state_icon_ch2.src = "../images/redstripe.png";
                 }
                 if (localStorage.getItem('selected_mode1_CH2') == 'runninglight') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"runninglight"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch2.src = "../images/runninglight_1.png";
+                    //mode1_state_icon_ch2.src = "../images/runninglight_1.png";
                 }
                 if (localStorage.getItem('selected_mode1_CH2') == 'marker1') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"marker1"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode1_state_icon_ch2.src = "../images/M_transparent.png";
+                    //mode1_state_icon_ch2.src = "../images/M_transparent.png";
                     // save ram data of marker to rom
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker1":"ram"}}');
                 }
+                setTimeout(getROMMode("2", "1"), 200);
             }
             if (localStorage.getItem('selected_mode') == '2') { // Mode 2
                 if (localStorage.getItem('selected_mode2_CH2') == 'all green') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all green"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch2.src = "../images/greenstripe.png";
+                    //mode2_state_icon_ch2.src = "../images/greenstripe.png";
                 }
                 if (localStorage.getItem('selected_mode2_CH2') == 'all red') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"all red"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch2.src = "../images/redstripe.png";
+                    //mode2_state_icon_ch2.src = "../images/redstripe.png";
                 }
                 if (localStorage.getItem('selected_mode2_CH2') == 'runninglight') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"runninglight"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch2.src = "../images/runninglight_1.png";
+                    //mode2_state_icon_ch2.src = "../images/runninglight_1.png";
                 }
                 if (localStorage.getItem('selected_mode2_CH2') == 'marker2') {
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"marker2"}}');
                     btnSAVE.style.visibility = "hidden";
-                    mode2_state_icon_ch2.src = "../images/M_transparent.png";
+                    //mode2_state_icon_ch2.src = "../images/M_transparent.png";
                     // save ram data of marker to rom
                     parent.addtoSendQueue('{"memory":"rom","flash#2":{"marker2":"ram"}}');
                 }
+                setTimeout(getROMMode("2", "2"), 200);
             }
             //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
             if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
@@ -1705,7 +1698,7 @@ function clickSave() {
                 sidemenu_save_btn_2.classList.add('custom-button-default');
             }
         }
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 
@@ -2391,26 +2384,45 @@ $('#Mode').change(function () {
 
 $('#Marker').change(function () {
     if (localStorage.getItem('selected_channel') == '1') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH1', 'marker1');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"marker1"}}');
+        if (localStorage.getItem('selected_length') == 'none') {
+            if (localStorage.getItem('selected_language') == 'en') {
+                alert('Please select a band length before marker configuration!');
+            }
+            if (localStorage.getItem('selected_language') == 'de') {
+                alert('Bitte wählen Sie eine Bandlänge aus bevor sie die Marker einstellen!');
+            }
         }
         else {
-            localStorage.setItem('selected_mode2_CH1', 'marker2');
-            parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"marker2"}}');
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH1', 'marker1');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#1":"marker1"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH1', 'marker2');
+                parent.addtoSendQueue('{"memory":"ram","flash#1":{"operation mode#2":"marker2"}}');
+            }
         }
     }
     if (localStorage.getItem('selected_channel') == '2') {
-        if (localStorage.getItem('selected_mode') == '1') {
-            localStorage.setItem('selected_mode1_CH2', 'marker1');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"marker1"}}');
+        if (localStorage.getItem('selected_length_2') == 'none') {
+            if (localStorage.getItem('selected_language') == 'en') {
+                alert('Please select a band length before marker configuration!');
+            }
+            if (localStorage.getItem('selected_language') == 'de') {
+                alert('Bitte wählen Sie eine Bandlänge aus bevor sie die Marker einstellen!');
+            }
         }
         else {
-            localStorage.setItem('selected_mode2_CH2', 'marker2');
-            parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"marker2"}}');
+            if (localStorage.getItem('selected_mode') == '1') {
+                localStorage.setItem('selected_mode1_CH2', 'marker1');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#1":"marker1"}}');
+            }
+            else {
+                localStorage.setItem('selected_mode2_CH2', 'marker2');
+                parent.addtoSendQueue('{"memory":"ram","flash#2":{"operation mode#2":"marker2"}}');
+            }
         }
     }
-
 
     var col_green = document.getElementById('btn_green_col');
     var col_red = document.getElementById('btn_red_col');
@@ -2438,6 +2450,7 @@ $('#Marker').change(function () {
         col_runninglight.style.visibility = 'visible';
     }
     updateSelection(); // to get marker settings loaded
+
 })
 
 // visibility changes of markers on change, reset marker local storage variables and update selection
@@ -4288,4 +4301,39 @@ function resetMarkerColor(marker) {
             break;
 
     }
+}
+
+/**
+ * Sends command to read data from ROM. 
+ * Updates the state icon in the Sidemenu of the index.html.
+ * @param {*channel} channel number of selected LED channel 
+ * @param {*mode} mode number if selected Mode
+ */
+function getROMMode(channel, mode) {
+    if (channel == '1') {
+        if (mode == '1') {
+            parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#1":"get"}}');
+        }
+        if (mode == '2') {
+            parent.addtoSendQueue('{"memory":"rom","flash#1":{"operation mode#2":"get"}}');
+        }
+    }
+    else {
+        if (mode == '1') {
+            parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#1":"get"}}');
+        }
+        if (mode == '2') {
+            parent.addtoSendQueue('{"memory":"rom","flash#2":{"operation mode#2":"get"}}');
+        }
+    }
+    setTimeout(setStateIcon(), 100);
+}
+
+/**
+ * First reads data from the FIFO to update the local Storage variables.
+ * Then updates the state icons.
+ */
+function setStateIcon() {
+    parent.getNextDataFromQueue();
+    updateSelection();
 }

@@ -25,7 +25,6 @@ updateSelection(); // loads selection from local storage on inital load of the p
  */
 function updateSelection() {
     if (localStorage.getItem('selected_channel') == '1') {
-        console.log(localStorage.getItem('selected_length'));
         if (localStorage.getItem('selected_length') == '335 mm') {
             btnS.classList.add("active");
             if (btnM.classList.contains("active")) {
@@ -55,7 +54,6 @@ function updateSelection() {
             }
         }
         if (localStorage.getItem('selected_length') == '935 mm') {
-            console.log('max');
             btnL.classList.add("active");
             if (btnS.classList.contains("active")) {
                 btnS.classList.remove("active");
@@ -70,7 +68,6 @@ function updateSelection() {
             }
         }
         if (localStorage.getItem('selected_length') == '1870 mm') {
-            console.log('max');
             btnXL.classList.add("active");
             if (btnS.classList.contains("active")) {
                 btnS.classList.remove("active");
@@ -86,8 +83,6 @@ function updateSelection() {
         }
     }
     if (localStorage.getItem('selected_channel') == '2') {
-        console.log('channel 2');
-        console.log(localStorage.getItem('selected_length_2'));
         if (localStorage.getItem('selected_length_2') == '335 mm') {
             btnS.classList.add("active");
             if (btnM.classList.contains("active")) {
@@ -118,7 +113,6 @@ function updateSelection() {
             }
         }
         if (localStorage.getItem('selected_length_2') == '935 mm') {
-            console.log('max');
             btnL.classList.add("active");
             if (btnS.classList.contains("active")) {
                 btnS.classList.remove("active");
@@ -133,7 +127,6 @@ function updateSelection() {
             }
         }
         if (localStorage.getItem('selected_length_2') == '1870 mm') {
-            console.log('max');
             btnXL.classList.add("active");
             if (btnS.classList.contains("active")) {
                 btnS.classList.remove("active");
@@ -167,7 +160,7 @@ function clickSizeS() {
         }
         updateSelection();
         highlightSaveBtns();
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 function clickSizeM() {
@@ -205,7 +198,7 @@ function clickSizeL() {
         }
         updateSelection();
         highlightSaveBtns();
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 function clickSizeXL() {
@@ -224,7 +217,7 @@ function clickSizeXL() {
     }
     updateSelection();
     highlightSaveBtns();
-    setTimeout(function () { parent.functionlock = false; }, 500);
+    setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
 }
 
 /**
@@ -289,22 +282,22 @@ function clickSave() {
             if (localStorage.getItem('selected_length_2') == '335 mm') {
                 parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"335 mm"}}');
                 btnSAVE.style.visibility = "hidden";
-                length_state_icon_2.src = "../images/335mm_transparent.png";
+                //length_state_icon_2.src = "../images/335mm_transparent.png";
             }
             if (localStorage.getItem('selected_length_2') == '635 mm') {
                 parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"635 mm"}}');
                 btnSAVE.style.visibility = "hidden";
-                length_state_icon_2.src = "../images/635mm_transparent.png";
+                //length_state_icon_2.src = "../images/635mm_transparent.png";
             }
             if (localStorage.getItem('selected_length_2') == '935 mm') {
                 parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"935 mm"}}');
                 btnSAVE.style.visibility = "hidden";
-                length_state_icon_2.src = "../images/935mm_transparent.png";
+                //length_state_icon_2.src = "../images/935mm_transparent.png";
             }
             if (localStorage.getItem('selected_length_2') == '1870 mm') {
                 parent.addtoSendQueue('{"memory":"rom","flash#2":{"length":"1870 mm"}}');
                 btnSAVE.style.visibility = "hidden";
-                length_state_icon_2.src = "../images/1870mm_transparent.png";
+                //length_state_icon_2.src = "../images/1870mm_transparent.png";
             }
             //TODO: Prüfen ob das die einzige Änderung ist -> Löschen von Save all hervorhebung
             if (sidemenu_save_btn_2.classList.contains('custom-button-save')) {
@@ -313,7 +306,7 @@ function clickSave() {
             }
             setTimeout(getROMLength("2"), 200);
         }
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 
@@ -324,7 +317,6 @@ function clickSave() {
  * @param {*channel} channel number of selected LED channel 
  */
 function getROMLength(channel) {
-    console.log("getROMBrightness")
     if (channel == '1') {
         parent.addtoSendQueue('{"memory":"rom","flash#1":{"length":"get"}}');
     }

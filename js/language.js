@@ -126,20 +126,9 @@ if (localStorage.getItem('selected_language') == '') {
 }
 console.log('Browser language is', selectedlanguage), '.';
 updateLanguage();
-/*
-function docReady(fn) {
-  // see if DOM is already available
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-    // call on next available tick
-    setTimeout(fn, 1);
-  } else {
-    document.addEventListener("DOMContentLoaded", fn);
-  }
-}
-*/
+
+
 function updateLanguage() {
-  console.log('update Langugage called');
-  //docReady(function () {
   // DOM is loaded and ready for manipulation here
   var iframeDoc = FRAME.contentDocument || FRAME.contentWindow.document;
   // Check if loading is complete
@@ -166,19 +155,15 @@ function updateLanguage() {
     document.getElementById('btnSavesettings').innerHTML = lang.savesettings;
     console.log(document.getElementById('frame').src);
     if (document.getElementById('frame').src == 'https://nico-eggert.github.io/html/length.html') {
-      console.log('length.html');
       document.getElementById('menu_header').innerHTML = lang.length_header;
     }
     if (document.getElementById('frame').src == 'https://nico-eggert.github.io/html/connect.html') {
-      console.log('connect.html');
       document.getElementById('menu_header').innerHTML = lang.connect_header;
     }
     if (document.getElementById('frame').src == 'https://nico-eggert.github.io/html/brightness.html') {
-      console.log('brightness.html');
       document.getElementById('menu_header').innerHTML = lang.brightness_header;
     }
     if (document.getElementById('frame').src == 'https://nico-eggert.github.io/html/mode.html') {
-      console.log('mode.html');
       document.getElementById('menu_header').innerHTML = lang.mode_header;
     }
     document.getElementById('btnConnect').innerHTML = lang.btn_connect;
@@ -205,10 +190,8 @@ function updateLanguage() {
         //frameDoc.getElementById('btnDeviceConnect').innerHTML = '<image style="width: 8%; height: 8%; float:left;" src="../images/plug.png">' + lang.btnDeviceConnect + '</image>';
     }
     if (FRAME.src == 'https://nico-eggert.github.io/html/mode.html') {
-      console.log('frame:', frameDoc);
       window.onload = function () {
         frameDoc.getElementById('mode_txt').innerHTML = lang.mode_txt;
-        console.log('after loading fail');
         // Colors 1
         frameDoc.getElementById('color_dropdown_btn1').innerHTML = lang.color_dropdown_btn;
         frameDoc.getElementById('green_txt_1').innerHTML = lang.green_txt;

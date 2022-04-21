@@ -23,8 +23,6 @@ updateSelection(); // loads selection from local storage on inital load of the p
  */
 function updateSelection() {
     if (localStorage.getItem('selected_channel') == '1') {
-        console.log('channel 1');
-        console.log(localStorage.getItem('selected_brightness'));
         if (localStorage.getItem('selected_brightness') == 'eco') {
             btnECO.classList.add("active");
             if (btnMED.classList.contains("active")) {
@@ -55,8 +53,6 @@ function updateSelection() {
         }
     }
     if (localStorage.getItem('selected_channel') == '2') {
-        console.log('channel 2');
-        console.log(localStorage.getItem('selected_brightness_2'));
         if (localStorage.getItem('selected_brightness_2') == 'eco') {
             btnECO.classList.add("active");
             if (btnMED.classList.contains("active")) {
@@ -93,21 +89,16 @@ function clickBrightnessEco() {
         parent.functionlock = true;
 
         if (localStorage.getItem('selected_channel') == '1') {
-            console.log('ch 1');
             localStorage.setItem('selected_brightness', 'eco');
             parent.addtoSendQueue('{"memory":"ram","flash#1":{"brightness":"eco"}}');
-
         }
         else { // Channel 2
-            console.log('ch 2');
             localStorage.setItem('selected_brightness_2', 'eco');
             parent.addtoSendQueue('{"memory":"ram","flash#2":{"brightness":"eco"}}');
-
         }
         highlightSaveBtns();
         updateSelection();
-
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 
@@ -116,21 +107,18 @@ function clickBrightnessMedium() {
         parent.functionlock = true;
 
         if (localStorage.getItem('selected_channel') == '1') {
-            console.log('ch 1');
             localStorage.setItem('selected_brightness', 'med');
             parent.addtoSendQueue('{"memory":"ram","flash#1":{"brightness":"medium"}}');
 
         }
         else { // Channel 2
-            console.log('ch 2');
-            brightness_state_icon_2.src = "../images/bulb_med_transparent.png";
+            //brightness_state_icon_2.src = "../images/bulb_med_transparent.png";
             localStorage.setItem('selected_brightness_2', 'med');
             parent.addtoSendQueue('{"memory":"ram","flash#2":{"brightness":"medium"}}');
         }
         highlightSaveBtns();
         updateSelection();
-
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 
@@ -143,14 +131,13 @@ function clickBrightnessMax() {
             parent.addtoSendQueue('{"memory":"ram","flash#1":{"brightness":"max"}}');
         }
         else { // Channel 2
-            brightness_state_icon_2.src = "../images/bulb_max_transparent.png";
+            //brightness_state_icon_2.src = "../images/bulb_max_transparent.png";
             localStorage.setItem('selected_brightness_2', 'max');
             parent.addtoSendQueue('{"memory":"ram","flash#2":{"brightness":"max"}}');
         }
         highlightSaveBtns();
         updateSelection();
-
-        setTimeout(function () { parent.functionlock = false; }, 500)
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime)
     }
 }
 
@@ -178,7 +165,6 @@ function clickSave() {
                 sidemenu_save_btn.classList.remove('custom-button-save');
                 sidemenu_save_btn.classList.add('custom-button-default');
             }
-            console.log('before set Timeout getROMBrightness');
             setTimeout(function () { getROMBrightness('1'); }, 200);
         }
         else { // Channel 2
@@ -202,10 +188,9 @@ function clickSave() {
                 sidemenu_save_btn_2.classList.remove('custom-button-save');
                 sidemenu_save_btn_2.classList.add('custom-button-default');
             }
-            console.log('before set Timeout getROMBrightness');
             setTimeout(function () { getROMBrightness('2'); }, 200);
         }
-        setTimeout(function () { parent.functionlock = false; }, 500);
+        setTimeout(function () { parent.functionlock = false; }, parent.functionlocktime);
     }
 }
 
@@ -216,10 +201,8 @@ function clickSave() {
  * @param {*channel} channel number of selected LED channel 
  */
 function getROMBrightness(channel) {
-    console.log("getROMBrightness")
     if (channel == '1') {
         parent.addtoSendQueue('{"memory":"rom","flash#1":{"brightness":"get"}}');
-        console.log('set Timeout setStateIcon');
     }
     if (channel == '2') {
         parent.addtoSendQueue('{"memory":"rom","flash#2":{"brightness":"get"}}')
@@ -233,7 +216,6 @@ function getROMBrightness(channel) {
  * Then updates the state icons.
  */
 function setStateIcon() {
-    console.log('setStateIcon');
     parent.getNextDataFromQueue();
     updateSelection();
 }

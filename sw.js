@@ -1,5 +1,5 @@
 var APP_PREFIX = 'VetterPWA_'     // Identifier for this app (this needs to be consistent across every cache update)
-var VERSION = 'version_0.24'              // Version of the off-line cache (change this value everytime if you want to update cache)
+var VERSION = 'version_0.25'              // Version of the off-line cache (change this value everytime if you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
     'https://nico-eggert.github.io/',                     // If you have separate JS/CSS files,
@@ -10,6 +10,8 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/css/bootstrap.min.css.map',
     'https://nico-eggert.github.io/js/bootstrap.bundle.min.js',
     'https://nico-eggert.github.io/js/bootstrap.bundle.min.js.map',
+    "https://nico-eggert.github.io/js/jquery-3.6.0.min.js",
+    "https://nico-eggert.github.io/js/jquery-3.6.0.min.map",
     'https://nico-eggert.github.io/js/brightness.js',
     'https://nico-eggert.github.io/js/connect.js',
     'https://nico-eggert.github.io/js/length.js',
