@@ -1,5 +1,5 @@
 var APP_PREFIX = 'VetterPWA_'     // Identifier for this app (this needs to be consistent across every cache update)
-var VERSION = 'version_0.25'              // Version of the off-line cache (change this value everytime if you want to update cache)
+var VERSION = 'version_0.26'              // Version of the off-line cache (change this value everytime if you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
     'https://nico-eggert.github.io/',                     // If you have separate JS/CSS files,
@@ -24,6 +24,7 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/images/Flaggen/us.png',
     'https://nico-eggert.github.io/images/Logo/vetter_solutions_129.png',
     'https://nico-eggert.github.io/images/Logo/vetter_solutions_512.png',
+    'https://nico-eggert.github.io/images/1.png',
     'https://nico-eggert.github.io/images/335.png',
     'https://nico-eggert.github.io/images/335mm_transparent.png',
     'https://nico-eggert.github.io/images/635.png',
@@ -54,6 +55,22 @@ var URLS = [                            // Add URL you want to cache in this lis
     'https://nico-eggert.github.io/images/toolbox.png',
     'https://nico-eggert.github.io/images/up_arrow.png',
     'https://nico-eggert.github.io/images/x.png',
+    "https://nico-eggert.github.io/images/farbpalette.png",
+    "https://nico-eggert.github.io/images/gluehbirne_hell_1.png",
+    "https://nico-eggert.github.io/images/gluehbirne_hell_2.png",
+    "https://nico-eggert.github.io/images/gluehbirne_hell_3.png",
+    "https://nico-eggert.github.io/images/laden_aktualisieren.png",
+    "https://nico-eggert.github.io/images/lineal.png",
+    "https://nico-eggert.github.io/images/modus.png",
+    "https://nico-eggert.github.io/images/pinsel.png",
+    "https://nico-eggert.github.io/images/Icon_Fax.png",
+    "https://nico-eggert.github.io/images/Icon_Mail.png",
+    "https://nico-eggert.github.io/images/Icon_Telefon.png",
+    "https://nico-eggert.github.io/images/Logo_facebook.png",
+    "https://nico-eggert.github.io/images/Logo_instagram.png",
+    "https://nico-eggert.github.io/images/Logo_linkedin.png",
+    "https://nico-eggert.github.io/images/Logo_vimeo.png",
+    "https://nico-eggert.github.io/images/Logo_xing.png",
     'https://nico-eggert.github.io/html/brightness.html',
     'https://nico-eggert.github.io/html/connect.html',
     'https://nico-eggert.github.io/html/length.html',

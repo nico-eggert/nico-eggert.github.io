@@ -31,14 +31,16 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col" style="text-align: center;">
+            <div class="col" style="text-align: center; display: none;">
+                <!-- display none -> to hide the col of Device Name/Macaddress Label-->
                 <label class="form-label" id="device_txt">Device Name:</label>
             </div>
             <div class="col "></div>
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col" style="text-align: center;">
+            <div class="col" style="text-align: center; display:none;">
+                <!-- display none -> to hide the col of the MAC-Adress-->
                 <input type="text" style="width: 260px;" id="devicename" aria-describedby="device name"
                     placeholder="0013A20041E2EF02" value="0013A20041DB4AA3">
                 <!-- Michael:0013A20041DB4AA3 Nico: 0013A20041DA86FA -->
@@ -70,7 +72,8 @@
                 <button type="style" style="width: 260px;" class="custom-button-general"
                     title="connect USB serial device" id="btnDeviceConnect">
                     <!-- btn btn-primary btn-pad -->
-                    <image style="width: 8%; height: 8%; float:left;" src="../images/plug.png"></image>
+                    <image style="max-height: 90%;
+                    max-width: 90%; width: 8%; height: 12%; float:left;" src="../images/plug.png"></image>
                 </button>
             </div>
             <div class="col"></div>
@@ -96,6 +99,7 @@
 
     <!-- scripts -->
     <!-- jQuery -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/connect.js"></script>

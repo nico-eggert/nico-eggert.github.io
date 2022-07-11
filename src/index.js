@@ -1670,13 +1670,13 @@ async function getNextDataFromQueue() {
         // brightness
         if (RXData.JSONDocument["flash#1"]["brightness"]) {
           if (RXData.JSONDocument["flash#1"]["brightness"] == 'eco') {
-            document.getElementById('brightness_state_icon').src = "../images/bulb_eco_transparent.png";
+            document.getElementById('brightness_state_icon').src = "../images/gluehbirne_hell_1.png";
           }
           if (RXData.JSONDocument["flash#1"]["brightness"] == 'medium') {
-            document.getElementById('brightness_state_icon').src = "../images/bulb_med_transparent.png";
+            document.getElementById('brightness_state_icon').src = "../images/gluehbirne_hell_2.png";
           }
           if (RXData.JSONDocument["flash#1"]["brightness"] == 'max') {
-            document.getElementById('brightness_state_icon').src = "../images/bulb_max_transparent.png";
+            document.getElementById('brightness_state_icon').src = "../images/gluehbirne_hell_3.png";
           }
         }
         // operation mode 1 channel 1
@@ -2523,13 +2523,13 @@ async function getNextDataFromQueue() {
         // brightness
         if (RXData.JSONDocument["flash#2"]["brightness"]) {
           if (RXData.JSONDocument["flash#2"]["brightness"] == 'eco') {
-            document.getElementById('brightness_state_icon_2').src = "../images/bulb_eco_transparent.png";
+            document.getElementById('brightness_state_icon_2').src = "../images/gluehbirne_hell_1.png";
           }
           if (RXData.JSONDocument["flash#2"]["brightness"] == 'medium') {
-            document.getElementById('brightness_state_icon_2').src = "../images/bulb_med_transparent.png";
+            document.getElementById('brightness_state_icon_2').src = "../images/gluehbirne_hell_2.png";
           }
           if (RXData.JSONDocument["flash#2"]["brightness"] == 'max') {
-            document.getElementById('brightness_state_icon_2').src = "../images/bulb_max_transparent.png";
+            document.getElementById('brightness_state_icon_2').src = "../images/gluehbirne_hell_3.png";
           }
         }
         // operation mode 1 channel 2

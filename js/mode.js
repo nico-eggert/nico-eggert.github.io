@@ -2468,10 +2468,10 @@ $('#Marker_1').change(function () {
     }
     else {
         //reset marker color selection
-        $('#color_dropdown_menu_1 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn1');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#0144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '1', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2495,10 +2495,10 @@ $('#Marker_1').change(function () {
         markerrow2.style.visibility = 'hidden';
         document.getElementById('Marker_2').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_2 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn2');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2522,10 +2522,10 @@ $('#Marker_1').change(function () {
         markerrow3.style.visibility = 'hidden';
         document.getElementById('Marker_3').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn3');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2549,10 +2549,10 @@ $('#Marker_1').change(function () {
         markerrow4.style.visibility = 'hidden';
         document.getElementById('Marker_4').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn4');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2576,10 +2576,10 @@ $('#Marker_1').change(function () {
         markerrow5.style.visibility = 'hidden';
         document.getElementById('Marker_5').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn5');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2620,10 +2620,10 @@ $('#Marker_2').change(function () {
     }
     else {
         //reset marker color selection
-        $('#color_dropdown_menu_2 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn2');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2647,10 +2647,10 @@ $('#Marker_2').change(function () {
         markerrow3.style.visibility = 'hidden';
         document.getElementById('Marker_3').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn3');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2674,10 +2674,10 @@ $('#Marker_2').change(function () {
         markerrow4.style.visibility = 'hidden';
         document.getElementById('Marker_4').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn4');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2701,10 +2701,10 @@ $('#Marker_2').change(function () {
         markerrow5.style.visibility = 'hidden';
         document.getElementById('Marker_5').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn5');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2745,10 +2745,10 @@ $('#Marker_3').change(function () {
     }
     else {
         //reset marker color selection
-        $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn3');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('3');
         // Send marker color = 'off' message
@@ -2774,10 +2774,10 @@ $('#Marker_3').change(function () {
         markerrow4.style.visibility = 'hidden';
         document.getElementById('Marker_4').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn4');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2801,10 +2801,10 @@ $('#Marker_3').change(function () {
         markerrow5.style.visibility = 'hidden';
         document.getElementById('Marker_5').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn5');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2845,10 +2845,10 @@ $('#Marker_4').change(function () {
     }
     else {
         //reset marker color selection
-        $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn4');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('4');
         // Send marker color = 'off' message
@@ -2874,10 +2874,10 @@ $('#Marker_4').change(function () {
         markerrow5.style.visibility = 'hidden';
         document.getElementById('Marker_5').checked = false;
         //reset marker color selection
-        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn5');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('5');
         // reset Marker 5 parameters
@@ -2918,10 +2918,10 @@ $('#Marker_5').change(function () {
     }
     else {
         //reset marker color selection
-        $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
         var elem = document.getElementById('color_dropdown_btn5');
-        elem.style.background = '#0275d8'; // btn primary blue
+        elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('5');
         // Send marker color = 'off' message
@@ -4178,26 +4178,26 @@ function showMarkerSettings(markernumber) {
  * Deletes all selected marker colors. 
  */
 function deleteAllMarkerColors() {
-    $('#color_dropdown_menu_1 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
     var elem = document.getElementById('color_dropdown_btn1');
-    elem.style.background = '#0275d8';
-    elem.style.color = 'white';
-    $('#color_dropdown_menu_2 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+    elem.style.background = '#144194';
+    elem.style.color = 'white'; 
+    $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn2');
-    elem.style.background = '#0275d8';
+    elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_menu_3 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+    $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn3');
-    elem.style.background = '#0275d8';
+    elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_menu_4 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+    $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn4');
-    elem.style.background = '#0275d8';
+    elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_menu_5 li').parents('.btn-group').find('.dropdown-toggle').html('Color' + ' <span class="caret"></span>');
+    $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn5');
-    elem.style.background = '#0275d8';
+    elem.style.background = '#144194';
     elem.style.color = 'white';
+    $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
 }
 
 /**
