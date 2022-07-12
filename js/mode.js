@@ -87,6 +87,32 @@ document.addEventListener('DOMContentLoaded', () => {
  * Sets current values active on buttons.
  */
 function updateSelection() {
+    // Update Marker Button Languages
+    if(localStorage.getItem('selected_language')== 'en'){
+    $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#marker_1_width_input').attr('placeholder' , 'Width (mm)');
+    $('#marker_2_width_input').attr('placeholder' , 'Width (mm)');
+    $('#marker_3_width_input').attr('placeholder' , 'Width (mm)');
+    $('#marker_4_width_input').attr('placeholder' , 'Width (mm)');
+    $('#marker_5_width_input').attr('placeholder' , 'Width (mm)');
+    // Note: Position has same name in both languages -> no changes neeeded
+}
+else{ // language de 
+    $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Farbe' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Farbe' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Farbe' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Farbe' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Farbe' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#marker_1_width_input').attr('placeholder' , 'Breite (mm)');
+    $('#marker_2_width_input').attr('placeholder' , 'Breite (mm)');
+    $('#marker_3_width_input').attr('placeholder' , 'Breite (mm)');
+    $('#marker_4_width_input').attr('placeholder' , 'Breite (mm)');
+    $('#marker_5_width_input').attr('placeholder' , 'Breite (mm)');
+}
     // CHANNEL 1
     if (localStorage.getItem('selected_channel') == '1') { // channel 1
         if (localStorage.getItem('selected_mode') == '1') { // mode 1
@@ -2471,7 +2497,7 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn1');
         elem.style.background = '#0144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '1', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2498,7 +2524,7 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn2');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2525,7 +2551,7 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn3');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2552,7 +2578,7 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2579,7 +2605,7 @@ $('#Marker_1').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2623,7 +2649,7 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn2');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '2', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2650,7 +2676,7 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn3');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '3', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2677,7 +2703,7 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2704,7 +2730,7 @@ $('#Marker_2').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2748,7 +2774,7 @@ $('#Marker_3').change(function () {
         var elem = document.getElementById('color_dropdown_btn3');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('3');
         // Send marker color = 'off' message
@@ -2777,7 +2803,7 @@ $('#Marker_3').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '4', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2804,7 +2830,7 @@ $('#Marker_3').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // Send marker color = 'off' message
         var JSONmsg = createJSONmsg('ram', '5', 'color', 'off');
         parent.addtoSendQueue(JSONmsg);
@@ -2848,7 +2874,7 @@ $('#Marker_4').change(function () {
         var elem = document.getElementById('color_dropdown_btn4');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('4');
         // Send marker color = 'off' message
@@ -2877,7 +2903,7 @@ $('#Marker_4').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('5');
         // reset Marker 5 parameters
@@ -2921,7 +2947,7 @@ $('#Marker_5').change(function () {
         var elem = document.getElementById('color_dropdown_btn5');
         elem.style.background = '#144194'; // btn primary blue
         elem.style.color = 'white';
-        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+        $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
         // reset local storage variable
         resetMarkerColor('5');
         // Send marker color = 'off' message
@@ -4180,24 +4206,24 @@ function showMarkerSettings(markernumber) {
 function deleteAllMarkerColors() {
     var elem = document.getElementById('color_dropdown_btn1');
     elem.style.background = '#144194';
-    elem.style.color = 'white'; 
-    $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    elem.style.color = 'white';
+    $('#color_dropdown_btn1').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn2');
     elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn2').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn3');
     elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn3').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn4');
     elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn4').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
     elem = document.getElementById('color_dropdown_btn5');
     elem.style.background = '#144194';
     elem.style.color = 'white';
-    $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' +'<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
+    $('#color_dropdown_btn5').parents('.btn-group').find('.dropdown-toggle').html('Color' + '<image style="margin:auto; width: 40%; height: 100%; float:left;" src="../images/pinsel.png"></image>');
 }
 
 /**

@@ -221,8 +221,8 @@ class XBee3Class
             // Filter on devices with the Arduino Uno USB Vendor/Product IDs.
             const filters = [   //{ usbVendorId: 0x1027 , usbProductId: 0x24577}, // specific Product
                                 // general Vendor IDs
-                                { usbVendorId: 0x1027 }, // USB-Stick:1027 24597  // Digi Xbee:1027 24577
-                                { usbVendorId: 0x0403 }   // Digi USB: 0403 6001, Digi USB: 0403 6015
+                                { usbVendorId: 0x1027 }, // Time Domain | USB-Stick:1027 24597  // Digi Xbee:1027 24577
+                                { usbVendorId: 0x0403 }  // FTDI | Digi USB: 0403 6001, Digi USB: 0403 6015
              ];  
             
             // Prompt user to select any serial port.
