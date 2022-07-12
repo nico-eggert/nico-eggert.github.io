@@ -219,7 +219,10 @@ class XBee3Class
     async _XBConnectSerial() {
         try {
             // Filter on devices with the Arduino Uno USB Vendor/Product IDs.
-            const filters = [ { usbVendorId: 1027 , usbProductId: 24597} ]; //Digi Xbee:1027 24577 // USB-Stick:1027 24597
+            const filters = [   { usbVendorId: 0x1027 , usbProductId: 0x24577}, // Digi Xbee:1027 24577
+                                { usbVendorId: 0x1027 , usbProductId: 0x24597}, // USB-Stick:1027 24597 
+                                { usbVendorId: 0x0403 , usbProductId: 0x6001}   // Digi USB: 0403 6001
+             ];  
             
             // Prompt user to select any serial port.
             this.#port = await navigator.serial.requestPort( {filters} );
